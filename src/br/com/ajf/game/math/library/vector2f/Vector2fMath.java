@@ -6,6 +6,47 @@ import br.com.ajf.game.math.library.point2f.Point2fEpsilonEquals;
 
 public final class Vector2fMath
 {
+    public float crossProduct(Vector2f v,Vector2f u)
+    {
+        return v.getX()*u.getY() - v.getY()*u.getX();
+    }
+    
+    public Vector2f polar(Vector2f v,float angle,float radius)
+    {
+        return new Vector2f(radius*(float) Math.cos(angle),radius*(float) Math.sin(angle));
+    }
+    
+    public float angle(Vector2f v)
+    {
+        return (float) Math.atan2(v.getY(),v.getX());
+    }
+    
+    public Vector2f perp(Vector2f v)
+    {
+        return new Vector2f(-v.getY(),v.getX());
+    }
+    
+    public Vector2f invert(Vector2f v)
+    {
+        return negate(v);
+    }
+    
+    public Vector2f shear(Vector2f v ,float sx,float sy)
+    {
+        float temp = v.getX()+sx*v.getY();
+        v.setY(v.getY()+sy*v.getX());
+        v.setX(temp);
+        return v;
+    }
+    
+    public Vector2f rotate(Vector2f v,float rad)
+    {
+        float temp = (float) (v.getX()*Math.cos(rad)-v.getY()*Math.sin(rad));
+        v.setY((float)(v.getX()*Math.sin(rad)+v.getY()*Math.cos(rad)));
+        v.setX(temp);
+        return v;
+    }
+    
     public float dotProduct(Vector2f v,Vector2f u)
     {
         return v.getX()*u.getX()+v.getY()*u.getY();
