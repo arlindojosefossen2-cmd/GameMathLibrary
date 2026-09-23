@@ -5,7 +5,7 @@ import br.com.ajf.game.math.library.point2d.Point2d;
 import java.io.Serializable;
 import java.util.Objects;
 
-public final class Vector2d implements Serializable  , Cloneable
+public final class Vector2d implements Serializable , Cloneable
 {
     private Point2d point2d;
     
