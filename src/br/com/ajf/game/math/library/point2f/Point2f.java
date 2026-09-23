@@ -122,6 +122,6 @@ public final class Point2f implements Serializable , Cloneable
     @Override
     public String toString()
     {
-        return "Point2f( "+x+" , "+y+" )";
+        return "Point2f( x = "+x+" , y = "+y+" )";
     }
 }

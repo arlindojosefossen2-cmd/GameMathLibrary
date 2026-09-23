@@ -122,6 +122,6 @@ public final class Point2d implements Serializable , Cloneable
     @Override
     public String toString()
     {
-        return "Point2d( "+x+" , "+y+ ")";
+        return "Point2d( x = "+x+" , y = "+y+ ")";
     }
 }
