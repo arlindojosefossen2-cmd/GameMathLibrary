@@ -3,7 +3,7 @@ package br.com.ajf.game.math.library.point2;
 import java.io.Serializable;
 import java.util.Objects;
 
-public abstract class Point2<X,Y> implements Serializable , Cloneable
+public abstract class Point2<X,Y> implements Serializable , Cloneable , IPoint2<X,Y>
 {
     private X x;
     private Y y;

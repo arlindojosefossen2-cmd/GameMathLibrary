@@ -8,9 +8,9 @@ public class Main
         
         System.out.println(pi);
         
-        pi = new Point2f(2.340f,0.67f);
-        
-        System.out.println(pi);
+        IPoint2<Float,Float> pf = new Point2f(6.0f,0.34f);
+        pf.clamp(1.2f,4.5f);
+        System.out.println(pf);
         
         pi = new Point2d(Double.valueOf(37749949.494949),Double.valueOf(Math.PI/6));
         
