@@ -9,9 +9,7 @@ public class Point3i extends Point3<Integer,Integer,Integer>
     
     public Point3i(int x, int y, int z)
     {
-        this.setX(x);
-        this.setY(y);
-        this.setZ(z);
+       super(x,y,z);
     }
     
     public Point3i(Integer x, Integer y, Integer z)

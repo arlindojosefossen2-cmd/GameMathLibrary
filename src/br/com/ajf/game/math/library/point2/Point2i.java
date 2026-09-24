@@ -9,8 +9,7 @@ public final class Point2i extends Point2<Integer,Integer>
     
     public Point2i(int x,int y)
     {
-        this.setX(x);
-        this.setY(y);
+       super(x,y);
     }
     
     public Point2i(Integer x, Integer y)

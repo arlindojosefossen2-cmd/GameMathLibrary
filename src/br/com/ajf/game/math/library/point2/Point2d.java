@@ -8,8 +8,7 @@ public final class Point2d extends Point2<Double,Double>
     }
     public Point2d(double x,double y)
     {
-        this.setX(x);
-        this.setY(y);
+       super(x,y);
     }
     public Point2d(Double x,Double y)
     {

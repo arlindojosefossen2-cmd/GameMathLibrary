@@ -9,9 +9,7 @@ public class Point3f extends Point3<Float,Float,Float>
     
     public Point3f(float x, float y, float z)
     {
-        this.setX(x);
-        this.setY(y);
-        this.setZ(z);
+       super(x,y,z);
     }
     
     public Point3f(Float x, Float y, Float z)

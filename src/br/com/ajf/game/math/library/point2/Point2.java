@@ -49,7 +49,7 @@ public abstract class Point2<X,Y> implements Serializable , Cloneable
     public String toString()
     {
         String[] split = getClass().getName().split("\\.");
-        return split[split.length-1]+"( " + "x = " + x + " , y = " + y + " )";
+        return split[split.length-1]+"( " + "x= " + x + ", y= " + y + " )";
     }
     
     @Override

@@ -9,8 +9,7 @@ public final class Point2f extends Point2<Float,Float>
     
     public Point2f(float x,float y)
     {
-        this.setX(x);
-        this.setY(y);
+        super(x,y);
     }
     
     public Point2f(Float x, Float y)
