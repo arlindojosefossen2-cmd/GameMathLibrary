@@ -55,9 +55,8 @@ public abstract class Point2<X,Y> implements Serializable , Cloneable , IPoint2<
     @Override
     public boolean equals(Object o)
     {
-        if (!(o instanceof Point2))
+        if (!(o instanceof Point2<?, ?> pointer))
             return false;
-        Point2<?, ?> pointer = (Point2<?, ?>) o;
         return Objects.equals(x, pointer.x) && Objects.equals(y, pointer.y);
     }
     
