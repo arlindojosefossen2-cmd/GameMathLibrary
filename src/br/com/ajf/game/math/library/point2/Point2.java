@@ -19,10 +19,10 @@ public abstract class Point2<X,Y> implements Serializable , Cloneable , IPoint2<
         this.y = y;
     }
     
-    public Point2(Point2<X,Y> p)
+    public Point2(IPoint2<X,Y> p)
     {
-        this.x = p.x;
-        this.y = p.y;
+        this.x = p.x();
+        this.y = p.y();
     }
     
     public X x()
@@ -69,11 +69,11 @@ public abstract class Point2<X,Y> implements Serializable , Cloneable , IPoint2<
     
     @Override
     @SuppressWarnings("unchecked")
-    public Point2<X, Y> clone()
+    public IPoint2<X, Y> clone()
     {
         try
         {
-            return (Point2<X, Y>) super.clone();
+            return (IPoint2<X, Y>) super.clone();
         }
         catch (CloneNotSupportedException e)
         {
