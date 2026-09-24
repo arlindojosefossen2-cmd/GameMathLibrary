@@ -1,0 +1,298 @@
+@startuml
+class br.com.ajf.game.math.library.point3.Point3f {
++ <<Create>> Point3f()
++ <<Create>> Point3f(float,float,float)
++ <<Create>> Point3f(Float,Float,Float)
++ <<Create>> Point3f(Point3<Float,Float,Float>)
+}
+
+class br.com.ajf.game.math.library.point2.Point2i {
++ <<Create>> Point2i()
++ <<Create>> Point2i(int,int)
++ <<Create>> Point2i(Integer,Integer)
++ <<Create>> Point2i(Point2<Integer,Integer>)
++ void set(Integer,Integer)
++ void set(IPoint2<Integer,Integer>)
++ void clampMin(Integer)
++ void clampMax(Integer)
++ void clamp(Integer,Integer)
++ void clamp(Integer,Integer,IPoint2<Integer,Integer>)
++ void clampMin(Integer,IPoint2<Integer,Integer>)
++ void clampMax(Integer,IPoint2<Integer,Integer>)
++ void absolute(IPoint2<Integer,Integer>)
++ void absolute()
++ void negate()
++ void negate(IPoint2<Integer,Integer>)
++ void add(IPoint2<Integer,Integer>)
++ void add(IPoint2<Integer,Integer>,IPoint2<Integer,Integer>)
++ void add(Integer,Integer)
++ void sub(IPoint2<Integer,Integer>)
++ void sub(IPoint2<Integer,Integer>,IPoint2<Integer,Integer>)
++ void sub(Integer,Integer)
++ void multiply(IPoint2<Integer,Integer>)
++ void divide(IPoint2<Integer,Integer>)
++ void scale(Integer)
++ void scale(IPoint2<Integer,Integer>,Integer)
++ void scaleAndAdd(IPoint2<Integer,Integer>,Integer)
++ void scaleAndAdd(IPoint2<Integer,Integer>,IPoint2<Integer,Integer>,Integer)
++ boolean equals(IPoint2<Integer,Integer>)
+}
+
+class br.com.ajf.game.math.library.point4.Point4f {
++ <<Create>> Point4f()
++ <<Create>> Point4f(float,float,float,float)
++ <<Create>> Point4f(Float,Float,Float,Float)
++ <<Create>> Point4f(Point4<Float,Float,Float,Float>)
+}
+
+class br.com.ajf.game.math.library.point2.Main {
++ {static} void main(String[])
+}
+
+abstract class br.com.ajf.game.math.library.point2.Point2 {
+- X x
+- Y y
++ <<Create>> Point2()
++ <<Create>> Point2(X,Y)
++ <<Create>> Point2(IPoint2<X,Y>)
++ X x()
++ void setX(X)
++ Y y()
++ void setY(Y)
++ String toString()
++ boolean equals(Object)
++ int hashCode()
++ IPoint2<X,Y> clone()
+}
+
+
+interface br.com.ajf.game.math.library.point2.IPoint2 {
+~ X x()
+~ void setX(X)
+~ Y y()
+~ void setY(Y)
+~ void set(X,Y)
+~ void set(IPoint2<X,Y>)
+~ void clampMin(X)
+~ void clampMax(X)
+~ void clamp(X,Y)
+~ void clamp(X,Y,IPoint2<X,Y>)
+~ void clampMin(X,IPoint2<X,Y>)
+~ void clampMax(X,IPoint2<X,Y>)
+~ void absolute(IPoint2<X,Y>)
+~ void absolute()
+~ void negate()
+~ void negate(IPoint2<X,Y>)
+~ void add(IPoint2<X,Y>)
+~ void add(IPoint2<X,Y>,IPoint2<X,Y>)
+~ void add(X,Y)
+~ void sub(IPoint2<X,Y>)
+~ void sub(IPoint2<X,Y>,IPoint2<X,Y>)
+~ void sub(X,Y)
+~ void multiply(IPoint2<X,Y>)
+~ void divide(IPoint2<X,Y>)
+~ void scale(X)
+~ void scale(IPoint2<X,Y>,X)
+~ void scaleAndAdd(IPoint2<X,Y>,X)
+~ void scaleAndAdd(IPoint2<X,Y>,IPoint2<X,Y>,X)
+~ boolean equals(IPoint2<X,Y>)
+}
+
+class br.com.ajf.game.math.library.point3.Point3d {
++ <<Create>> Point3d()
++ <<Create>> Point3d(double,double,double)
++ <<Create>> Point3d(Double,Double,Double)
++ <<Create>> Point3d(Point3<Double,Double,Double>)
+}
+
+class br.com.ajf.game.math.library.point4.Point4i {
++ <<Create>> Point4i()
++ <<Create>> Point4i(int,int,int,int)
++ <<Create>> Point4i(Integer,Integer,Integer,Integer)
++ <<Create>> Point4i(Point4<Integer,Integer,Integer,Integer>)
+}
+
+class br.com.ajf.game.math.library.point4.Point4d {
++ <<Create>> Point4d()
++ <<Create>> Point4d(double,double,double,double)
++ <<Create>> Point4d(Double,Double,Double,Double)
++ <<Create>> Point4d(Point4<Double,Double,Double,Double>)
+}
+
+class br.com.ajf.game.math.library.point3.Point3i {
++ <<Create>> Point3i()
++ <<Create>> Point3i(int,int,int)
++ <<Create>> Point3i(Integer,Integer,Integer)
++ <<Create>> Point3i(Point3<Integer,Integer,Integer>)
+}
+
+class br.com.ajf.game.math.library.point2.Point2f {
++ <<Create>> Point2f()
++ <<Create>> Point2f(float,float)
++ <<Create>> Point2f(Float,Float)
++ <<Create>> Point2f(Point2<Float,Float>)
++ float distanceSquared(IPoint2<Float,Float>)
++ float distance(IPoint2<Float,Float>)
++ float distanceL1(IPoint2<Float,Float>)
++ float distanceLinF(IPoint2<Float,Float>)
++ void set(Float,Float)
++ void set(IPoint2<Float,Float>)
++ void clampMin(Float)
++ void clampMax(Float)
++ void clamp(Float,Float)
++ void clamp(Float,Float,IPoint2<Float,Float>)
++ void clampMin(Float,IPoint2<Float,Float>)
++ void clampMax(Float,IPoint2<Float,Float>)
++ void absolute(IPoint2<Float,Float>)
++ void absolute()
++ void negate()
++ void negate(IPoint2<Float,Float>)
++ void add(IPoint2<Float,Float>)
++ void add(IPoint2<Float,Float>,IPoint2<Float,Float>)
++ void add(Float,Float)
++ void sub(IPoint2<Float,Float>)
++ void sub(IPoint2<Float,Float>,IPoint2<Float,Float>)
++ void sub(Float,Float)
++ void multiply(IPoint2<Float,Float>)
++ void interpolate(IPoint2<Float,Float>,Float)
++ void interpolate(IPoint2<Float,Float>,IPoint2<Float,Float>,Float)
++ boolean epsilonEquals(IPoint2<Float,Float>,Float)
++ void divide(IPoint2<Float,Float>)
++ void scale(Float)
++ void scale(IPoint2<Float,Float>,Float)
++ void scaleAndAdd(IPoint2<Float,Float>,Float)
++ void scaleAndAdd(IPoint2<Float,Float>,IPoint2<Float,Float>,Float)
++ boolean equals(IPoint2<Float,Float>)
+}
+
+interface br.com.ajf.game.math.library.point4.IPoint4 {
+~ X x()
+~ void setX(X)
+~ Y y()
+~ void setY(Y)
+~ Z z()
+~ void setZ(Z)
+~ W w()
+~ void setW(W)
+}
+
+class br.com.ajf.game.math.library.point2.Point2d {
++ <<Create>> Point2d()
++ <<Create>> Point2d(double,double)
++ <<Create>> Point2d(Double,Double)
++ <<Create>> Point2d(IPoint2<Double,Double>)
++ double distanceSquared(IPoint2<Double,Double>)
++ double distance(IPoint2<Double,Double>)
++ double distanceL1(IPoint2<Double,Double>)
++ double distanceLinF(IPoint2<Double,Double>)
++ void set(Double,Double)
++ void set(IPoint2<Double,Double>)
++ void clampMin(Double)
++ void clampMax(Double)
++ void clamp(Double,Double)
++ void clamp(Double,Double,IPoint2<Double,Double>)
++ void clampMin(Double,IPoint2<Double,Double>)
++ void clampMax(Double,IPoint2<Double,Double>)
++ void absolute(IPoint2<Double,Double>)
++ void absolute()
++ void negate()
++ void negate(IPoint2<Double,Double>)
++ void add(IPoint2<Double,Double>)
++ void add(IPoint2<Double,Double>,IPoint2<Double,Double>)
++ void add(Double,Double)
++ void sub(IPoint2<Double,Double>)
++ void sub(IPoint2<Double,Double>,IPoint2<Double,Double>)
++ void sub(Double,Double)
++ void multiply(IPoint2<Double,Double>)
++ void interpolate(IPoint2<Double,Double>,Double)
++ void interpolate(IPoint2<Double,Double>,IPoint2<Double,Double>,Double)
++ boolean epsilonEquals(IPoint2<Double,Double>,Double)
++ void divide(IPoint2<Double,Double>)
++ void scale(Double)
++ void scale(IPoint2<Double,Double>,Double)
++ void scaleAndAdd(IPoint2<Double,Double>,Double)
++ void scaleAndAdd(IPoint2<Double,Double>,IPoint2<Double,Double>,Double)
++ boolean equals(IPoint2<Double,Double>)
+}
+
+abstract class br.com.ajf.game.math.library.point4.Point4 {
+- X x
+- Y y
+- Z z
+- W w
++ <<Create>> Point4()
++ <<Create>> Point4(X,Y,Z,W)
++ <<Create>> Point4(IPoint4<X,Y,Z,W>)
++ boolean equals(Object)
++ int hashCode()
++ IPoint4<X,Y,Z,W> clone()
++ String toString()
++ X x()
++ void setX(X)
++ Y y()
++ void setY(Y)
++ Z z()
++ void setZ(Z)
++ W w()
++ void setW(W)
+}
+
+
+class br.com.ajf.game.math.library.point3.Main {
++ {static} void main(String[])
+}
+
+class br.com.ajf.game.math.library.point4.Main {
++ {static} void main(String[])
+}
+
+abstract class br.com.ajf.game.math.library.point3.Point3 {
+- X x
+- Y y
+- Z z
++ <<Create>> Point3()
++ <<Create>> Point3(X,Y,Z)
++ <<Create>> Point3(IPoint3<X,Y,Z>)
++ boolean equals(Object)
++ int hashCode()
++ IPoint3<X,Y,Z> clone()
++ String toString()
++ X x()
++ void setX(X)
++ Y y()
++ void setY(Y)
++ Z z()
++ void setZ(Z)
+}
+
+
+interface br.com.ajf.game.math.library.point3.IPoint3 {
+~ X x()
+~ void setX(X)
+~ Y y()
+~ void setY(Y)
+~ Z z()
+~ void setZ(Z)
+}
+
+
+
+br.com.ajf.game.math.library.point3.Point3 <|-- br.com.ajf.game.math.library.point3.Point3f
+br.com.ajf.game.math.library.point2.Point2 <|-- br.com.ajf.game.math.library.point2.Point2i
+br.com.ajf.game.math.library.point4.Point4 <|-- br.com.ajf.game.math.library.point4.Point4f
+br.com.ajf.game.math.library.point2.IPoint2 <|.. br.com.ajf.game.math.library.point2.Point2
+java.io.Serializable <|-- br.com.ajf.game.math.library.point2.IPoint2
+br.com.ajf.game.math.library.point2.Cloneable <|-- br.com.ajf.game.math.library.point2.IPoint2
+br.com.ajf.game.math.library.point3.Point3 <|-- br.com.ajf.game.math.library.point3.Point3d
+br.com.ajf.game.math.library.point4.Point4 <|-- br.com.ajf.game.math.library.point4.Point4i
+br.com.ajf.game.math.library.point4.Point4 <|-- br.com.ajf.game.math.library.point4.Point4d
+br.com.ajf.game.math.library.point3.Point3 <|-- br.com.ajf.game.math.library.point3.Point3i
+br.com.ajf.game.math.library.point2.Point2 <|-- br.com.ajf.game.math.library.point2.Point2f
+java.io.Serializable <|-- br.com.ajf.game.math.library.point4.IPoint4
+br.com.ajf.game.math.library.point4.Cloneable <|-- br.com.ajf.game.math.library.point4.IPoint4
+br.com.ajf.game.math.library.point2.Point2 <|-- br.com.ajf.game.math.library.point2.Point2d
+br.com.ajf.game.math.library.point4.IPoint4 <|.. br.com.ajf.game.math.library.point4.Point4
+br.com.ajf.game.math.library.point3.IPoint3 <|.. br.com.ajf.game.math.library.point3.Point3
+java.io.Serializable <|-- br.com.ajf.game.math.library.point3.IPoint3
+br.com.ajf.game.math.library.point3.Cloneable <|-- br.com.ajf.game.math.library.point3.IPoint3
+@enduml
