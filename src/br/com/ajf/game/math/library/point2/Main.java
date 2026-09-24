@@ -15,6 +15,5 @@ public class Main
         pi = new Point2d(Double.valueOf(37749949.494949),Double.valueOf(Math.PI/6));
         
         System.out.println(pi);
-        
     }
 }
