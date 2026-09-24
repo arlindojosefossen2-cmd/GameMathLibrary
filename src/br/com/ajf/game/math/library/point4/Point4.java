@@ -1,9 +1,8 @@
 package br.com.ajf.game.math.library.point4;
 
-import java.io.Serializable;
 import java.util.Objects;
 
-public abstract class Point4<X,Y,Z,W> implements Serializable, Cloneable
+public abstract class Point4<X,Y,Z,W> implements IPoint4<X,Y,Z,W>
 {
     private X x;
     private Y y;
@@ -22,21 +21,20 @@ public abstract class Point4<X,Y,Z,W> implements Serializable, Cloneable
         this.w = w;
     }
     
-    public Point4(Point4<X,Y,Z,W> p)
+    public Point4(IPoint4<X,Y,Z,W> p)
     {
-        this.x = p.x;
-        this.y = p.y;
-        this.z = p.z;
-        this.w = p.w;
+        this.x = p.x();
+        this.y = p.y();
+        this.z = p.z();
+        this.w = p.w();
     }
     
     @Override
     public boolean equals(Object o)
     {
-        if (!(o instanceof Point4))
+        if (!(o instanceof IPoint4<?, ?, ?, ?> point4))
             return false;
-        Point4<?, ?, ?, ?> point4 = (Point4<?, ?, ?, ?>) o;
-        return Objects.equals(x, point4.x) && Objects.equals(y, point4.y) && Objects.equals(z, point4.z) && Objects.equals(w, point4.w);
+        return Objects.equals(x, point4.x()) && Objects.equals(y, point4.y()) && Objects.equals(z, point4.z()) && Objects.equals(w, point4.w());
     }
     
     @Override
@@ -47,11 +45,11 @@ public abstract class Point4<X,Y,Z,W> implements Serializable, Cloneable
     
     @Override
     @SuppressWarnings("unchecked")
-    public Point4<X, Y, Z, W> clone()
+    public IPoint4<X, Y, Z, W> clone()
     {
         try
         {
-            return (Point4<X,Y,Z,W>) super.clone();
+            return (IPoint4<X,Y,Z,W>) super.clone();
         }
         catch (CloneNotSupportedException e)
         {

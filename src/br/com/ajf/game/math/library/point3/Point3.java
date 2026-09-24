@@ -1,9 +1,8 @@
 package br.com.ajf.game.math.library.point3;
 
-import java.io.Serializable;
 import java.util.Objects;
 
-public abstract class Point3<X,Y,Z> implements Serializable , Cloneable
+public abstract class Point3<X,Y,Z> implements IPoint3<X,Y,Z>
 {
     private X x;
     private Y y;
@@ -20,20 +19,19 @@ public abstract class Point3<X,Y,Z> implements Serializable , Cloneable
         this.z = z;
     }
     
-    public Point3(Point3<X,Y,Z> p)
+    public Point3(IPoint3<X,Y,Z> p)
     {
-        this.x = p.x;
-        this.y = p.y;
-        this.z = p.z;
+        this.x = p.x();
+        this.y = p.y();
+        this.z = p.z();
     }
     
     @Override
     public boolean equals(Object o)
     {
-        if (!(o instanceof Point3))
+        if (!(o instanceof IPoint3<?, ?, ?> point3))
             return false;
-        Point3<?, ?, ?> point3 = (Point3<?, ?, ?>) o;
-        return Objects.equals(x, point3.x) && Objects.equals(y, point3.y) && Objects.equals(z, point3.z);
+        return Objects.equals(x, point3.x()) && Objects.equals(y, point3.y()) && Objects.equals(z, point3.z());
     }
     
     @Override
@@ -44,11 +42,11 @@ public abstract class Point3<X,Y,Z> implements Serializable , Cloneable
     
     @Override
     @SuppressWarnings("unchecked")
-    public Point3<X, Y, Z> clone()
+    public IPoint3<X, Y, Z> clone()
     {
         try
         {
-            return (Point3<X, Y, Z>) super.clone();
+            return (IPoint3<X, Y, Z>) super.clone();
         }
         catch (CloneNotSupportedException e)
         {

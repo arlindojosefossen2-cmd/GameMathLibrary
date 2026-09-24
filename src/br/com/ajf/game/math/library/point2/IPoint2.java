@@ -1,7 +1,9 @@
 package br.com.ajf.game.math.library.point2;
 
-public interface IPoint2<X,Y>
-{
+import java.io.Serializable;
+
+public interface IPoint2<X,Y> extends Serializable, Cloneable
+                                         {
     X x();
     void setX(X x);
     Y y();
