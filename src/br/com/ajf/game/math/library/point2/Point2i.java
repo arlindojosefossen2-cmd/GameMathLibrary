@@ -1,6 +1,5 @@
 package br.com.ajf.game.math.library.point2;
 
-import java.util.Objects;
 
 public final class Point2i extends Point2<Integer,Integer>
 {
@@ -213,11 +212,5 @@ public final class Point2i extends Point2<Integer,Integer>
     public void scaleAndAdd(IPoint2<Integer, Integer> p1, IPoint2<Integer, Integer> p2, Integer n)
     {
         set(n*p1.x()+p2.x(),n*p1.y()+p2.y());
-    }
-    
-    @Override
-    public boolean equals(IPoint2<Integer, Integer> p)
-    {
-        return Objects.equals(x(), p.x()) && Objects.equals(y(), p.y());
     }
 }

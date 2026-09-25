@@ -60,6 +60,12 @@ public abstract class Point2<X,Y> implements IPoint2<X,Y>
     }
     
     @Override
+    public boolean equals(IPoint2<X,Y> p)
+    {
+        return Objects.equals(x(), p.x()) && Objects.equals(y(), p.y());
+    }
+    
+    @Override
     public int hashCode()
     {
         return Objects.hash(x, y);

@@ -26,6 +26,11 @@ public abstract class Point3<X,Y,Z> implements IPoint3<X,Y,Z>
         this.z = p.z();
     }
     
+    public boolean equals(IPoint3<X,Y,Z> p)
+    {
+        return p.x() == x() && p.y() == y() && p.z() == z();
+    }
+    
     @Override
     public boolean equals(Object o)
     {
