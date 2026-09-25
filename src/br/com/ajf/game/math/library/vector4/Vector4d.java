@@ -16,7 +16,7 @@ public class Vector4d extends Point4d
         super(x, y, z, w);
     }
     
-    public Vector4d(Double[] arrayPoints)
+    public Vector4d(double[] arrayPoints)
     {
         set(arrayPoints);
     }
@@ -77,50 +77,5 @@ public class Vector4d extends Point4d
     public void set(IPoint3<Double,Double,Double> p)
     {
         set(p.x(),p.y(),p.z(),0.0);
-    }
-    
-    public Double distanceSquared(Vector4d p)
-    {
-        double f = x()-p.x();
-        double f2 = y()-p.y();
-        double f3 = z()-p.z();
-        double f4 = w()-p.w();
-        return f*f+f2*f2+f3*f3+f4*f4;
-    }
-    
-    public Double distance(Vector4d p)
-    {
-        return Math.sqrt(distanceSquared(p));
-    }
-    
-    public Double distanceL1(Vector4d p)
-    {
-        return Math.abs(x()-p.x())+Math.abs(y()-p.y())+Math.abs(z()-p.z())+Math.abs(w()-p.w());
-    }
-    
-    public Double distanceLinF(Vector4d p)
-    {
-        double f = Math.max(Math.abs(x()-p.x()),Math.abs(y()-p.y()));
-        double f2 = Math.max(Math.abs(z()-p.z()),Math.abs(w()-p.w()));
-        return Math.max(f,f2);
-    }
-    
-    public void project(Vector4d p)
-    {
-        double f = 1.0/p.w();
-        setX(p.x()*f);
-        setY(p.y()*f);
-        setZ(p.z()*f);
-        setW(1.0);
-    }
-    
-    public void set(Double[] array)
-    {
-        if(array.length < 4)
-        {
-            return;
-        }
-        
-        set(array[0],array[1],array[2],array[3]);
     }
 }

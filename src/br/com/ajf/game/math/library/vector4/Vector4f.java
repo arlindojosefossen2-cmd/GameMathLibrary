@@ -16,7 +16,7 @@ public class Vector4f extends Point4f
         super(x, y, z, w);
     }
     
-    public Vector4f(Float[] arrayPoints)
+    public Vector4f(float[] arrayPoints)
     {
         set(arrayPoints);
     }
@@ -77,50 +77,5 @@ public class Vector4f extends Point4f
     public void set(IPoint3<Float,Float,Float> p)
     {
         set(p.x(),p.y(),p.z(),0.0f);
-    }
-    
-    public Float distanceSquared(Vector4f p)
-    {
-        float f = x()-p.x();
-        float f2 = y()-p.y();
-        float f3 = z()-p.z();
-        float f4 = w()-p.w();
-        return f*f+f2*f2+f3*f3+f4*f4;
-    }
-    
-    public Float distance(Vector4f p)
-    {
-        return (float) Math.sqrt(distanceSquared(p));
-    }
-    
-    public Float distanceL1(Vector4f p)
-    {
-        return Math.abs(x()-p.x())+Math.abs(y()-p.y())+Math.abs(z()-p.z())+Math.abs(w()-p.w());
-    }
-    
-    public Float distanceLinF(Vector4f p)
-    {
-        float f = Math.max(Math.abs(x()-p.x()),Math.abs(y()-p.y()));
-        float f2 = Math.max(Math.abs(z()-p.z()),Math.abs(w()-p.w()));
-        return Math.max(f,f2);
-    }
-    
-    public void project(Vector4f p)
-    {
-        float f = 1.0f/p.w();
-        setX(p.x()*f);
-        setY(p.y()*f);
-        setZ(p.z()*f);
-        setW(1.0f);
-    }
-    
-    public void set(Float[] array)
-    {
-        if(array.length < 4)
-        {
-            return;
-        }
-        
-        set(array[0],array[1],array[2],array[3]);
     }
 }
