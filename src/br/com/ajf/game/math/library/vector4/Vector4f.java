@@ -20,11 +20,6 @@ public class Vector4f extends Vector4<Float,Float,Float,Float>
         set(arrayPoints);
     }
     
-    public Vector4f(Float x, Float y, Float z, Float w)
-    {
-        super(x, y, z, w);
-    }
-    
     public Vector4f(IPoint4<Float, Float, Float, Float> p)
     {
         super(p);

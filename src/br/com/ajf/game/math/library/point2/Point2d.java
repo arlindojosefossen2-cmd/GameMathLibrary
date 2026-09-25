@@ -12,11 +12,6 @@ public class Point2d extends Point2<Double,Double>
         super(x,y);
     }
     
-    public Point2d(Double x, Double y)
-    {
-        super(x,y);
-    }
-    
     public Point2d(IPoint2<Double,Double> p)
     {
         super(p);

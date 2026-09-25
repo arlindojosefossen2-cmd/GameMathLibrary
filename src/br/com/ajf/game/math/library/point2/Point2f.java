@@ -13,11 +13,6 @@ public class Point2f extends Point2<Float,Float>
         super(x,y);
     }
     
-    public Point2f(Float x, Float y)
-    {
-        super(x,y);
-    }
-    
     public Point2f(Point2<Float,Float> p)
     {
         super(p);

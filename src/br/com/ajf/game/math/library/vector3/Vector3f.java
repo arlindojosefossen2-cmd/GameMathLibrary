@@ -21,11 +21,6 @@ public class Vector3f extends Vector3<Float,Float,Float>
         set(arrayPoints);
     }
     
-    public Vector3f(Float x, Float y, Float z)
-    {
-        super(x, y, z);
-    }
-    
     public Vector3f(Point3<Float, Float, Float> p)
     {
         super(p);

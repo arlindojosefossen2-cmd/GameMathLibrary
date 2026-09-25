@@ -21,11 +21,6 @@ public class Vector3d extends Vector3<Double,Double,Double>
         set(arrayPoints);
     }
     
-    public Vector3d(Double x, Double y, Double z)
-    {
-        super(x, y, z);
-    }
-    
     public Vector3d(Point3<Double,Double,Double> p)
     {
         super(p);

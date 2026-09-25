@@ -1,6 +1,6 @@
 package br.com.ajf.game.math.library.point4;
 
-public class Point4i extends Point4<Integer,Integer,Integer,Integer>
+public final class Point4i extends Point4<Integer,Integer,Integer,Integer>
 {
     public Point4i()
     {
@@ -15,11 +15,6 @@ public class Point4i extends Point4<Integer,Integer,Integer,Integer>
     public Point4i(int[] arrayPoints)
     {
         set(arrayPoints);
-    }
-    
-    public Point4i(Integer x, Integer y, Integer z, Integer w)
-    {
-        super(x, y, z, w);
     }
     
     public Point4i(Point4<Integer, Integer, Integer, Integer> p)

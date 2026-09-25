@@ -19,11 +19,6 @@ public class Point4d extends Point4<Double,Double,Double,Double>
         set(arrayPoints);
     }
     
-    public Point4d(Double x, Double y, Double z, Double w)
-    {
-        super(x,y,z,w);
-    }
-    
     public Point4d(IPoint4<Double, Double, Double, Double> p)
     {
         super(p);

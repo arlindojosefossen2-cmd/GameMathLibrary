@@ -15,11 +15,6 @@ public final class Vector2f extends Vector2<Float,Float>
         super(x, y);
     }
     
-    public Vector2f(Float x, Float y)
-    {
-        super(x, y);
-    }
-    
     public Vector2f(Point2<Float, Float> p)
     {
         super(p);

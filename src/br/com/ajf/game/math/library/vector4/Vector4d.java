@@ -21,11 +21,6 @@ public class Vector4d extends Vector4<Double,Double,Double,Double>
         set(arrayPoints);
     }
     
-    public Vector4d(Double x, Double y, Double z, Double w)
-    {
-        super(x, y, z, w);
-    }
-    
     public Vector4d(IPoint4<Double,Double,Double,Double> p)
     {
         super(p);

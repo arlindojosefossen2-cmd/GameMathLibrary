@@ -17,11 +17,6 @@ public final class Point3i extends Point3<Integer,Integer,Integer>
         set(arrayPoints);
     }
     
-    public Point3i(Integer x, Integer y, Integer z)
-    {
-        super(x, y, z);
-    }
-    
     public Point3i(Point3<Integer, Integer, Integer> p)
     {
         super(p);

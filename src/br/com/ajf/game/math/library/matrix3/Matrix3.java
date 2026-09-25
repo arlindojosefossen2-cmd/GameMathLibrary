@@ -5,11 +5,12 @@ import java.util.Objects;
 
 public abstract class Matrix3<X> implements IMatrix3<X>
 {
-    private X[] matrix;
+    @SuppressWarnings("unchecked")
+    private X[] matrix = (X[])new Object[9];
     
     public Matrix3()
     {
-        matrix = null;
+    
     }
     
     public Matrix3(X n1,X n2,X n3,X n4,X n5,X n6,X n7,X n8,X n9)
@@ -209,6 +210,27 @@ public abstract class Matrix3<X> implements IMatrix3<X>
     public String toString()
     {
         String[] split = getClass().getName().split("\\.");
-        return split[split.length-1]+"( " + "matrix = " + Arrays.toString(matrix) + " )";
+        
+        StringBuilder name = new StringBuilder(split[split.length - 1] + "\n{ ");
+        
+        for (int i = 0; i < matrix.length; i++)
+        {
+           if(i % 3 == 0)
+           {
+               name.append("\n");
+           }
+           
+           if(matrix.length - 1 == i)
+           {
+               name.append("\t").append(matrix[i]);
+           }
+           else
+           {
+               name.append("\t").append(matrix[i]).append(" , ");
+           }
+        }
+        name.append("\n}");
+        
+        return name.toString();
     }
 }

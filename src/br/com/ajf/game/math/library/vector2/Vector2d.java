@@ -15,11 +15,6 @@ public final class Vector2d extends Vector2<Double,Double>
         super(x, y);
     }
     
-    public Vector2d(Double x, Double y)
-    {
-        super(x, y);
-    }
-    
     public Vector2d(Point2<Double,Double> p)
     {
         super(p);

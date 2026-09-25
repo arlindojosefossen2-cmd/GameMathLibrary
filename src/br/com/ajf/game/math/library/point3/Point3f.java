@@ -19,11 +19,6 @@ public class Point3f extends Point3<Float,Float,Float>
         set(arrayPoints);
     }
     
-    public Point3f(Float x, Float y, Float z)
-    {
-        super(x, y, z);
-    }
-    
     public Point3f(Point3<Float,Float,Float> p)
     {
         super(p);

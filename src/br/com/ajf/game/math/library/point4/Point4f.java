@@ -19,11 +19,6 @@ public class Point4f extends Point4<Float,Float,Float,Float>
         set(arrayPoints);
     }
     
-    public Point4f(Float x, Float y, Float z, Float w)
-    {
-        super(x, y, z, w);
-    }
-    
     public Point4f(IPoint4<Float, Float, Float, Float> p)
     {
         super(p);
