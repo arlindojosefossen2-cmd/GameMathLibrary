@@ -1,7 +1,7 @@
 package br.com.ajf.game.math.library.matrix3;
 
 import br.com.ajf.game.math.library.point3.IPoint3;
-import br.com.ajf.game.math.library.vector3.IVector3;
+import br.com.ajf.game.math.library.point3.Point3;
 
 import java.util.Arrays;
 
@@ -54,7 +54,7 @@ public final class Matrix3d extends Matrix3<Double>
     }
     
     @Override
-    public void getRow(int n, IVector3<Double, Double, Double> v)
+    public void getRow(int n, Point3<Double, Double, Double> v)
     {
     
     }
@@ -66,7 +66,7 @@ public final class Matrix3d extends Matrix3<Double>
     }
     
     @Override
-    public void getColumn(int n, IVector3<Double, Double, Double> v)
+    public void getColumn(int n, Point3<Double, Double, Double> v)
     {
     
     }
@@ -90,7 +90,7 @@ public final class Matrix3d extends Matrix3<Double>
     }
     
     @Override
-    public void setRow(int n, IVector3<Double, Double, Double> v)
+    public void setRow(int n, Point3<Double, Double, Double> v)
     {
     
     }
@@ -108,7 +108,7 @@ public final class Matrix3d extends Matrix3<Double>
     }
     
     @Override
-    public void setColumn(int n, IVector3<Double, Double, Double> v)
+    public void setColumn(int n, Point3<Double, Double, Double> v)
     {
     
     }

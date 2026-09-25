@@ -67,6 +67,11 @@ public abstract class Matrix3<X> implements IMatrix3<X>
     
     public  boolean equals(IMatrix3<X> matrix)
     {
+        if(matrix == null)
+        {
+            return false;
+        }
+        
         boolean checked = false;
         
         for (int i = 0; i < this.matrix.length; i++)

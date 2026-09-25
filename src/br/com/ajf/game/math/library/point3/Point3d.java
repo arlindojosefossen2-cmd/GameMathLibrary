@@ -19,7 +19,7 @@ public class Point3d extends Point3<Double,Double,Double>
         set(arrayPoints);
     }
     
-    public Point3d(Point3<Double,Double,Double> p)
+    public Point3d(IPoint3<Double,Double,Double> p)
     {
         super(p);
     }

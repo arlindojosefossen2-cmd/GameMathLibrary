@@ -1,7 +1,7 @@
 package br.com.ajf.game.math.library.matrix3;
 
 import br.com.ajf.game.math.library.point3.IPoint3;
-import br.com.ajf.game.math.library.vector3.IVector3;
+import br.com.ajf.game.math.library.point3.Point3;
 
 import java.io.Serializable;
 
@@ -31,16 +31,16 @@ public interface IMatrix3<X> extends Serializable , Cloneable
     void setIdentity();
     void setScale(X x);
     void setElement(int n,int n2,X x);
-    void getRow(int n, IVector3<X,X,X> v);
+    void getRow(int n, Point3<X,X,X> v);
     void getRow(int n, X[] array);
-    void getColumn(int n, IVector3<X,X,X> v);
+    void getColumn(int n, Point3<X,X,X> v);
     void getColumn(int n, X[] fArray);
     X getElement(int n,int n2);
     void setRow(int n,X n1,X n2,X n3);
-    void setRow(int n, IVector3<X,X,X> v);
+    void setRow(int n, Point3<X,X,X> v);
     void setRow(int n, X[] array);
     void setColumn(int n,X n1,X n2,X n3);
-    void setColumn(int n,IVector3<X,X,X> v);
+    void setColumn(int n,Point3<X,X,X> v);
     void setColumn(int n,X[] array);
     X getScale();
     void add(X x);

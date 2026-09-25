@@ -19,7 +19,7 @@ public class Point3f extends Point3<Float,Float,Float>
         set(arrayPoints);
     }
     
-    public Point3f(Point3<Float,Float,Float> p)
+    public Point3f(IPoint3<Float,Float,Float> p)
     {
         super(p);
     }
