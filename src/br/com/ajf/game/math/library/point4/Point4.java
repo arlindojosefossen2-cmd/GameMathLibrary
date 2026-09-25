@@ -30,6 +30,12 @@ public abstract class Point4<X,Y,Z,W> implements IPoint4<X,Y,Z,W>
     }
     
     @Override
+    public boolean equals(IPoint4<X, Y, Z, W> p)
+    {
+        return x() == p.x() && y() == p.y() && z() == p.z() && w() == p.w();
+    }
+    
+    @Override
     public boolean equals(Object o)
     {
         if (!(o instanceof IPoint4<?, ?, ?, ?> point4))
