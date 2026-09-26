@@ -21,7 +21,7 @@ public class Vector4f extends Point4f
         set(arrayPoints);
     }
     
-    public Vector4f(IPoint4<Float, Float, Float, Float> p)
+    public Vector4f(IPoint4<Float> p)
     {
         super(p);
     }
@@ -72,10 +72,5 @@ public class Vector4f extends Point4f
     public Float lengthSquared()
     {
         return x()*x()+y()*y()+z()*z()+w()*w();
-    }
-    
-    public void set(IPoint3<Float,Float,Float> p)
-    {
-        set(p.x(),p.y(),p.z(),0.0f);
     }
 }

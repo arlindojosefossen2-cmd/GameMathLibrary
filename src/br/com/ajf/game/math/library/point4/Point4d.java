@@ -2,7 +2,7 @@ package br.com.ajf.game.math.library.point4;
 
 import br.com.ajf.game.math.library.point3.IPoint3;
 
-public class Point4d extends Point4<Double,Double,Double,Double>
+public class Point4d extends Point4<Double>
 {
     public Point4d()
     {
@@ -19,17 +19,17 @@ public class Point4d extends Point4<Double,Double,Double,Double>
         set(arrayPoints);
     }
     
-    public Point4d(IPoint4<Double, Double, Double, Double> p)
+    public Point4d(IPoint4<Double> p)
     {
         super(p);
     }
     
-    public void set(IPoint3<Double,Double,Double> p)
+    public void set(IPoint3<Double> p)
     {
         set(p.x(),p.y(),p.z(),1.0);
     }
     
-    public double distanceSquared(IPoint4<Double,Double,Double,Double> p)
+    public double distanceSquared(IPoint4<Double> p)
     {
         double f = x()-p.x();
         double f2 = y()-p.y();
@@ -38,24 +38,24 @@ public class Point4d extends Point4<Double,Double,Double,Double>
         return f*f+f2*f2+f3*f3+f4*f4;
     }
     
-    public double distance(IPoint4<Double,Double,Double,Double> p)
+    public double distance(IPoint4<Double> p)
     {
         return Math.sqrt(distanceSquared(p));
     }
     
-    public double distanceL1(IPoint4<Double,Double,Double,Double> p)
+    public double distanceL1(IPoint4<Double> p)
     {
         return Math.abs(x()-p.x())+Math.abs(y()-p.y())+Math.abs(z()-p.z())+Math.abs(w()-p.w());
     }
     
-    public double distanceLinF(IPoint4<Double,Double,Double,Double> p)
+    public double distanceLinF(IPoint4<Double> p)
     {
         double f = Math.max(Math.abs(x()-p.x()),Math.abs(y()-p.y()));
         double f2 = Math.max(Math.abs(z()-p.z()),Math.abs(w()-p.w()));
         return Math.max(f,f2);
     }
     
-    public void project(IPoint4<Double,Double,Double,Double> p)
+    public void project(IPoint4<Double> p)
     {
         double f = 1.0/p.w();
         setX(p.x()*f);
@@ -89,36 +89,36 @@ public class Point4d extends Point4<Double,Double,Double,Double>
     }
     
     @Override
-    public void set(IPoint4<Double,Double,Double,Double> p)
+    public void set(IPoint4<Double> p)
     {
         set(p.x(),p.y(),p.z(),p.w());
     }
     
     @Override
-    public void add(IPoint4<Double,Double,Double,Double> p)
+    public void add(IPoint4<Double> p)
     {
         set(x()+p.x(),y()+p.y(),z()+p.z(),w()+p.w());
     }
     
     @Override
-    public void add(IPoint4<Double,Double,Double,Double> p1, IPoint4<Double,Double,Double,Double> p2)
+    public void add(IPoint4<Double> p1, IPoint4<Double> p2)
     {
         set(p1.x()+p2.x(),p1.y()+p2.y(),p1.z()+p2.z(),p1.w()+p2.w());
     }
     
     @Override
-    public void sub(IPoint4<Double,Double,Double,Double> p)
+    public void sub(IPoint4<Double> p)
     {
         set(x()-p.x(),y()-p.y(),z()-p.z(),w()-p.w());
     }
     
     @Override
-    public void sub(IPoint4<Double,Double,Double,Double> p1, IPoint4<Double,Double,Double,Double> p2)
+    public void sub(IPoint4<Double> p1, IPoint4<Double> p2)
     {
         set(p1.x()-p2.x(),p1.y()-p2.y(),p1.z()-p2.z(),p1.w()-p2.w());
     }
     
-    public void interpolate(IPoint4<Double,Double,Double,Double> p,double f)
+    public void interpolate(IPoint4<Double> p,double f)
     {
         setX((1.0f-f)*x()+f*p.x());
         setY((1.0f-f)*y()+f*p.y());
@@ -126,7 +126,7 @@ public class Point4d extends Point4<Double,Double,Double,Double>
         setW((1.0f-f)*w()+f*p.w());
     }
     
-    public void interpolate(IPoint4<Double,Double,Double,Double> p1,IPoint4<Double,Double,Double,Double> p2,double f)
+    public void interpolate(IPoint4<Double> p1,IPoint4<Double> p2,double f)
     {
         setX((1.0f-f)*p1.x()+f*p2.x());
         setY((1.0f-f)*p1.y()+f*p2.y());
@@ -134,7 +134,7 @@ public class Point4d extends Point4<Double,Double,Double,Double>
         setW((1.0f-f)*p1.w()+f*p2.w());
     }
     
-    public boolean epsilonEquals(IPoint4<Double,Double,Double,Double> p,double f)
+    public boolean epsilonEquals(IPoint4<Double> p,double f)
     {
         double f2 = x()-p.x();
         
@@ -197,7 +197,7 @@ public class Point4d extends Point4<Double,Double,Double,Double>
     }
     
     @Override
-    public void negate(IPoint4<Double,Double,Double,Double> p)
+    public void negate(IPoint4<Double> p)
     {
         set(-p.x(),-p.y(),-p.z(),-p.w());
     }
@@ -209,13 +209,13 @@ public class Point4d extends Point4<Double,Double,Double,Double>
     }
     
     @Override
-    public void scale(Double n, IPoint4<Double,Double,Double,Double> p)
+    public void scale(Double n, IPoint4<Double> p)
     {
         set(n*p.x(),n*p.y(),n*p.z(),n*p.w());
     }
     
     @Override
-    public void scaleAndAdd(Double n, IPoint4<Double,Double,Double,Double> p)
+    public void scaleAndAdd(Double n, IPoint4<Double> p)
     {
         setX(n*x()+p.x());
         setY(n*y()+p.y());
@@ -224,7 +224,7 @@ public class Point4d extends Point4<Double,Double,Double,Double>
     }
     
     @Override
-    public void scaleAndAdd(Double n, IPoint4<Double,Double,Double,Double> p1, IPoint4<Double,Double,Double,Double> p2)
+    public void scaleAndAdd(Double n, IPoint4<Double> p1, IPoint4<Double> p2)
     {
         setX(n*p1.x()+p2.x());
         setY(n*p1.y()+p2.y());
@@ -233,7 +233,7 @@ public class Point4d extends Point4<Double,Double,Double,Double>
     }
     
     @Override
-    public void clamp(Double n1, Double n2, IPoint4<Double,Double,Double,Double> p)
+    public void clamp(Double n1, Double n2, IPoint4<Double> p)
     {
         setX(p.x() > n2 ? n2 : (p.x() < n1 ? n1 : p.x()));
         setY(p.y() > n2 ? n2 : (p.y() < n1 ? n1 : p.y()));
@@ -242,7 +242,7 @@ public class Point4d extends Point4<Double,Double,Double,Double>
     }
     
     @Override
-    public void clampMin(Double n, IPoint4<Double,Double,Double,Double> p)
+    public void clampMin(Double n, IPoint4<Double> p)
     {
         setX((p.x() < n ? n : p.x()));
         setY((p.y() < n ? n : p.y()));
@@ -251,7 +251,7 @@ public class Point4d extends Point4<Double,Double,Double,Double>
     }
     
     @Override
-    public void clampMax(Double n, IPoint4<Double,Double,Double,Double> p)
+    public void clampMax(Double n, IPoint4<Double> p)
     {
         setX((p.x() > n ? n : p.x()));
         setY((p.y() > n ? n : p.y()));
@@ -266,7 +266,7 @@ public class Point4d extends Point4<Double,Double,Double,Double>
     }
     
     @Override
-    public void absolute(IPoint4<Double,Double,Double,Double> p)
+    public void absolute(IPoint4<Double> p)
     {
         set(Math.abs(p.x()),Math.abs(p.y()),Math.abs(p.z()),Math.abs(p.w()));
     }

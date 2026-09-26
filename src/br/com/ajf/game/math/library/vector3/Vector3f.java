@@ -20,7 +20,7 @@ public class Vector3f extends Point3f
         set(arrayPoints);
     }
     
-    public Vector3f(IPoint3<Float, Float, Float> p)
+    public Vector3f(IPoint3<Float> p)
     {
         super(p);
     }

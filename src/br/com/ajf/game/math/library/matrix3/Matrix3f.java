@@ -1,7 +1,6 @@
 package br.com.ajf.game.math.library.matrix3;
 
 import br.com.ajf.game.math.library.point3.IPoint3;
-import br.com.ajf.game.math.library.point3.Point3;
 
 import java.util.Arrays;
 
@@ -9,7 +8,10 @@ public final class Matrix3f extends Matrix3<Float>
 {
     public Matrix3f()
     {
-        Arrays.fill(getMatrix(), 0.0f);
+        for (int i = 0; i < this.getMatrix().length; i++)
+        {
+            Arrays.fill(this.getMatrix()[i], 0.0f);
+        }
     }
     
     public Matrix3f(Float n1, Float n2, Float n3, Float n4, Float n5, Float n6, Float n7, Float n8, Float n9)
@@ -24,13 +26,16 @@ public final class Matrix3f extends Matrix3<Float>
     
     public Matrix3f(Matrix3d matrix)
     {
-        for (int i = 0; i < getMatrix().length; i++)
+        for (int i = 0; i < this.getMatrix().length; i++)
         {
-            getMatrix()[i] = Float.valueOf(String.valueOf(matrix.getMatrix()[i]));
+            for (int j = 0; j < this.getMatrix()[i].length; j++)
+            {
+                this.getMatrix()[i][j] = Float.parseFloat(String.valueOf(matrix.getMatrix()[i][j]));
+            }
         }
     }
     
-    public Matrix3f(Float[] matrix)
+    public Matrix3f(Float[][] matrix)
     {
         super(matrix);
     }
@@ -54,7 +59,7 @@ public final class Matrix3f extends Matrix3<Float>
     }
     
     @Override
-    public void getRow(int n, Point3<Float, Float, Float> v)
+    public void getRow(int n, IPoint3<Float> v)
     {
     
     }
@@ -66,7 +71,7 @@ public final class Matrix3f extends Matrix3<Float>
     }
     
     @Override
-    public void getColumn(int n, Point3<Float, Float, Float> v)
+    public void getColumn(int n, IPoint3<Float> v)
     {
     
     }
@@ -90,7 +95,7 @@ public final class Matrix3f extends Matrix3<Float>
     }
     
     @Override
-    public void setRow(int n, Point3<Float, Float, Float> v)
+    public void setRow(int n, IPoint3<Float> v)
     {
     
     }
@@ -108,7 +113,7 @@ public final class Matrix3f extends Matrix3<Float>
     }
     
     @Override
-    public void setColumn(int n, Point3<Float, Float, Float> v)
+    public void setColumn(int n, IPoint3<Float> v)
     {
     
     }
@@ -174,7 +179,7 @@ public final class Matrix3f extends Matrix3<Float>
     }
     
     @Override
-    public void set(Float[] m)
+    public void set(Float[][] m)
     {
     
     }
@@ -348,7 +353,7 @@ public final class Matrix3f extends Matrix3<Float>
     }
     
     @Override
-    public void transform(IPoint3<Float, Float, Float> p1, IPoint3<Float, Float, Float> p2)
+    public void transform(IPoint3<Float> p1, IPoint3<Float> p2)
     {
     
     }

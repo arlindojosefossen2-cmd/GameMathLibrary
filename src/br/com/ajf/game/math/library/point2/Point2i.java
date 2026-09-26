@@ -1,11 +1,12 @@
 package br.com.ajf.game.math.library.point2;
 
 
-public final class Point2i extends Point2<Integer,Integer>
+public final class Point2i extends Point2<Integer>
 {
     public Point2i()
     {
-        this(0,0);
+        setX(0);
+        setY(0);
     }
     
     public Point2i(int x,int y)
@@ -13,7 +14,7 @@ public final class Point2i extends Point2<Integer,Integer>
        super(x,y);
     }
     
-    public Point2i(Point2<Integer, Integer> p)
+    public Point2i(Point2<Integer> p)
     {
         super(p);
     }
@@ -26,7 +27,7 @@ public final class Point2i extends Point2<Integer,Integer>
     }
     
     @Override
-    public void set(IPoint2<Integer, Integer> p)
+    public void set(IPoint2<Integer> p)
     {
         set(p.x(),p.y());
     }
@@ -82,28 +83,28 @@ public final class Point2i extends Point2<Integer,Integer>
     }
     
     @Override
-    public void clamp(Integer n1, Integer n2, IPoint2<Integer, Integer> p)
+    public void clamp(Integer n1, Integer n2, IPoint2<Integer> p)
     {
         setX(p.x() > n2 ? n2 : (p.x() < n1) ? n1 : p.x());
         setY(p.y() > n2 ? n2 : (p.y() < n1) ? n1 : p.y());
     }
     
     @Override
-    public void clampMin(Integer n1, IPoint2<Integer, Integer> p)
+    public void clampMin(Integer n1, IPoint2<Integer> p)
     {
         setX((p.x() < n1) ? n1 : p.x());
         setY((p.y() < n1) ? n1 : p.y());
     }
     
     @Override
-    public void clampMax(Integer n1, IPoint2<Integer, Integer> p)
+    public void clampMax(Integer n1, IPoint2<Integer> p)
     {
         setX((p.x() > n1) ? n1 : p.x());
         setY((p.y() > n1) ? n1 : p.y());
     }
     
     @Override
-    public void absolute(IPoint2<Integer, Integer> p)
+    public void absolute(IPoint2<Integer> p)
     {
         set(Math.abs(p.x()),Math.abs(p.y()));
     }
@@ -122,21 +123,21 @@ public final class Point2i extends Point2<Integer,Integer>
     }
     
     @Override
-    public void negate(IPoint2<Integer, Integer> p)
+    public void negate(IPoint2<Integer> p)
     {
         setX(-p.x());
         setY(-p.y());
     }
     
     @Override
-    public void add(IPoint2<Integer, Integer> p)
+    public void add(IPoint2<Integer> p)
     {
         setX(x()+p.x());
         setY(y()+p.y());
     }
     
     @Override
-    public void add(IPoint2<Integer, Integer> p1, IPoint2<Integer, Integer> p2)
+    public void add(IPoint2<Integer> p1, IPoint2<Integer> p2)
     {
         this.set(p1.x()+p2.x(),p1.y()+p2.y());
     }
@@ -148,14 +149,14 @@ public final class Point2i extends Point2<Integer,Integer>
     }
     
     @Override
-    public void sub(IPoint2<Integer, Integer> p)
+    public void sub(IPoint2<Integer> p)
     {
         setX(x()-p.x());
         setY(y()-p.y());
     }
     
     @Override
-    public void sub(IPoint2<Integer, Integer> p1, IPoint2<Integer, Integer> p2)
+    public void sub(IPoint2<Integer> p1, IPoint2<Integer> p2)
     {
         this.set(p1.x()-p2.x(),p1.y()-p2.y());
     }
@@ -167,14 +168,14 @@ public final class Point2i extends Point2<Integer,Integer>
     }
     
     @Override
-    public void multiply(IPoint2<Integer, Integer> p)
+    public void multiply(IPoint2<Integer> p)
     {
         setX(x()*p.x());
         setY(y()*p.y());
     }
     
     @Override
-    public void divide(IPoint2<Integer, Integer> p)
+    public void divide(IPoint2<Integer> p)
     {
         if(p.x() == 0 || p.y() == 0)
         {
@@ -192,19 +193,19 @@ public final class Point2i extends Point2<Integer,Integer>
     }
     
     @Override
-    public void scale(IPoint2<Integer, Integer> p, Integer n)
+    public void scale(IPoint2<Integer> p, Integer n)
     {
         set(n*p.x(),n*p.y());
     }
     
     @Override
-    public void scaleAndAdd(IPoint2<Integer, Integer> p, Integer n)
+    public void scaleAndAdd(IPoint2<Integer> p, Integer n)
     {
         set(n*x()+p.x(),n*y()+p.y());
     }
     
     @Override
-    public void scaleAndAdd(IPoint2<Integer, Integer> p1, IPoint2<Integer, Integer> p2, Integer n)
+    public void scaleAndAdd(IPoint2<Integer> p1, IPoint2<Integer> p2, Integer n)
     {
         set(n*p1.x()+p2.x(),n*p1.y()+p2.y());
     }

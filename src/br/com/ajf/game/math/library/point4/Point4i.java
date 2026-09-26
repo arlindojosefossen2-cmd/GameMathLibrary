@@ -1,6 +1,6 @@
 package br.com.ajf.game.math.library.point4;
 
-public final class Point4i extends Point4<Integer,Integer,Integer,Integer>
+public final class Point4i extends Point4<Integer>
 {
     public Point4i()
     {
@@ -17,7 +17,7 @@ public final class Point4i extends Point4<Integer,Integer,Integer,Integer>
         set(arrayPoints);
     }
     
-    public Point4i(Point4<Integer, Integer, Integer, Integer> p)
+    public Point4i(Point4<Integer> p)
     {
         super(p);
     }
@@ -47,31 +47,31 @@ public final class Point4i extends Point4<Integer,Integer,Integer,Integer>
     }
     
     @Override
-    public void set(IPoint4<Integer, Integer, Integer, Integer> p)
+    public void set(IPoint4<Integer> p)
     {
         set(p.x(),p.y(),p.z(),p.w());
     }
     
     @Override
-    public void add(IPoint4<Integer, Integer, Integer, Integer> p)
+    public void add(IPoint4<Integer> p)
     {
         set(x()+p.x(),y()+p.y(),z()+p.z(),w()+p.w());
     }
     
     @Override
-    public void add(IPoint4<Integer, Integer, Integer, Integer> p1, IPoint4<Integer, Integer, Integer, Integer> p2)
+    public void add(IPoint4<Integer> p1, IPoint4<Integer> p2)
     {
         set(p1.x()+p2.x(),p1.y()+p2.y(),p1.z()+p2.z(),p1.w()+p2.w());
     }
     
     @Override
-    public void sub(IPoint4<Integer, Integer, Integer, Integer> p)
+    public void sub(IPoint4<Integer> p)
     {
         set(x()-p.x(),y()-p.y(),z()-p.z(),w()-p.w());
     }
     
     @Override
-    public void sub(IPoint4<Integer, Integer, Integer, Integer> p1, IPoint4<Integer, Integer, Integer, Integer> p2)
+    public void sub(IPoint4<Integer> p1, IPoint4<Integer> p2)
     {
         set(p1.x()-p2.x(),p1.y()-p2.y(),p1.z()-p2.z(),p1.w()-p2.w());
     }
@@ -83,7 +83,7 @@ public final class Point4i extends Point4<Integer,Integer,Integer,Integer>
     }
     
     @Override
-    public void negate(IPoint4<Integer, Integer, Integer, Integer> p)
+    public void negate(IPoint4<Integer> p)
     {
         set(-p.x(),-p.y(),-p.z(),-p.w());
     }
@@ -95,13 +95,13 @@ public final class Point4i extends Point4<Integer,Integer,Integer,Integer>
     }
     
     @Override
-    public void scale(Integer n, IPoint4<Integer, Integer, Integer, Integer> p)
+    public void scale(Integer n, IPoint4<Integer> p)
     {
         set(n*p.x(),n*p.y(),n*p.z(),n*p.w());
     }
     
     @Override
-    public void scaleAndAdd(Integer n, IPoint4<Integer, Integer, Integer, Integer> p)
+    public void scaleAndAdd(Integer n, IPoint4<Integer> p)
     {
         setX(n*x()+p.x());
         setY(n*y()+p.y());
@@ -110,7 +110,7 @@ public final class Point4i extends Point4<Integer,Integer,Integer,Integer>
     }
     
     @Override
-    public void scaleAndAdd(Integer n, IPoint4<Integer, Integer, Integer, Integer> p1, IPoint4<Integer, Integer, Integer, Integer> p2)
+    public void scaleAndAdd(Integer n, IPoint4<Integer> p1, IPoint4<Integer> p2)
     {
         setX(n*p1.x()+p2.x());
         setY(n*p1.y()+p2.y());
@@ -119,7 +119,7 @@ public final class Point4i extends Point4<Integer,Integer,Integer,Integer>
     }
     
     @Override
-    public void clamp(Integer n1, Integer n2, IPoint4<Integer, Integer, Integer, Integer> p)
+    public void clamp(Integer n1, Integer n2, IPoint4<Integer> p)
     {
         setX(p.x() > n2 ? n2 : (p.x() < n1 ? n1 : p.x()));
         setY(p.y() > n2 ? n2 : (p.y() < n1 ? n1 : p.y()));
@@ -128,7 +128,7 @@ public final class Point4i extends Point4<Integer,Integer,Integer,Integer>
     }
     
     @Override
-    public void clampMin(Integer n, IPoint4<Integer, Integer, Integer, Integer> p)
+    public void clampMin(Integer n, IPoint4<Integer> p)
     {
         setX((p.x() < n ? n : p.x()));
         setY((p.y() < n ? n : p.y()));
@@ -137,7 +137,7 @@ public final class Point4i extends Point4<Integer,Integer,Integer,Integer>
     }
     
     @Override
-    public void clampMax(Integer n, IPoint4<Integer, Integer, Integer, Integer> p)
+    public void clampMax(Integer n, IPoint4<Integer> p)
     {
         setX((p.x() > n ? n : p.x()));
         setY((p.y() > n ? n : p.y()));
@@ -152,7 +152,7 @@ public final class Point4i extends Point4<Integer,Integer,Integer,Integer>
     }
     
     @Override
-    public void absolute(IPoint4<Integer, Integer, Integer, Integer> p)
+    public void absolute(IPoint4<Integer> p)
     {
         set(Math.abs(p.x()),Math.abs(p.y()),Math.abs(p.z()),Math.abs(p.w()));
     }

@@ -2,35 +2,30 @@ package br.com.ajf.game.math.library.point4;
 
 import java.util.Objects;
 
-public abstract class Point4<X,Y,Z,W> implements IPoint4<X,Y,Z,W>
+public abstract class Point4<X> implements IPoint4<X>
 {
-    private X x;
-    private Y y;
-    private Z z;
-    private W w;
+    @SuppressWarnings("unchecked")
+    private X[] x = (X[]) new Object[4];
     
     public Point4()
     {
     }
     
-    public Point4(X x, Y y, Z z, W w)
+    public Point4(X x, X y, X z, X w)
     {
-        this.x = x;
-        this.y = y;
-        this.z = z;
-        this.w = w;
+        this.x[0] = x;
+        this.x[1] = y;
+        this.x[2] = z;
+        this.x[3] = w;
     }
     
-    public Point4(IPoint4<X,Y,Z,W> p)
+    public Point4(IPoint4<X> p)
     {
-        this.x = p.x();
-        this.y = p.y();
-        this.z = p.z();
-        this.w = p.w();
+       this(p.x(),p.y(),p.z(),p.w());
     }
     
     @Override
-    public boolean equals(IPoint4<X, Y, Z, W> p)
+    public boolean equals(IPoint4<X> p)
     {
         return x() == p.x() && y() == p.y() && z() == p.z() && w() == p.w();
     }
@@ -38,24 +33,24 @@ public abstract class Point4<X,Y,Z,W> implements IPoint4<X,Y,Z,W>
     @Override
     public boolean equals(Object o)
     {
-        if (!(o instanceof IPoint4<?, ?, ?, ?> point4))
+        if (!(o instanceof IPoint4<?> point4))
             return false;
-        return Objects.equals(x, point4.x()) && Objects.equals(y, point4.y()) && Objects.equals(z, point4.z()) && Objects.equals(w, point4.w());
+        return Objects.equals(x(), point4.x()) && Objects.equals(y(), point4.y()) && Objects.equals(z(), point4.z()) && Objects.equals(w(), point4.w());
     }
     
     @Override
     public int hashCode()
     {
-        return Objects.hash(x, y, z, w);
+        return Objects.hash(x(), y(), z(), w());
     }
     
     @Override
     @SuppressWarnings("unchecked")
-    public IPoint4<X, Y, Z, W> clone()
+    public IPoint4<X> clone()
     {
         try
         {
-            return (IPoint4<X,Y,Z,W>) super.clone();
+            return (IPoint4<X>) super.clone();
         }
         catch (CloneNotSupportedException e)
         {
@@ -67,46 +62,46 @@ public abstract class Point4<X,Y,Z,W> implements IPoint4<X,Y,Z,W>
     public String toString()
     {
         String[] split = getClass().getName().split("\\.");
-        return split[split.length-1]+"( " + "x= " + x + ", y= " + y + ", z= " + z + ", w= " + w + " )";
+        return split[split.length-1]+"( " + "x= " + x[0] + ", y= " + x[1] + ", z= " + x[2] + ", w= " + x[3] + " )";
     }
     
     public X x()
     {
-        return x;
+        return x[0];
     }
     
     public void setX(X x)
     {
-        this.x = x;
+        this.x[0] = x;
     }
     
-    public Y y()
+    public X y()
     {
-        return y;
+        return x[1];
     }
     
-    public void setY(Y y)
+    public void setY(X y)
     {
-        this.y = y;
+        this.x[1] = y;
     }
     
-    public Z z()
+    public X z()
     {
-        return z;
+        return x[2];
     }
     
-    public void setZ(Z z)
+    public void setZ(X z)
     {
-        this.z = z;
+        this.x[2] = z;
     }
     
-    public W w()
+    public X w()
     {
-        return w;
+        return x[3];
     }
     
-    public void setW(W w)
+    public void setW(X w)
     {
-        this.w = w;
+        this.x[3] = w;
     }
 }

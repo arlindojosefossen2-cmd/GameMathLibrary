@@ -21,7 +21,7 @@ public class Vector4d extends Point4d
         set(arrayPoints);
     }
     
-    public Vector4d(IPoint4<Double,Double,Double,Double> p)
+    public Vector4d(IPoint4<Double> p)
     {
         super(p);
     }
@@ -72,10 +72,5 @@ public class Vector4d extends Point4d
     public Double lengthSquared()
     {
         return x()*x()+y()*y()+z()*z()+w()*w();
-    }
-    
-    public void set(IPoint3<Double,Double,Double> p)
-    {
-        set(p.x(),p.y(),p.z(),0.0);
     }
 }

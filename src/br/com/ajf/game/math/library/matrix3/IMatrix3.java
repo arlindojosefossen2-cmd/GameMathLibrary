@@ -1,14 +1,13 @@
 package br.com.ajf.game.math.library.matrix3;
 
 import br.com.ajf.game.math.library.point3.IPoint3;
-import br.com.ajf.game.math.library.point3.Point3;
 
 import java.io.Serializable;
 
 public interface IMatrix3<X> extends Serializable , Cloneable
 {
-    X[] getMatrix();
-    void setMatrix(X[] matrix);
+    X[][] getMatrix();
+    void setMatrix(X[][] matrix);
     boolean equals(IMatrix3<X> matrix);
     X getM00();
     void setM00(X n);
@@ -31,16 +30,16 @@ public interface IMatrix3<X> extends Serializable , Cloneable
     void setIdentity();
     void setScale(X x);
     void setElement(int n,int n2,X x);
-    void getRow(int n, Point3<X,X,X> v);
+    void getRow(int n, IPoint3<X> v);
     void getRow(int n, X[] array);
-    void getColumn(int n, Point3<X,X,X> v);
+    void getColumn(int n, IPoint3<X> v);
     void getColumn(int n, X[] fArray);
     X getElement(int n,int n2);
     void setRow(int n,X n1,X n2,X n3);
-    void setRow(int n, Point3<X,X,X> v);
+    void setRow(int n, IPoint3<X> v);
     void setRow(int n, X[] array);
     void setColumn(int n,X n1,X n2,X n3);
-    void setColumn(int n,Point3<X,X,X> v);
+    void setColumn(int n,IPoint3<X> v);
     void setColumn(int n,X[] array);
     X getScale();
     void add(X x);
@@ -51,7 +50,7 @@ public interface IMatrix3<X> extends Serializable , Cloneable
     void sub(IMatrix3<X> m);
     void transpose();
     void transpose(IMatrix3<X> m);
-    void set(X[] m);
+    void set(X[][] m);
     void set(IMatrix3<X> m);
     void invert();
     void invert(IMatrix3<X> m);
@@ -80,7 +79,7 @@ public interface IMatrix3<X> extends Serializable , Cloneable
     void setZero();
     void negate();
     void negate(IMatrix3<X> m);
-    void transform(IPoint3<X,X,X> p1, IPoint3<X,X,X> p2);
+    void transform(IPoint3<X> p1, IPoint3<X> p2);
     void getScaledRotate(double[] dArray,double[] dArray2);
 //    void set(AxisAngle4f axisAngle);
 //    void set(AxisAngle4d axisAngle);

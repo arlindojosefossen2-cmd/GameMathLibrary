@@ -6,7 +6,7 @@ import java.util.Objects;
 public abstract class Matrix3<X> implements IMatrix3<X>
 {
     @SuppressWarnings("unchecked")
-    private X[] matrix = (X[])new Object[9];
+    private X[][] matrix = (X[][])new Object[3][3];
     
     public Matrix3()
     {
@@ -23,32 +23,32 @@ public abstract class Matrix3<X> implements IMatrix3<X>
         setMatrix(matrix.getMatrix());
     }
     
-    public Matrix3(X[] matrix)
+    public Matrix3(X[][] matrix)
     {
         this.matrix = matrix;
     }
     
-    public X[] getMatrix()
+    public X[][] getMatrix()
     {
         return matrix;
     }
     
-    public void setMatrix(X[] matrix)
+    public void setMatrix(X[][] matrix)
     {
         this.matrix = matrix;
     }
     
     public void set(X n1,X n2,X n3,X n4,X n5,X n6,X n7,X n8,X n9)
     {
-        matrix[0] = n1;
-        matrix[1] = n2;
-        matrix[2] = n3;
-        matrix[3] = n4;
-        matrix[4] = n5;
-        matrix[5] = n6;
-        matrix[6] = n7;
-        matrix[7] = n8;
-        matrix[8] = n9;
+        matrix[0][0] = n1;
+        matrix[0][1] = n2;
+        matrix[0][2] = n3;
+        matrix[1][0] = n4;
+        matrix[1][1] = n5;
+        matrix[1][2] = n6;
+        matrix[2][0] = n7;
+        matrix[2][1] = n8;
+        matrix[2][2] = n9;
     }
     
     @Override
@@ -76,14 +76,16 @@ public abstract class Matrix3<X> implements IMatrix3<X>
         
         for (int i = 0; i < this.matrix.length; i++)
         {
-            if(this.matrix[i] == matrix.getMatrix()[i])
+            for (int j = 0; j < this.matrix[i].length; j++)
             {
-                checked = true;
-            }
-            else
-            {
-                checked = false;
-                break;
+                if(this.matrix[i][j] == matrix.getMatrix()[i][j])
+                {
+                    checked = true;
+                }
+                else
+                {
+                   return false;
+                }
             }
         }
         return checked;
@@ -92,109 +94,109 @@ public abstract class Matrix3<X> implements IMatrix3<X>
     @Override
     public X getM00()
     {
-        return matrix[0];
+        return matrix[0][0];
     }
     
     @Override
     public void setM00(X n)
     {
-        matrix[0] = n;
+        matrix[0][0] = n;
     }
     
     @Override
     public X getM01()
     {
-        return matrix[1];
+        return matrix[0][1];
     }
     
     @Override
     public void setM01(X n)
     {
-        matrix[1] = n;
+        matrix[0][1] = n;
     }
     
     @Override
     public X getM02()
     {
-        return matrix[2];
+        return matrix[0][2];
     }
     
     @Override
     public void setM02(X n)
     {
-        matrix[2] = n;
+        matrix[0][2] = n;
     }
     
     @Override
     public X getM10()
     {
-        return matrix[3];
+        return matrix[1][0];
     }
     
     @Override
     public void setM10(X n)
     {
-        matrix[3] = n;
+        matrix[1][0] = n;
     }
     
     @Override
     public X getM11()
     {
-        return matrix[4];
+        return matrix[1][1];
     }
     
     @Override
     public void setM11(X n)
     {
-        matrix[4] = n;
+        matrix[1][1] = n;
     }
     
     @Override
     public X getM12()
     {
-        return matrix[5];
+        return matrix[1][2];
     }
     
     @Override
     public void setM12(X n)
     {
-        matrix[5] = n;
+        matrix[1][2] = n;
     }
     
     @Override
     public X getM20()
     {
-        return matrix[6];
+        return matrix[2][0];
     }
     
     @Override
     public void setM20(X n)
     {
-        matrix[6] = n;
+        matrix[2][0] = n;
     }
     
     @Override
     public X getM21()
     {
-        return matrix[7];
+        return matrix[2][1];
     }
     
     @Override
     public void setM21(X n)
     {
-        matrix[7] = n;
+        matrix[2][1] = n;
     }
     
     @Override
     public X getM22()
     {
-        return matrix[8];
+        return matrix[2][2];
     }
     
     @Override
     public void setM22(X n)
     {
-        matrix[8] = n;
+        matrix[2][2] = n;
     }
     
     @Override
@@ -208,7 +210,7 @@ public abstract class Matrix3<X> implements IMatrix3<X>
     @Override
     public int hashCode()
     {
-        return Arrays.hashCode(getMatrix());
+        return Arrays.deepHashCode(getMatrix());
     }
     
     @Override
@@ -220,19 +222,18 @@ public abstract class Matrix3<X> implements IMatrix3<X>
         
         for (int i = 0; i < matrix.length; i++)
         {
-           if(i % 3 == 0)
-           {
-               name.append("\n");
-           }
-           
-           if(matrix.length - 1 == i)
-           {
-               name.append("\t").append(matrix[i]);
-           }
-           else
-           {
-               name.append("\t").append(matrix[i]).append(" , ");
-           }
+            for (int j = 0; j < matrix[i].length; j++)
+            {
+                if(matrix[i].length - 1 == j)
+                {
+                    name.append("\t").append(matrix[i][j]);
+                }
+                else
+                {
+                    name.append("\t").append(matrix[i][j]).append(" , ");
+                }
+            }
+           name.append("\n");
         }
         name.append("\n}");
         

@@ -2,65 +2,64 @@ package br.com.ajf.game.math.library.point2;
 
 import java.util.Objects;
 
-public abstract class Point2<X,Y> implements IPoint2<X,Y>
+public abstract class Point2<X> implements IPoint2<X>
 {
-    private X x;
-    private Y y;
+    @SuppressWarnings("unchecked")
+    private X[] x = (X[])new Object[2];
     
     public Point2()
     {
     
     }
     
-    public Point2(X x, Y y)
+    public Point2(X x, X y)
     {
-        this.x = x;
-        this.y = y;
+        this.x[0] = x;
+        this.x[1] = y;
     }
     
-    public Point2(IPoint2<X,Y> p)
+    public Point2(IPoint2<X> p)
     {
-        this.x = p.x();
-        this.y = p.y();
+       this(p.x(),p.y());
     }
     
     public X x()
     {
-        return x;
+        return x[0];
     }
     
     public void setX(X x)
     {
-        this.x = x;
+        this.x[0] = x;
     }
     
-    public Y y()
+    public X y()
     {
-        return y;
+        return x[1];
     }
     
-    public void setY(Y y)
+    public void setY(X y)
     {
-        this.y = y;
+        this.x[1] = y;
     }
     
     @Override
     public String toString()
     {
         String[] split = getClass().getName().split("\\.");
-        return split[split.length-1]+"( " + "x= " + x + ", y= " + y + " )";
+        return split[split.length-1]+"( " + "x= " + x[0] + ", y= " + x[1] + " )";
     }
     
     @Override
     public boolean equals(Object o)
     {
-        if (!(o instanceof Point2<?, ?> pointer))
+        if (!(o instanceof Point2<?> pointer))
             return false;
-        return Objects.equals(x, pointer.x) && Objects.equals(y, pointer.y);
+        return Objects.equals(x(), pointer.x()) && Objects.equals(y(), pointer.y());
     }
     
     @Override
-    public boolean equals(IPoint2<X,Y> p)
+    public boolean equals(IPoint2<X> p)
     {
         return Objects.equals(x(), p.x()) && Objects.equals(y(), p.y());
     }
@@ -68,16 +67,16 @@ public abstract class Point2<X,Y> implements IPoint2<X,Y>
     @Override
     public int hashCode()
     {
-        return Objects.hash(x, y);
+        return Objects.hash(x(), y());
     }
     
     @Override
     @SuppressWarnings("unchecked")
-    public IPoint2<X, Y> clone()
+    public IPoint2<X> clone()
     {
         try
         {
-            return (IPoint2<X, Y>) super.clone();
+            return (IPoint2<X>) super.clone();
         }
         catch (CloneNotSupportedException e)
         {

@@ -2,7 +2,7 @@ package br.com.ajf.game.math.library.point4;
 
 import br.com.ajf.game.math.library.point3.IPoint3;
 
-public class Point4f extends Point4<Float,Float,Float,Float>
+public class Point4f extends Point4<Float>
 {
     public Point4f()
     {
@@ -19,17 +19,17 @@ public class Point4f extends Point4<Float,Float,Float,Float>
         set(arrayPoints);
     }
     
-    public Point4f(IPoint4<Float, Float, Float, Float> p)
+    public Point4f(IPoint4<Float> p)
     {
         super(p);
     }
     
-    public void set(IPoint3<Float,Float,Float> p)
+    public void set(IPoint3<Float> p)
     {
         set(p.x(),p.y(),p.z(),1.0f);
     }
     
-    public float distanceSquared(IPoint4<Float,Float,Float,Float> p)
+    public float distanceSquared(IPoint4<Float> p)
     {
         float f = x()-p.x();
         float f2 = y()-p.y();
@@ -38,24 +38,24 @@ public class Point4f extends Point4<Float,Float,Float,Float>
         return f*f+f2*f2+f3*f3+f4*f4;
     }
     
-    public float distance(IPoint4<Float,Float,Float,Float> p)
+    public float distance(IPoint4<Float> p)
     {
         return (float) Math.sqrt(distanceSquared(p));
     }
     
-    public float distanceL1(IPoint4<Float,Float,Float,Float> p)
+    public float distanceL1(IPoint4<Float> p)
     {
         return Math.abs(x()-p.x())+Math.abs(y()-p.y())+Math.abs(z()-p.z())+Math.abs(w()-p.w());
     }
     
-    public float distanceLinF(IPoint4<Float,Float,Float,Float> p)
+    public float distanceLinF(IPoint4<Float> p)
     {
         float f = Math.max(Math.abs(x()-p.x()),Math.abs(y()-p.y()));
         float f2 = Math.max(Math.abs(z()-p.z()),Math.abs(w()-p.w()));
         return Math.max(f,f2);
     }
     
-    public void project(IPoint4<Float,Float,Float,Float> p)
+    public void project(IPoint4<Float> p)
     {
         float f = 1.0f/p.w();
         setX(p.x()*f);
@@ -89,36 +89,36 @@ public class Point4f extends Point4<Float,Float,Float,Float>
     }
     
     @Override
-    public void set(IPoint4<Float,Float,Float,Float> p)
+    public void set(IPoint4<Float> p)
     {
         set(p.x(),p.y(),p.z(),p.w());
     }
     
     @Override
-    public void add(IPoint4<Float,Float,Float,Float> p)
+    public void add(IPoint4<Float> p)
     {
         set(x()+p.x(),y()+p.y(),z()+p.z(),w()+p.w());
     }
     
     @Override
-    public void add(IPoint4<Float,Float,Float,Float> p1, IPoint4<Float,Float,Float,Float> p2)
+    public void add(IPoint4<Float> p1, IPoint4<Float> p2)
     {
         set(p1.x()+p2.x(),p1.y()+p2.y(),p1.z()+p2.z(),p1.w()+p2.w());
     }
     
     @Override
-    public void sub(IPoint4<Float,Float,Float,Float> p)
+    public void sub(IPoint4<Float> p)
     {
         set(x()-p.x(),y()-p.y(),z()-p.z(),w()-p.w());
     }
     
     @Override
-    public void sub(IPoint4<Float,Float,Float,Float> p1, IPoint4<Float,Float,Float,Float> p2)
+    public void sub(IPoint4<Float> p1, IPoint4<Float> p2)
     {
         set(p1.x()-p2.x(),p1.y()-p2.y(),p1.z()-p2.z(),p1.w()-p2.w());
     }
     
-    public void interpolate(IPoint4<Float,Float,Float,Float> p,float f)
+    public void interpolate(IPoint4<Float> p,float f)
     {
         setX((1.0f-f)*x()+f*p.x());
         setY((1.0f-f)*y()+f*p.y());
@@ -126,7 +126,7 @@ public class Point4f extends Point4<Float,Float,Float,Float>
         setW((1.0f-f)*w()+f*p.w());
     }
     
-    public void interpolate(IPoint4<Float,Float,Float,Float> p1,IPoint4<Float,Float,Float,Float> p2,float f)
+    public void interpolate(IPoint4<Float> p1,IPoint4<Float> p2,float f)
     {
         setX((1.0f-f)*p1.x()+f*p2.x());
         setY((1.0f-f)*p1.y()+f*p2.y());
@@ -134,7 +134,7 @@ public class Point4f extends Point4<Float,Float,Float,Float>
         setW((1.0f-f)*p1.w()+f*p2.w());
     }
     
-    public boolean epsilonEquals(IPoint4<Float,Float,Float,Float> p,float f)
+    public boolean epsilonEquals(IPoint4<Float> p,float f)
     {
         float f2 = x()-p.x();
         
@@ -197,7 +197,7 @@ public class Point4f extends Point4<Float,Float,Float,Float>
     }
     
     @Override
-    public void negate(IPoint4<Float,Float,Float,Float> p)
+    public void negate(IPoint4<Float> p)
     {
         set(-p.x(),-p.y(),-p.z(),-p.w());
     }
@@ -209,13 +209,13 @@ public class Point4f extends Point4<Float,Float,Float,Float>
     }
     
     @Override
-    public void scale(Float n, IPoint4<Float,Float,Float,Float> p)
+    public void scale(Float n, IPoint4<Float> p)
     {
         set(n*p.x(),n*p.y(),n*p.z(),n*p.w());
     }
     
     @Override
-    public void scaleAndAdd(Float n, IPoint4<Float,Float,Float,Float> p)
+    public void scaleAndAdd(Float n, IPoint4<Float> p)
     {
         setX(n*x()+p.x());
         setY(n*y()+p.y());
@@ -224,7 +224,7 @@ public class Point4f extends Point4<Float,Float,Float,Float>
     }
     
     @Override
-    public void scaleAndAdd(Float n, IPoint4<Float,Float,Float,Float> p1, IPoint4<Float,Float,Float,Float> p2)
+    public void scaleAndAdd(Float n, IPoint4<Float> p1, IPoint4<Float> p2)
     {
         setX(n*p1.x()+p2.x());
         setY(n*p1.y()+p2.y());
@@ -233,7 +233,7 @@ public class Point4f extends Point4<Float,Float,Float,Float>
     }
     
     @Override
-    public void clamp(Float n1, Float n2, IPoint4<Float,Float,Float,Float> p)
+    public void clamp(Float n1, Float n2, IPoint4<Float> p)
     {
         setX(p.x() > n2 ? n2 : (p.x() < n1 ? n1 : p.x()));
         setY(p.y() > n2 ? n2 : (p.y() < n1 ? n1 : p.y()));
@@ -242,7 +242,7 @@ public class Point4f extends Point4<Float,Float,Float,Float>
     }
     
     @Override
-    public void clampMin(Float n, IPoint4<Float,Float,Float,Float> p)
+    public void clampMin(Float n, IPoint4<Float> p)
     {
         setX((p.x() < n ? n : p.x()));
         setY((p.y() < n ? n : p.y()));
@@ -251,7 +251,7 @@ public class Point4f extends Point4<Float,Float,Float,Float>
     }
     
     @Override
-    public void clampMax(Float n, IPoint4<Float,Float,Float,Float> p)
+    public void clampMax(Float n, IPoint4<Float> p)
     {
         setX((p.x() > n ? n : p.x()));
         setY((p.y() > n ? n : p.y()));
@@ -266,7 +266,7 @@ public class Point4f extends Point4<Float,Float,Float,Float>
     }
     
     @Override
-    public void absolute(IPoint4<Float,Float,Float,Float> p)
+    public void absolute(IPoint4<Float> p)
     {
         set(Math.abs(p.x()),Math.abs(p.y()),Math.abs(p.z()),Math.abs(p.w()));
     }

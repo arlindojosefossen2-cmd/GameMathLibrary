@@ -1,7 +1,6 @@
 package br.com.ajf.game.math.library.matrix3;
 
 import br.com.ajf.game.math.library.point3.IPoint3;
-import br.com.ajf.game.math.library.point3.Point3;
 
 import java.util.Arrays;
 
@@ -9,7 +8,10 @@ public final class Matrix3d extends Matrix3<Double>
 {
     public Matrix3d()
     {
-        Arrays.fill(getMatrix(), 0.0);
+        for (int i = 0; i < this.getMatrix().length; i++)
+        {
+            Arrays.fill(this.getMatrix()[i], 0.0);
+        }
     }
     
     public Matrix3d(Double n1, Double n2, Double n3, Double n4, Double n5, Double n6, Double n7, Double n8, Double n9)
@@ -24,13 +26,16 @@ public final class Matrix3d extends Matrix3<Double>
     
     public Matrix3d(Matrix3f matrix)
     {
-        for (int i = 0; i < getMatrix().length; i++)
+        for (int i = 0; i < this.getMatrix().length; i++)
         {
-            getMatrix()[i] = Double.valueOf(matrix.getMatrix()[i]);
+            for (int j = 0; j < this.getMatrix()[i].length; j++)
+            {
+                this.getMatrix()[i][j] = Double.parseDouble(String.valueOf(matrix.getMatrix()[i][j]));
+            }
         }
     }
     
-    public Matrix3d(Double[] matrix)
+    public Matrix3d(Double[][] matrix)
     {
         super(matrix);
     }
@@ -54,7 +59,7 @@ public final class Matrix3d extends Matrix3<Double>
     }
     
     @Override
-    public void getRow(int n, Point3<Double, Double, Double> v)
+    public void getRow(int n, IPoint3<Double> v)
     {
     
     }
@@ -66,7 +71,7 @@ public final class Matrix3d extends Matrix3<Double>
     }
     
     @Override
-    public void getColumn(int n, Point3<Double, Double, Double> v)
+    public void getColumn(int n, IPoint3<Double> v)
     {
     
     }
@@ -90,7 +95,7 @@ public final class Matrix3d extends Matrix3<Double>
     }
     
     @Override
-    public void setRow(int n, Point3<Double, Double, Double> v)
+    public void setRow(int n, IPoint3<Double> v)
     {
     
     }
@@ -108,7 +113,7 @@ public final class Matrix3d extends Matrix3<Double>
     }
     
     @Override
-    public void setColumn(int n, Point3<Double, Double, Double> v)
+    public void setColumn(int n, IPoint3<Double> v)
     {
     
     }
@@ -174,7 +179,7 @@ public final class Matrix3d extends Matrix3<Double>
     }
     
     @Override
-    public void set(Double[] m)
+    public void set(Double[][] m)
     {
     
     }
@@ -348,7 +353,7 @@ public final class Matrix3d extends Matrix3<Double>
     }
     
     @Override
-    public void transform(IPoint3<Double, Double, Double> p1, IPoint3<Double, Double, Double> p2)
+    public void transform(IPoint3<Double> p1, IPoint3<Double> p2)
     {
     
     }

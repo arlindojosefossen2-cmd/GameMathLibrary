@@ -20,7 +20,7 @@ public class Vector3d extends Point3d
         set(arrayPoints);
     }
     
-    public Vector3d(IPoint3<Double,Double,Double> p)
+    public Vector3d(IPoint3<Double> p)
     {
         super(p);
     }

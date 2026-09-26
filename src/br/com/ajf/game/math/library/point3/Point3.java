@@ -2,31 +2,28 @@ package br.com.ajf.game.math.library.point3;
 
 import java.util.Objects;
 
-public abstract class Point3<X,Y,Z> implements IPoint3<X,Y,Z>
+public abstract class Point3<X> implements IPoint3<X>
 {
-    private X x;
-    private Y y;
-    private Z z;
+    @SuppressWarnings("unchecked")
+    private X[] x = (X[]) new Object[3];
     
     public Point3()
     {
     }
     
-    public Point3(X x, Y y, Z z)
+    public Point3(X x, X y, X z)
     {
-        this.x = x;
-        this.y = y;
-        this.z = z;
+        this.x[0] = x;
+        this.x[1] = y;
+        this.x[2] = z;
     }
     
-    public Point3(IPoint3<X,Y,Z> p)
+    public Point3(IPoint3<X> p)
     {
-        this.x = p.x();
-        this.y = p.y();
-        this.z = p.z();
+        this(p.x(),p.y(),p.z());
     }
     
-    public boolean equals(IPoint3<X,Y,Z> p)
+    public boolean equals(IPoint3<X> p)
     {
         return p.x() == x() && p.y() == y() && p.z() == z();
     }
@@ -34,24 +31,24 @@ public abstract class Point3<X,Y,Z> implements IPoint3<X,Y,Z>
     @Override
     public boolean equals(Object o)
     {
-        if (!(o instanceof IPoint3<?, ?, ?> point3))
+        if (!(o instanceof IPoint3<?> point3))
             return false;
-        return Objects.equals(x, point3.x()) && Objects.equals(y, point3.y()) && Objects.equals(z, point3.z());
+        return Objects.equals(x(), point3.x()) && Objects.equals(y(), point3.y()) && Objects.equals(z(), point3.z());
     }
     
     @Override
     public int hashCode()
     {
-        return Objects.hash(x, y, z);
+        return Objects.hash(x(), y(), z());
     }
     
     @Override
     @SuppressWarnings("unchecked")
-    public IPoint3<X, Y, Z> clone()
+    public IPoint3<X> clone()
     {
         try
         {
-            return (IPoint3<X, Y, Z>) super.clone();
+            return (IPoint3<X>) super.clone();
         }
         catch (CloneNotSupportedException e)
         {
@@ -63,36 +60,36 @@ public abstract class Point3<X,Y,Z> implements IPoint3<X,Y,Z>
     public String toString()
     {
         String[] split = getClass().getName().split("\\.");
-        return split[split.length-1]+"( " + "x= " + x + ", y= " + y + ", z= " + z + " )";
+        return split[split.length-1]+"( " + "x= " + x[0] + ", y= " + x[1] + ", z= " + x[2] + " )";
     }
     
     public X x()
     {
-        return x;
+        return x[0];
     }
     
     public void setX(X x)
     {
-        this.x = x;
+        this.x[0] = x;
     }
     
-    public Y y()
+    public X y()
     {
-        return y;
+        return x[1];
     }
     
-    public void setY(Y y)
+    public void setY(X y)
     {
-        this.y = y;
+        this.x[1] = y;
     }
     
-    public Z z()
+    public X z()
     {
-        return z;
+        return x[2];
     }
     
-    public void setZ(Z z)
+    public void setZ(X z)
     {
-        this.z = z;
+        this.x[2] = z;
     }
 }

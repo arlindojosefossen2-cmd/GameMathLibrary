@@ -1,6 +1,6 @@
 package br.com.ajf.game.math.library.vector2;
 
-import br.com.ajf.game.math.library.point2.Point2;
+import br.com.ajf.game.math.library.point2.IPoint2;
 import br.com.ajf.game.math.library.point2.Point2f;
 
 public final class Vector2f extends Point2f
@@ -15,7 +15,7 @@ public final class Vector2f extends Point2f
         super(x, y);
     }
     
-    public Vector2f(Point2<Float, Float> p)
+    public Vector2f(IPoint2<Float> p)
     {
         super(p);
     }
