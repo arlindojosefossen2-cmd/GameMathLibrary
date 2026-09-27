@@ -1,9 +1,8 @@
 package br.com.ajf.game.math.library.matrix3;
 
-import br.com.ajf.game.math.library.AxisAngle4d;
-import br.com.ajf.game.math.library.AxisAngle4f;
-import br.com.ajf.game.math.library.Quat4d;
-import br.com.ajf.game.math.library.Quat4f;
+import br.com.ajf.game.math.library.axisangle4.AxisAngle4;
+import br.com.ajf.game.math.library.quat4.Quat4d;
+import br.com.ajf.game.math.library.quat4.Quat4f;
 import br.com.ajf.game.math.library.point3.IPoint3;
 
 import java.util.Arrays;
@@ -1947,13 +1946,7 @@ public final class Matrix3d extends Matrix3<Double>
     }
     
     @Override
-    public void set(AxisAngle4f axisAngle)
-    {
-    
-    }
-    
-    @Override
-    public void set(AxisAngle4d axisAngle)
+    public void set(AxisAngle4<Double> axisAngle)
     {
     
     }
