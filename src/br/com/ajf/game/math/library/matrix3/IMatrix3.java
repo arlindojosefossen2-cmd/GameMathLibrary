@@ -1,5 +1,9 @@
 package br.com.ajf.game.math.library.matrix3;
 
+import br.com.ajf.game.math.library.AxisAngle4d;
+import br.com.ajf.game.math.library.AxisAngle4f;
+import br.com.ajf.game.math.library.Quat4d;
+import br.com.ajf.game.math.library.Quat4f;
 import br.com.ajf.game.math.library.point3.IPoint3;
 
 import java.io.Serializable;
@@ -55,8 +59,6 @@ public interface IMatrix3<X> extends Serializable , Cloneable
     void invert();
     void invert(IMatrix3<X> m);
     void invertGeneral(IMatrix3<X> m);
-    boolean luDecomposition(double[] dArray,int[] nArray);
-    void luBackSubstitution(double[] dArray,int[] nArray,double[] dArray2);
     X determinate();
     void set(X x);
     void rotX(X x);
@@ -79,10 +81,10 @@ public interface IMatrix3<X> extends Serializable , Cloneable
     void setZero();
     void negate();
     void negate(IMatrix3<X> m);
-    void transform(IPoint3<X> p1, IPoint3<X> p2);
+    void transform(IPoint3<X> p);
     void getScaledRotate(double[] dArray,double[] dArray2);
-//    void set(AxisAngle4f axisAngle);
-//    void set(AxisAngle4d axisAngle);
-//    void set(Quat4f quat);
-//    void set(Quat4d quat);
+    void set(AxisAngle4f axisAngle);
+    void set(AxisAngle4d axisAngle);
+    void set(Quat4f quat);
+    void set(Quat4d quat);
 }
