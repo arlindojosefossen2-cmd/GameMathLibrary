@@ -1,11 +1,11 @@
 package br.com.ajf.game.math.library.colors;
 
-import br.com.ajf.game.math.library.tuple4.ITuple4;
-import br.com.ajf.game.math.library.tuple4.Tuple4f;
+import br.com.ajf.game.math.library.tuples.ITuple4;
+import br.com.ajf.game.math.library.tuples.Tuple4;
 
 import java.awt.*;
 
-public class Color4f extends Tuple4f
+public class Color4f extends Tuple4<Float>
 {
     public Color4f()
     {

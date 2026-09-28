@@ -1,14 +1,15 @@
 package br.com.ajf.game.math.library.colors;
 
-import br.com.ajf.game.math.library.tuple3.ITuple3;
-import br.com.ajf.game.math.library.tuple3.Tuple3b;
+import br.com.ajf.game.math.library.tuples.ITuple3;
+import br.com.ajf.game.math.library.tuples.Tuple3;
 
 import java.awt.*;
 
-public class Color3b extends Tuple3b
+public class Color3b extends Tuple3<Byte>
 {
     public Color3b()
     {
+        this((byte) 0, (byte) 0, (byte) 0);
     }
     
     public Color3b(Byte aByte, Byte y, Byte z)

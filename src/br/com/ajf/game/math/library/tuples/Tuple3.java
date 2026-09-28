@@ -1,4 +1,4 @@
-package br.com.ajf.game.math.library.tuple3;
+package br.com.ajf.game.math.library.tuples;
 
 import java.util.Arrays;
 import java.util.Objects;
