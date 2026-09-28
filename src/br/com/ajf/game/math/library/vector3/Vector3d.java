@@ -74,7 +74,7 @@ public class Vector3d extends Point3d
         double f = v.y()*u.z()-v.z()*u.y();
         double f2 = u.x()*v.z()-u.z()*v.x();
         setZ(v.x()*u.y()-v.y()*u.x());
-        setX(f);
+        setData(f);
         setY(f2);
     }
     

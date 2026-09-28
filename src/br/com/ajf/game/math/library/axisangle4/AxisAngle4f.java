@@ -107,9 +107,9 @@ public final class AxisAngle4f extends AxisAngle4<Float>
             
             double d2 = 1.0/d;
             
-            setX((float)((double)q.x()*d2));
-            setY((float)((double)q.y()*d2));
-            setZ((float)((double)q.z()*d2));
+            setX((float)(q.x() * d2));
+            setY((float)(q.y() * d2));
+            setZ((float)(q.z() * d2));
             setAngle((float)(2.0*Math.atan2(d,q.w())));
         }
         else
@@ -158,7 +158,7 @@ public final class AxisAngle4f extends AxisAngle4<Float>
         {
             d = Math.sqrt(d);
             double d2 = 0.5 * d;
-            double d3 = 0.5 * ((double) (m.getM00()+m.getM11()+m.getM22())-1.0);
+            double d3 = 0.5 * ((m.getM00() + m.getM11() + m.getM22()) - 1.0);
             setAngle((float)Math.atan2(d2,d3));
             double d4 = 1.0/d;
             

@@ -5,7 +5,7 @@ import java.util.Objects;
 public abstract class Point2<X> implements IPoint2<X>
 {
     @SuppressWarnings("unchecked")
-    private X[] x = (X[])new Object[2];
+    private final X[] data = (X[])new Object[2];
     
     public Point2()
     {
@@ -14,8 +14,8 @@ public abstract class Point2<X> implements IPoint2<X>
     
     public Point2(X x, X y)
     {
-        this.x[0] = x;
-        this.x[1] = y;
+        this.data[0] = x;
+        this.data[1] = y;
     }
     
     public Point2(IPoint2<X> p)
@@ -25,29 +25,29 @@ public abstract class Point2<X> implements IPoint2<X>
     
     public X x()
     {
-        return x[0];
+        return data[0];
     }
     
-    public void setX(X x)
+    public void setData(X data)
     {
-        this.x[0] = x;
+        this.data[0] = data;
     }
     
     public X y()
     {
-        return x[1];
+        return data[1];
     }
     
     public void setY(X y)
     {
-        this.x[1] = y;
+        this.data[1] = y;
     }
     
     @Override
     public String toString()
     {
         String[] split = getClass().getName().split("\\.");
-        return split[split.length-1]+"( " + "x= " + x[0] + ", y= " + x[1] + " )";
+        return split[split.length-1] + "( " + "x= " + data[0] + ", y= " + data[1] + " )";
     }
     
     @Override

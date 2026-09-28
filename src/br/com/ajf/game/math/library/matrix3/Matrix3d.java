@@ -606,9 +606,7 @@ public final class Matrix3d extends Matrix3<Double>
     
     static void mat_mul(double[] dArray, double[] dArray2, double[] dArray3) {
         double[] dArray4 = new double[]{dArray[0] * dArray2[0] + dArray[1] * dArray2[3] + dArray[2] * dArray2[6], dArray[0] * dArray2[1] + dArray[1] * dArray2[4] + dArray[2] * dArray2[7], dArray[0] * dArray2[2] + dArray[1] * dArray2[5] + dArray[2] * dArray2[8], dArray[3] * dArray2[0] + dArray[4] * dArray2[3] + dArray[5] * dArray2[6], dArray[3] * dArray2[1] + dArray[4] * dArray2[4] + dArray[5] * dArray2[7], dArray[3] * dArray2[2] + dArray[4] * dArray2[5] + dArray[5] * dArray2[8], dArray[6] * dArray2[0] + dArray[7] * dArray2[3] + dArray[8] * dArray2[6], dArray[6] * dArray2[1] + dArray[7] * dArray2[4] + dArray[8] * dArray2[7], dArray[6] * dArray2[2] + dArray[7] * dArray2[5] + dArray[8] * dArray2[8]};
-        for (int i = 0; i < 9; ++i) {
-            dArray3[i] = dArray4[i];
-        }
+        System.arraycopy(dArray4, 0, dArray3, 0, 9);
     }
     
     static void transpose_mat(double[] dArray, double[] dArray2) {
@@ -791,12 +789,11 @@ public final class Matrix3d extends Matrix3<Double>
             dArray7[2] = dArray[6] * dArray[6] + dArray[7] * dArray[7] + dArray[8] * dArray[8];
             if (dArray7[0] > dArray7[1]) {
                 if (dArray7[0] > dArray7[2]) {
+                    n3 = 0;
                     if (dArray7[2] > dArray7[1]) {
-                        n3 = 0;
                         n2 = 1;
                         n = 2;
                     } else {
-                        n3 = 0;
                         n = 1;
                         n2 = 2;
                     }
@@ -806,12 +803,11 @@ public final class Matrix3d extends Matrix3<Double>
                     n = 2;
                 }
             } else if (dArray7[1] > dArray7[2]) {
+                n = 0;
                 if (dArray7[2] > dArray7[0]) {
-                    n = 0;
                     n2 = 1;
                     n3 = 2;
                 } else {
-                    n = 0;
                     n3 = 1;
                     n2 = 2;
                 }
@@ -1950,7 +1946,7 @@ public final class Matrix3d extends Matrix3<Double>
     {
         double f = Math.sqrt(axisAngle.x()*axisAngle.x()+axisAngle.y()*axisAngle.y()+axisAngle.z()*axisAngle.z());
         
-        if((double)f < 1.0E-8)
+        if(f < 1.0E-8)
         {
             set(1.0,0.0,0.0,0.0,1.0,0.0,0.0,0.0,1.0);
         }

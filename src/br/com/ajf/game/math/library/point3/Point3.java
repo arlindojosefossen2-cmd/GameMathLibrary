@@ -5,7 +5,7 @@ import java.util.Objects;
 public abstract class Point3<X> implements IPoint3<X>
 {
     @SuppressWarnings("unchecked")
-    private X[] x = (X[]) new Object[3];
+    private final X[] data = (X[]) new Object[3];
     
     public Point3()
     {
@@ -13,9 +13,9 @@ public abstract class Point3<X> implements IPoint3<X>
     
     public Point3(X x, X y, X z)
     {
-        this.x[0] = x;
-        this.x[1] = y;
-        this.x[2] = z;
+        this.data[0] = x;
+        this.data[1] = y;
+        this.data[2] = z;
     }
     
     public Point3(IPoint3<X> p)
@@ -60,36 +60,36 @@ public abstract class Point3<X> implements IPoint3<X>
     public String toString()
     {
         String[] split = getClass().getName().split("\\.");
-        return split[split.length-1]+"( " + "x= " + x[0] + ", y= " + x[1] + ", z= " + x[2] + " )";
+        return split[split.length-1] + "( " + "x= " + data[0] + ", y= " + data[1] + ", z= " + data[2] + " )";
     }
     
     public X x()
     {
-        return x[0];
+        return data[0];
     }
     
-    public void setX(X x)
+    public void setData(X data)
     {
-        this.x[0] = x;
+        this.data[0] = data;
     }
     
     public X y()
     {
-        return x[1];
+        return data[1];
     }
     
     public void setY(X y)
     {
-        this.x[1] = y;
+        this.data[1] = y;
     }
     
     public X z()
     {
-        return x[2];
+        return data[2];
     }
     
     public void setZ(X z)
     {
-        this.x[2] = z;
+        this.data[2] = z;
     }
 }

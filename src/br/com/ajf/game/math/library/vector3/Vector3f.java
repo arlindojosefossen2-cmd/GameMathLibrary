@@ -74,7 +74,7 @@ public class Vector3f extends Point3f
         float f = v.y()*u.z()-v.z()*u.y();
         float f2 = u.x()*v.z()-u.z()*v.x();
         setZ(v.x()*u.y()-v.y()*u.x());
-        setX(f);
+        setData(f);
         setY(f2);
     }
     

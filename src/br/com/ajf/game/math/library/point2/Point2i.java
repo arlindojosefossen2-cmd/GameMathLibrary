@@ -5,7 +5,7 @@ public final class Point2i extends Point2<Integer>
 {
     public Point2i()
     {
-        setX(0);
+        setData(0);
         setY(0);
     }
     
@@ -22,7 +22,7 @@ public final class Point2i extends Point2<Integer>
     @Override
     public void set(Integer x, Integer y)
     {
-        setX(x);
+        setData(x);
         setY(y);
     }
     
@@ -37,7 +37,7 @@ public final class Point2i extends Point2<Integer>
     {
         if(x() < n)
         {
-            setX(n);
+            setData(n);
         }
         
         if(y() < n)
@@ -51,7 +51,7 @@ public final class Point2i extends Point2<Integer>
     {
         if(x() > n)
         {
-            setX(n);
+            setData(n);
         }
         
         if(y() > n)
@@ -65,11 +65,11 @@ public final class Point2i extends Point2<Integer>
     {
         if(this.x() > n2)
         {
-            setX(n2);
+            setData(n2);
         }
         else if(x() < n1)
         {
-            setX(n1);
+            setData(n1);
         }
         
         if(y() > n2)
@@ -85,21 +85,21 @@ public final class Point2i extends Point2<Integer>
     @Override
     public void clamp(Integer n1, Integer n2, IPoint2<Integer> p)
     {
-        setX(p.x() > n2 ? n2 : (p.x() < n1) ? n1 : p.x());
+        setData(p.x() > n2 ? n2 : (p.x() < n1) ? n1 : p.x());
         setY(p.y() > n2 ? n2 : (p.y() < n1) ? n1 : p.y());
     }
     
     @Override
     public void clampMin(Integer n1, IPoint2<Integer> p)
     {
-        setX((p.x() < n1) ? n1 : p.x());
+        setData((p.x() < n1) ? n1 : p.x());
         setY((p.y() < n1) ? n1 : p.y());
     }
     
     @Override
     public void clampMax(Integer n1, IPoint2<Integer> p)
     {
-        setX((p.x() > n1) ? n1 : p.x());
+        setData((p.x() > n1) ? n1 : p.x());
         setY((p.y() > n1) ? n1 : p.y());
     }
     
@@ -118,21 +118,21 @@ public final class Point2i extends Point2<Integer>
     @Override
     public void negate()
     {
-       setX(-x());
+       setData(-x());
        setY(-y());
     }
     
     @Override
     public void negate(IPoint2<Integer> p)
     {
-        setX(-p.x());
+        setData(-p.x());
         setY(-p.y());
     }
     
     @Override
     public void add(IPoint2<Integer> p)
     {
-        setX(x()+p.x());
+        setData(x() + p.x());
         setY(y()+p.y());
     }
     
@@ -151,7 +151,7 @@ public final class Point2i extends Point2<Integer>
     @Override
     public void sub(IPoint2<Integer> p)
     {
-        setX(x()-p.x());
+        setData(x() - p.x());
         setY(y()-p.y());
     }
     
@@ -170,7 +170,7 @@ public final class Point2i extends Point2<Integer>
     @Override
     public void multiply(IPoint2<Integer> p)
     {
-        setX(x()*p.x());
+        setData(x() * p.x());
         setY(y()*p.y());
     }
     
@@ -182,7 +182,7 @@ public final class Point2i extends Point2<Integer>
             return;
         }
         
-        setX(x()/p.x());
+        setData(x() / p.x());
         setY(y()/p.y());
     }
     

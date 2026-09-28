@@ -43,7 +43,7 @@ public class Point2f extends Point2<Float>
     @Override
     public void set(Float x, Float y)
     {
-        setX(x);
+        setData(x);
         setY(y);
     }
     
@@ -58,7 +58,7 @@ public class Point2f extends Point2<Float>
     {
         if(x() < n)
         {
-            setX(n);
+            setData(n);
         }
         
         if(y() < n)
@@ -72,7 +72,7 @@ public class Point2f extends Point2<Float>
     {
         if(x() > n)
         {
-            setX(n);
+            setData(n);
         }
         
         if(y() > n)
@@ -86,11 +86,11 @@ public class Point2f extends Point2<Float>
     {
         if(this.x() > n2)
         {
-            setX(n2);
+            setData(n2);
         }
         else if(x() < n1)
         {
-            setX(n1);
+            setData(n1);
         }
         
         if(y() > n2)
@@ -106,21 +106,21 @@ public class Point2f extends Point2<Float>
     @Override
     public void clamp(Float n1, Float n2, IPoint2<Float> p)
     {
-        setX(p.x() > n2 ? n2 : (p.x() < n1) ? n1 : p.x());
+        setData(p.x() > n2 ? n2 : (p.x() < n1) ? n1 : p.x());
         setY(p.y() > n2 ? n2 : (p.y() < n1) ? n1 : p.y());
     }
     
     @Override
     public void clampMin(Float n, IPoint2<Float> p)
     {
-        setX(p.x() < n ? n : p.x());
+        setData(p.x() < n ? n : p.x());
         setY(p.y() < n ? n : p.y());
     }
     
     @Override
     public void clampMax(Float n, IPoint2<Float> p)
     {
-        setX(p.x() > n ? n : p.x());
+        setData(p.x() > n ? n : p.x());
         setY(p.y() > n ? n : p.y());
     }
     
@@ -139,21 +139,21 @@ public class Point2f extends Point2<Float>
     @Override
     public void negate()
     {
-        setX(-x());
+        setData(-x());
         setY(-y());
     }
     
     @Override
     public void negate(IPoint2<Float> p)
     {
-        setX(-p.x());
+        setData(-p.x());
         setY(-p.y());
     }
     
     @Override
     public void add(IPoint2<Float> p)
     {
-        setX(x()+p.x());
+        setData(x() + p.x());
         setY(y()+p.y());
     }
     
@@ -172,7 +172,7 @@ public class Point2f extends Point2<Float>
     @Override
     public void sub(IPoint2<Float> p)
     {
-        setX(x()-p.x());
+        setData(x() - p.x());
         setY(y()-p.y());
     }
     
@@ -191,19 +191,19 @@ public class Point2f extends Point2<Float>
     @Override
     public void multiply(IPoint2<Float> p)
     {
-        setX(x()*p.x());
+        setData(x() * p.x());
         setY(y()*p.y());
     }
     
     public void interpolate(IPoint2<Float> p,Float n)
     {
-        setX((1.0f-n)*x()+n*p.x());
+        setData((1.0f - n) * x() + n * p.x());
         setY((1.0f-n)*y()+n*p.y());
     }
     
     public void interpolate(IPoint2<Float> p1,IPoint2<Float> p2,Float n)
     {
-        setX((1.0f-n)*p1.x()+n*p2.x());
+        setData((1.0f - n) * p1.x() + n * p2.x());
         setY((1.0f-n)*p1.y()+n*p2.y());
     }
     
@@ -241,7 +241,7 @@ public class Point2f extends Point2<Float>
             return;
         }
         
-        setX(x()/p.x());
+        setData(x() / p.x());
         setY(y()/p.y());
     }
     

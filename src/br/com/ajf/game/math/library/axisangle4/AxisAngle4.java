@@ -90,9 +90,9 @@ public abstract class AxisAngle4<X> implements Serializable,Cloneable
         return data[3];
     }
     
-    public void setAngle(X anlge)
+    public void setAngle(X angle)
     {
-        this.data[3] = anlge;
+        this.data[3] = angle;
     }
     
     @Override

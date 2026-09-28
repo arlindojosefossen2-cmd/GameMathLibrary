@@ -1,6 +1,5 @@
 package br.com.ajf.game.math.library.vector4;
 
-import br.com.ajf.game.math.library.point3.IPoint3;
 import br.com.ajf.game.math.library.point4.IPoint4;
 import br.com.ajf.game.math.library.point4.Point4f;
 

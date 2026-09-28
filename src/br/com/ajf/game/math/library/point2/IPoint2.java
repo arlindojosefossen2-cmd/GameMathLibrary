@@ -5,7 +5,7 @@ import java.io.Serializable;
 public interface IPoint2<X> extends Serializable, Cloneable
                                          {
     X x();
-    void setX(X x);
+    void setData(X data);
     X y();
     void setY(X y);
     void set(X x,X y);

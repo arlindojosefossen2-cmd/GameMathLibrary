@@ -220,20 +220,20 @@ public abstract class Matrix3<X> implements IMatrix3<X>
         
         StringBuilder name = new StringBuilder(split[split.length - 1] + "\n{ ");
         
-        for (int i = 0; i < matrix.length; i++)
+        for (X[] xes : matrix)
         {
-            for (int j = 0; j < matrix[i].length; j++)
+            for (int j = 0; j < xes.length; j++)
             {
-                if(matrix[i].length - 1 == j)
+                if (xes.length - 1 == j)
                 {
-                    name.append("\t").append(matrix[i][j]);
+                    name.append("\t").append(xes[j]);
                 }
                 else
                 {
-                    name.append("\t").append(matrix[i][j]).append(" , ");
+                    name.append("\t").append(xes[j]).append(" , ");
                 }
             }
-           name.append("\n");
+            name.append("\n");
         }
         name.append("\n}");
         

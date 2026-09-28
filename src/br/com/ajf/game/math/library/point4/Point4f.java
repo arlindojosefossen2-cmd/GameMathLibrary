@@ -58,7 +58,7 @@ public class Point4f extends Point4<Float>
     public void project(IPoint4<Float> p)
     {
         float f = 1.0f/p.w();
-        setX(p.x()*f);
+        setData(p.x() * f);
         setY(p.y()*f);
         setZ(p.z()*f);
         setW(1.0f);
@@ -82,7 +82,7 @@ public class Point4f extends Point4<Float>
     @Override
     public void set(Float x, Float y, Float z, Float w)
     {
-        setX(x);
+        setData(x);
         setY(y);
         setZ(z);
         setW(w);
@@ -120,7 +120,7 @@ public class Point4f extends Point4<Float>
     
     public void interpolate(IPoint4<Float> p,float f)
     {
-        setX((1.0f-f)*x()+f*p.x());
+        setData((1.0f - f) * x() + f * p.x());
         setY((1.0f-f)*y()+f*p.y());
         setZ((1.0f-f)*z()+f*p.z());
         setW((1.0f-f)*w()+f*p.w());
@@ -128,7 +128,7 @@ public class Point4f extends Point4<Float>
     
     public void interpolate(IPoint4<Float> p1,IPoint4<Float> p2,float f)
     {
-        setX((1.0f-f)*p1.x()+f*p2.x());
+        setData((1.0f - f) * p1.x() + f * p2.x());
         setY((1.0f-f)*p1.y()+f*p2.y());
         setZ((1.0f-f)*p1.z()+f*p2.z());
         setW((1.0f-f)*p1.w()+f*p2.w());
@@ -217,7 +217,7 @@ public class Point4f extends Point4<Float>
     @Override
     public void scaleAndAdd(Float n, IPoint4<Float> p)
     {
-        setX(n*x()+p.x());
+        setData(n * x() + p.x());
         setY(n*y()+p.y());
         setZ(n*z()+p.z());
         setW(n*w()+p.w());
@@ -226,7 +226,7 @@ public class Point4f extends Point4<Float>
     @Override
     public void scaleAndAdd(Float n, IPoint4<Float> p1, IPoint4<Float> p2)
     {
-        setX(n*p1.x()+p2.x());
+        setData(n * p1.x() + p2.x());
         setY(n*p1.y()+p2.y());
         setZ(n*p1.z()+p2.z());
         setW(n*p1.w()+p2.w());
@@ -235,7 +235,7 @@ public class Point4f extends Point4<Float>
     @Override
     public void clamp(Float n1, Float n2, IPoint4<Float> p)
     {
-        setX(p.x() > n2 ? n2 : (p.x() < n1 ? n1 : p.x()));
+        setData(p.x() > n2 ? n2 : (p.x() < n1 ? n1 : p.x()));
         setY(p.y() > n2 ? n2 : (p.y() < n1 ? n1 : p.y()));
         setZ(p.z() > n2 ? n2 : (p.z() < n1 ? n1 : p.z()));
         setW(p.w() > n2 ? n2 : (p.w() < n1 ? n1 : p.w()));
@@ -244,7 +244,7 @@ public class Point4f extends Point4<Float>
     @Override
     public void clampMin(Float n, IPoint4<Float> p)
     {
-        setX((p.x() < n ? n : p.x()));
+        setData((p.x() < n ? n : p.x()));
         setY((p.y() < n ? n : p.y()));
         setZ((p.z() < n ? n : p.z()));
         setW((p.w() < n ? n : p.w()));
@@ -253,7 +253,7 @@ public class Point4f extends Point4<Float>
     @Override
     public void clampMax(Float n, IPoint4<Float> p)
     {
-        setX((p.x() > n ? n : p.x()));
+        setData((p.x() > n ? n : p.x()));
         setY((p.y() > n ? n : p.y()));
         setZ((p.z() > n ? n : p.z()));
         setW((p.w() > n ? n : p.w()));
@@ -276,11 +276,11 @@ public class Point4f extends Point4<Float>
     {
         if(x() > n2)
         {
-            setX(n2);
+            setData(n2);
         }
         else if(x() < n1)
         {
-            setX(n1);
+            setData(n1);
         }
         
         if(y() > n2)
@@ -316,7 +316,7 @@ public class Point4f extends Point4<Float>
     {
         if(x() < n)
         {
-            setX(n);
+            setData(n);
         }
         
         if(y() < n)
@@ -340,7 +340,7 @@ public class Point4f extends Point4<Float>
     {
         if(x() > n)
         {
-            setX(n);
+            setData(n);
         }
         
         if(y() > n)
