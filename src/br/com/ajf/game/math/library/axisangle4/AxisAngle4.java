@@ -1,6 +1,10 @@
 package br.com.ajf.game.math.library.axisangle4;
 
+import br.com.ajf.game.math.library.matrix3.Matrix3d;
+import br.com.ajf.game.math.library.matrix3.Matrix3f;
 import br.com.ajf.game.math.library.point3.IPoint3;
+import br.com.ajf.game.math.library.quat4.Quat4d;
+import br.com.ajf.game.math.library.quat4.Quat4f;
 
 import java.io.Serializable;
 import java.util.Arrays;
@@ -39,6 +43,17 @@ public abstract class AxisAngle4<X> implements Serializable,Cloneable
     {
         this(p.x(),p.y(),p.z(),angle);
     }
+    
+    public abstract void set(X x,X y,X z,X angle);
+    public abstract void set(X[] array);
+    public abstract void set(AxisAngle4<X> aa);
+    public abstract void set(IPoint3<X> v,X x);
+    public abstract void get(X[] x);
+    public abstract void set(Quat4f q);
+    public abstract void set(Quat4d q);
+    public abstract void set(Matrix3f m);
+    public abstract void set(Matrix3d m);
+    public abstract boolean epsilonEquals(AxisAngle4<X> aa,X x);
     
     public X x()
     {

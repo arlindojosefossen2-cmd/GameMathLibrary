@@ -1166,18 +1166,62 @@ public final class Matrix3f extends Matrix3<Float>
     @Override
     public void set(AxisAngle4<Float> axisAngle)
     {
-    
+        float f = (float)Math.sqrt(axisAngle.x()*axisAngle.x()+axisAngle.y()*axisAngle.y()+axisAngle.z()*axisAngle.z());
+        
+        if((double)f < 1.0E-8)
+        {
+            set(1f,0f,0f,0f,1f,0f,0f,0f,1f);
+        }
+        else
+        {
+            f = 1.0f/f;
+            
+            float f2 = axisAngle.x()*f;
+            float f3 = axisAngle.y()*f;
+            float f4 = axisAngle.z()*f;
+            float f5 = (float) Math.sin(axisAngle.angle());
+            float f6 = (float) Math.cos(axisAngle.angle());
+            float f7 = 1f-f6;
+            float f8 = f2*f4;
+            float f9 = f2 * f3;
+            float f10 = f3*f4;
+            setM00(f7*f2*f2+f6);
+            setM01(f7*f9-f5*f4);
+            setM02(f7*f8+f5*f3);
+            setM10(f7*f9+f5*f4);
+            setM11(f7*f3*f3+f6);
+            setM12(f7*f10-f5*f2);
+            setM20(f7*f8-f5*f3);
+            setM21(f7*f10+f5*f2);
+            setM22(f7*f4*f4+f6);
+        }
     }
     
     @Override
     public void set(Quat4f quat)
     {
-    
+        setM00(1.0f-2.0f*quat.y()*quat.y()-2.0f*quat.z()*quat.z());
+        setM10(2.0f*(quat.x()*quat.y()+quat.w()*quat.z()));
+        setM20(2.0f*(quat.x()*quat.z()-quat.w()*quat.y()));
+        setM01(2.0f*(quat.x()*quat.y()-quat.w()*quat.z()));
+        setM11(1.0f-2.0f*quat.x()*quat.x()-2.0f*quat.z()*quat.z());
+        setM21(2.0f*(quat.y()*quat.z()+quat.w()*quat.x()));
+        setM02(2.0f*(quat.x()*quat.z()+quat.w()*quat.y()));
+        setM12(2.0f*(quat.y()*quat.z()-quat.w()*quat.x()));
+        setM22(1.0f-2.0f*quat.x()*quat.x()-2.0f*quat.y()*quat.y());
     }
     
     @Override
     public void set(Quat4d quat)
     {
-    
+        setM00((float) (1.0f - 2.0f * quat.y() * quat.y() - 2.0f * quat.z() * quat.z()));
+        setM10((float) (2.0f * (quat.x() * quat.y() + quat.w() * quat.z())));
+        setM20((float) (2.0f * (quat.x() * quat.z() - quat.w() * quat.y())));
+        setM01((float) (2.0f * (quat.x() * quat.y() - quat.w() * quat.z())));
+        setM11((float) (1.0f - 2.0f * quat.x() * quat.x() - 2.0f * quat.z() * quat.z()));
+        setM21((float) (2.0f * (quat.y() * quat.z() + quat.w() * quat.x())));
+        setM02((float) (2.0f * (quat.x() * quat.z() + quat.w() * quat.y())));
+        setM12((float) (2.0f * (quat.y() * quat.z() - quat.w() * quat.x())));
+        setM22((float) (1.0f - 2.0f * quat.x() * quat.x() - 2.0f * quat.y() * quat.y()));
     }
 }
