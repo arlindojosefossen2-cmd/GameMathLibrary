@@ -1,7 +1,6 @@
-package br.com.ajf.game.math.library.test;
+package br.com.ajf.game.math.library.test.points;
 
 import br.com.ajf.game.math.library.point2.Point2f;
-import br.com.ajf.game.math.library.point2.Point2i;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 

@@ -1,4 +1,4 @@
-package br.com.ajf.game.math.library.test;
+package br.com.ajf.game.math.library.test.vectors;
 
 import br.com.ajf.game.math.library.point2.Point2f;
 import br.com.ajf.game.math.library.vector2.Vector2f;
