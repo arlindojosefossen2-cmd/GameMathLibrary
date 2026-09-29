@@ -9,12 +9,12 @@ public interface ITuple4<X> extends Serializable, Cloneable
     void set(X[] array);
     void set(ITuple4<X> t);
     boolean equals(ITuple4<X> t);
-    X r();
-    void setR(X r);
-    X g();
-    void setG(X g);
-    X b();
-    void setB(X b);
-    X a();
-    void setA(X a);
+    X x();
+    void setX(X r);
+    X y();
+    void setY(X g);
+    X z();
+    void setZ(X b);
+    X w();
+    void setW(X a);
 }

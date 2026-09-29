@@ -13,12 +13,12 @@ public class Tuple4<X> implements ITuple4<X>
     
     }
     
-    public Tuple4(X r,X g,X b,X a)
+    public Tuple4(X x,X y,X z,X w)
     {
-        setR(r);
-        setG(g);
-        setB(b);
-        setA(a);
+        setX(x);
+        setY(y);
+        setZ(z);
+        setW(w);
     }
     
     public Tuple4(X[] array)
@@ -34,10 +34,10 @@ public class Tuple4<X> implements ITuple4<X>
     @Override
     public void get(X[] array)
     {
-        array[0] = r();
-        array[1] = g();
-        array[2] = b();
-        array[3] = a();
+        array[0] = x();
+        array[1] = y();
+        array[2] = z();
+        array[3] = w();
     }
     
     @Override
@@ -59,19 +59,19 @@ public class Tuple4<X> implements ITuple4<X>
             return;
         }
         
-        setR(array[0]);
-        setG(array[1]);
-        setB(array[2]);
-        setA(array[3]);
+        setX(array[0]);
+        setY(array[1]);
+        setZ(array[2]);
+        setW(array[3]);
     }
     
     @Override
     public void set(ITuple4<X> t)
     {
-        setR(t.r());
-        setG(t.g());
-        setB(t.b());
-        setA(t.a());
+        setX(t.x());
+        setY(t.y());
+        setZ(t.z());
+        setW(t.w());
     }
     
     @Override
@@ -82,7 +82,7 @@ public class Tuple4<X> implements ITuple4<X>
             return false;
         }
         
-        return t.r() == r() && t.g() == g() && t.b() == b() && t.a() == a();
+        return t.x() == x() && t.y() == y() && t.z() == z() && t.w() == w();
     }
     @Override
     @SuppressWarnings("unchecked")
@@ -120,54 +120,55 @@ public class Tuple4<X> implements ITuple4<X>
     @Override
     public String toString()
     {
-        return "Tuple4{" + "data=" + Arrays.toString(data) + '}';
+        String[] split = getClass().getName().split("\\.");
+        return split[split.length-1]+ "( x= " + data[0] + ", y= "+data[1]+", z= "+data[2]+", w= "+data[3]+" )";
     }
     
     @Override
-    public X r()
+    public X x()
     {
         return data[0];
     }
     
     @Override
-    public void setR(X r)
+    public void setX(X x)
     {
-        data[0] = r;
+        data[0] = x;
     }
     
     @Override
-    public X g()
+    public X y()
     {
         return data[1];
     }
     
     @Override
-    public void setG(X g)
+    public void setY(X y)
     {
-        data[1] = g;
+        data[1] = y;
     }
     
     @Override
-    public X b()
+    public X z()
     {
         return data[2];
     }
     
     @Override
-    public void setB(X b)
+    public void setZ(X z)
     {
-        data[2] = b;
+        data[2] = z;
     }
     
     @Override
-    public X a()
+    public X w()
     {
         return data[3];
     }
     
     @Override
-    public void setA(X a)
+    public void setW(X w)
     {
-        data[3] = a;
+        data[3] = w;
     }
 }

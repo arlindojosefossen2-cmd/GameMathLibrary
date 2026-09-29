@@ -1,23 +1,20 @@
 package br.com.ajf.game.math.library.colors;
 
-import br.com.ajf.game.math.library.tuples.ITuple3;
-import br.com.ajf.game.math.library.tuples.Tuple3;
-
 import java.awt.*;
 
-public class Color3b extends Tuple3<Byte>
+public class Color3b extends ColorRGB<Byte>
 {
     public Color3b()
     {
         this((byte) 0, (byte) 0, (byte) 0);
     }
     
-    public Color3b(Byte aByte, Byte y, Byte z)
+    public Color3b(Byte r, Byte g, Byte b)
     {
-        super(aByte, y, z);
+        super(r,g,b);
     }
     
-    public Color3b(ITuple3<Byte> t)
+    public Color3b(IColor<Byte> t)
     {
         super(t);
     }
@@ -29,26 +26,36 @@ public class Color3b extends Tuple3<Byte>
     
     public Color3b(Color3b c)
     {
-        this(c.r(),c.g(),c.b());
+        this(c.red(),c.green(),c.blue());
     }
     
-    public Color3b(Byte[] array)
-    {
-        super(array);
-    }
     
     public void set(Color c)
     {
-        setR((byte) c.getRed());
-        setG((byte) c.getGreen());
-        setB((byte) c.getBlue());
+        setRed((byte) c.getRed());
+        setGreen((byte) c.getGreen());
+        setBlue((byte) c.getBlue());
     }
     
     public Color get()
     {
-        int n = r() & 0xFF;
-        int n2 = g() & 0xFF;
-        int n3 = b() & 0xFF;
-        return new Color(n,n2,n3);
+        int n = red() & 0xFF;
+        int n2 = green() & 0xFF;
+        int n3 = blue() & 0xFF;
+        int n4 = 255;
+        return new Color(n,n2,n3,n4);
+    }
+    
+    @Override
+    public Byte alpha()
+    {
+        return (byte)255.0;
+    }
+    
+    @Override
+    public void setAlpha(Byte a)
+    {
+        a = (byte)255.0;
+        super.setAlpha(a);
     }
 }

@@ -15,9 +15,9 @@ public abstract class Tuple3<X> implements ITuple3<X>
     
     public Tuple3(X r,X g,X b)
     {
-        setR(r);
-        setG(g);
-        setB(b);
+        setX(r);
+        setY(g);
+        setZ(b);
     }
     
     public Tuple3(ITuple3<X> t)
@@ -38,9 +38,9 @@ public abstract class Tuple3<X> implements ITuple3<X>
             return;
         }
         
-        array[0] = r();
-        array[1] = g();
-        array[2] = b();
+        array[0] = x();
+        array[1] = y();
+        array[2] = z();
     }
     
     @Override
@@ -70,9 +70,9 @@ public abstract class Tuple3<X> implements ITuple3<X>
             return;
         }
         
-        data[0] = t.r();
-        data[1] = t.g();
-        data[2] = t.b();
+        data[0] = t.x();
+        data[1] = t.y();
+        data[2] = t.z();
     }
     
     @Override
@@ -83,7 +83,7 @@ public abstract class Tuple3<X> implements ITuple3<X>
             return false;
         }
         
-        return t.r() == r() && t.g() == g() && t.b() == b();
+        return t.x() == x() && t.y() == y() && t.z() == z();
     }
     
     @Override
@@ -110,7 +110,8 @@ public abstract class Tuple3<X> implements ITuple3<X>
     @Override
     public String toString()
     {
-        return "Tuple3{" + "data=" + Arrays.toString(data) + '}';
+        String[] split = getClass().getName().split("\\.");
+        return split[split.length-1]+ "( x= " + data[0] + ", y= "+data[1]+", z= "+data[2]+" )";
     }
     
     @SuppressWarnings("unchecked")
@@ -127,38 +128,38 @@ public abstract class Tuple3<X> implements ITuple3<X>
     }
     
     @Override
-    public X r()
+    public X x()
     {
         return data[0];
     }
     
     @Override
-    public void setR(X r)
+    public void setX(X x)
     {
-        data[0] = r;
+        data[0] = x;
     }
     
     @Override
-    public X g()
+    public X y()
     {
         return data[1];
     }
     
     @Override
-    public void setG(X g)
+    public void setY(X y)
     {
-        data[1] = g;
+        data[1] = y;
     }
     
     @Override
-    public X b()
+    public X z()
     {
         return data[2];
     }
     
     @Override
-    public void setB(X b)
+    public void setZ(X z)
     {
-        data[2] = b;
+        data[2] = z;
     }
 }

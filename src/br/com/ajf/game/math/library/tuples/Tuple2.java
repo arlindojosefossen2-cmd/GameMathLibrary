@@ -78,7 +78,8 @@ public abstract class Tuple2<X> implements ITuple2<X>
     @Override
     public String toString()
     {
-        return "Tuple2{" + "data=" + Arrays.toString(data) + '}';
+        String[] split = getClass().getName().split("\\.");
+        return split[split.length-1]+ "( x= " + data[0] + ", y= "+data[1]+" )";
     }
     
     @Override
