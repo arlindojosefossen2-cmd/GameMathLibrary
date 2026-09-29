@@ -42,7 +42,7 @@ public class Point2d extends Point2<Double>
     @Override
     public void set(Double x, Double y)
     {
-        setData(x);
+        this.setX(x);
         setY(y);
     }
     
@@ -57,7 +57,7 @@ public class Point2d extends Point2<Double>
     {
         if(x() < n)
         {
-            setData(n);
+            this.setX(n);
         }
         
         if(y() < n)
@@ -71,7 +71,7 @@ public class Point2d extends Point2<Double>
     {
         if(x() > n)
         {
-            setData(n);
+            this.setX(n);
         }
         
         if(y() > n)
@@ -85,11 +85,11 @@ public class Point2d extends Point2<Double>
     {
         if(this.x() > n2)
         {
-            setData(n2);
+            this.setX(n2);
         }
         else if(x() < n1)
         {
-            setData(n1);
+            this.setX(n1);
         }
         
         if(y() > n2)
@@ -105,21 +105,21 @@ public class Point2d extends Point2<Double>
     @Override
     public void clamp(Double n1, Double n2, IPoint2<Double> p)
     {
-        setData(p.x() > n2 ? n2 : (p.x() < n1) ? n1 : p.x());
+        this.setX(p.x() > n2 ? n2 : (p.x() < n1) ? n1 : p.x());
         setY(p.y() > n2 ? n2 : (p.y() < n1) ? n1 : p.y());
     }
     
     @Override
     public void clampMin(Double n, IPoint2<Double> p)
     {
-        setData(p.x() < n ? n : p.x());
+        this.setX(p.x() < n ? n : p.x());
         setY(p.y() < n ? n : p.y());
     }
     
     @Override
     public void clampMax(Double n, IPoint2<Double> p)
     {
-        setData(p.x() > n ? n : p.x());
+        this.setX(p.x() > n ? n : p.x());
         setY(p.y() > n ? n : p.y());
     }
     
@@ -138,21 +138,21 @@ public class Point2d extends Point2<Double>
     @Override
     public void negate()
     {
-        setData(-x());
+        this.setX(-x());
         setY(-y());
     }
     
     @Override
     public void negate(IPoint2<Double> p)
     {
-        setData(-p.x());
+        this.setX(-p.x());
         setY(-p.y());
     }
     
     @Override
     public void add(IPoint2<Double> p)
     {
-        setData(x() + p.x());
+        this.setX(x() + p.x());
         setY(y()+p.y());
     }
     
@@ -171,7 +171,7 @@ public class Point2d extends Point2<Double>
     @Override
     public void sub(IPoint2<Double> p)
     {
-        setData(x() - p.x());
+        this.setX(x() - p.x());
         setY(y()-p.y());
     }
     
@@ -190,19 +190,19 @@ public class Point2d extends Point2<Double>
     @Override
     public void multiply(IPoint2<Double> p)
     {
-        setData(x() * p.x());
+        this.setX(x() * p.x());
         setY(y()*p.y());
     }
     
     public void interpolate(IPoint2<Double> p,Double n)
     {
-        setData((1.0f - n) * x() + n * p.x());
+        this.setX((1.0f - n) * x() + n * p.x());
         setY((1.0f-n)*y()+n*p.y());
     }
     
     public void interpolate(IPoint2<Double> p1,IPoint2<Double> p2,Double n)
     {
-        setData((1.0f - n) * p1.x() + n * p2.x());
+        this.setX((1.0f - n) * p1.x() + n * p2.x());
         setY((1.0f-n)*p1.y()+n*p2.y());
     }
     
@@ -240,7 +240,7 @@ public class Point2d extends Point2<Double>
             return;
         }
         
-        setData(x() / p.x());
+        this.setX(x() / p.x());
         setY(y()/p.y());
     }
     

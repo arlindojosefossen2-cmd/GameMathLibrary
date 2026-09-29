@@ -28,9 +28,9 @@ public abstract class Point2<X> implements IPoint2<X>
         return data[0];
     }
     
-    public void setData(X data)
+    public void setX(X x)
     {
-        this.data[0] = data;
+        this.data[0] = x;
     }
     
     public X y()
