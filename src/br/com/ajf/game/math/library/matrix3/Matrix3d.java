@@ -623,18 +623,12 @@ public final class Matrix3d extends Matrix3<Double>
     
     static double max3(double[] dArray) {
         if (dArray[0] > dArray[1]) {
-            if (dArray[0] > dArray[2]) {
-                return dArray[0];
-            }
-            return dArray[2];
+            return Math.max(dArray[0], dArray[2]);
         }
-        if (dArray[1] > dArray[2]) {
-            return dArray[1];
-        }
-        return dArray[2];
+        return Math.max(dArray[1], dArray[2]);
     }
     
-    private static final boolean almostEqual(double d, double d2) {
+    private static boolean almostEqual(double d, double d2) {
         double d3;
         double d4;
         if (d == d2) {
@@ -870,7 +864,7 @@ public final class Matrix3d extends Matrix3<Double>
     @Override
     public void setElement(int n, int n2, Double v)
     {
-        if(n < 0 || n > getMatrix().length || n2 < 0 || n2 > getMatrix()[0].length)
+        if(n < 0 || n >= getMatrix().length || n2 < 0 || n2 >= getMatrix()[0].length || v == null)
         {
             return;
         }
@@ -881,67 +875,51 @@ public final class Matrix3d extends Matrix3<Double>
     @Override
     public void getRow(int n, IPoint3<Double> v)
     {
-        for (int r = 0; r < getMatrix().length; r++)
+        if(n < 0 || n >= getMatrix().length || v == null)
         {
-            if(n == r)
-            {
-                v.set(getMatrix()[r][0],
-                        getMatrix()[r][1],
-                        getMatrix()[r][2]);
-                return;
-            }
+            return;
         }
+        v.set(getMatrix()[n][0], getMatrix()[n][1], getMatrix()[n][2]);
     }
     
     @Override
     public void getRow(int n, Double[] array)
     {
-        for (int r = 0; r < getMatrix().length; r++)
+        if(n < 0 || n >= getMatrix().length || array == null || array.length < 3)
         {
-            if(n == r && array.length > 2)
-            {
-                array[0] = getMatrix()[r][0];
-                array[1] = getMatrix()[r][1];
-                array[2] = getMatrix()[r][2];
-                return;
-            }
+            return;
         }
+        array[0] = getMatrix()[n][0];
+        array[1] = getMatrix()[n][1];
+        array[2] = getMatrix()[n][2];
     }
     
     @Override
     public void getColumn(int n, IPoint3<Double> v)
     {
-        for (int c = 0; c < getMatrix()[0].length; c++)
+        if(n < 0 || n >= getMatrix().length || v == null)
         {
-            if(n == c)
-            {
-                v.set(  getMatrix()[0][c],
-                        getMatrix()[1][c],
-                        getMatrix()[2][c]  );
-                return;
-            }
+            return;
         }
+        v.set(getMatrix()[0][n], getMatrix()[1][n], getMatrix()[2][n]);
     }
     
     @Override
     public void getColumn(int n, Double[] array)
     {
-        for (int c = 0; c < getMatrix()[0].length; c++)
+        if(n < 0 || n >= getMatrix().length || array == null || array.length < 3)
         {
-            if(n == c && array.length > 2)
-            {
-                array[0] = getMatrix()[0][c];
-                array[1] = getMatrix()[1][c];
-                array[2] = getMatrix()[2][c];
-                return;
-            }
+            return;
         }
+        array[0] = getMatrix()[0][n];
+        array[1] = getMatrix()[1][n];
+        array[2] = getMatrix()[2][n];
     }
     
     @Override
     public Double getElement(int n, int n2)
     {
-        if(n > getMatrix().length || n < 0 || n2 > getMatrix()[0].length || n2 < 0)
+        if(n >= getMatrix().length || n < 0 || n2 >= getMatrix()[0].length || n2 < 0)
         {
             return null;
         }
@@ -951,91 +929,67 @@ public final class Matrix3d extends Matrix3<Double>
     @Override
     public void setRow(int n, Double n1, Double n2, Double n3)
     {
-        for (int r = 0; r < getMatrix().length; r++)
+        if(n < 0 || n >= getMatrix().length || n1 == null || n2 == null || n3 == null)
         {
-            if(n == r)
-            {
-                getMatrix()[r][0] = n1;
-                getMatrix()[r][1] = n2;
-                getMatrix()[r][2] = n3;
-                return;
-            }
+            return;
         }
+        getMatrix()[n][0] = n1;
+        getMatrix()[n][1] = n2;
+        getMatrix()[n][2] = n3;
     }
     
     @Override
     public void setRow(int n, IPoint3<Double> v)
     {
-        for (int r = 0; r < getMatrix().length; r++)
+        if(v == null)
         {
-            if(n == r)
-            {
-                getMatrix()[r][0] = v.x();
-                getMatrix()[r][1] = v.y();
-                getMatrix()[r][2] = v.z();
-                return;
-            }
+            return;
         }
+        
+        setRow(n,v.x(),v.y(),v.z());
     }
     
     @Override
     public void setRow(int n, Double[] array)
     {
-        for (int r = 0; r < getMatrix().length; r++)
+        if(array == null || array.length < 3)
         {
-            if(n == r && array.length > 2)
-            {
-                getMatrix()[r][0] = array[0];
-                getMatrix()[r][1] = array[1];
-                getMatrix()[r][2] = array[2];
-                return;
-            }
+            return;
         }
+        setRow(n,array[0],array[1],array[2]);
     }
     
     @Override
     public void setColumn(int n, Double n1, Double n2, Double n3)
     {
-        for (int c = 0; c < getMatrix()[0].length; c++)
+        if(n < 0 || n > getMatrix().length || n1 == null || n2 == null || n3 == null)
         {
-            if(n == c)
-            {
-                getMatrix()[0][c] = n1;
-                getMatrix()[1][c] = n2;
-                getMatrix()[2][c] = n3;
-                return;
-            }
+            return;
         }
+        getMatrix()[0][n] = n1;
+        getMatrix()[1][n] = n2;
+        getMatrix()[2][n] = n3;
     }
     
     @Override
     public void setColumn(int n, IPoint3<Double> v)
     {
-        for (int c = 0; c < getMatrix()[0].length; c++)
+        if(v == null)
         {
-            if(n == c)
-            {
-                getMatrix()[0][c] = v.x();
-                getMatrix()[1][c] = v.y();
-                getMatrix()[2][c] = v.z();
-                return;
-            }
+            return;
         }
+        
+        setColumn(n,v.x(),v.y(),v.z());
     }
     
     @Override
     public void setColumn(int n, Double[] array)
     {
-        for (int c = 0; c < getMatrix()[0].length; c++)
+        if(array == null || array.length < 3)
         {
-            if(n == c && array.length > 2)
-            {
-                getMatrix()[0][c] = array[0];
-                getMatrix()[1][c] = array[1];
-                getMatrix()[2][c] = array[2];
-                return;
-            }
+            return;
         }
+        setColumn(n,array[0],array[1],array[2]);
     }
     
     @Override
@@ -1157,6 +1111,11 @@ public final class Matrix3d extends Matrix3<Double>
     @Override
     public void set(Double[][] m)
     {
+        if(m == null || m.length < 3 || m[0].length < 3)
+        {
+            return;
+        }
+        
         set(    m[0][0],
                 m[0][1],
                 m[0][2],

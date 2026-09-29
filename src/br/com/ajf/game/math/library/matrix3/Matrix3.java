@@ -40,6 +40,11 @@ public abstract class Matrix3<X> implements IMatrix3<X>
     
     public void set(X n1,X n2,X n3,X n4,X n5,X n6,X n7,X n8,X n9)
     {
+        if(n1 == null || n2 == null || n3 == null || n4 == null | n5 == null || n6 == null || n7 == null || n8 == null || n9 == null)
+        {
+            return;
+        }
+        
         matrix[0][0] = n1;
         matrix[0][1] = n2;
         matrix[0][2] = n3;

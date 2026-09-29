@@ -51,14 +51,7 @@ public final class Matrix3f extends Matrix3<Float>
         {
             for (int c = 0; c < getMatrix()[r].length; c++)
             {
-                if(r == c)
-                {
-                    getMatrix()[r][c] = 1.0f;
-                }
-                else
-                {
-                    getMatrix()[r][c] = 0.0f;
-                }
+                getMatrix()[r][c] = r == c ? 1.0f : 0.0f;
             }
         }
     }
@@ -66,6 +59,11 @@ public final class Matrix3f extends Matrix3<Float>
     @Override
     public void setScale(Float s)
     {
+        if(s == null)
+        {
+            return;
+        }
+        
         for (int r = 0; r < getMatrix().length; r++)
         {
             for (int c = 0; c < getMatrix()[r].length; c++)
@@ -78,86 +76,62 @@ public final class Matrix3f extends Matrix3<Float>
     @Override
     public void setElement(int n, int n2, Float v)
     {
-        for (int r = 0; r < getMatrix().length; r++)
+        if(n < 0 || n >= getMatrix().length || n2 < 0 || n2 >= getMatrix()[0].length || v == null)
         {
-            if(n == r)
-            {
-                for (int c = 0; c < getMatrix()[r].length; c++)
-                {
-                    if(n2 == c)
-                    {
-                        getMatrix()[n][n2] = v;
-                        return;
-                    }
-                }
-            }
+            return;
         }
+       getMatrix()[n][n2] = v;
     }
     
     @Override
-    public void getRow(int n, IPoint3<Float> v)
+    public void getRow(int r, IPoint3<Float> v)
     {
-        for (int r = 0; r < getMatrix().length; r++)
+        if(r < 0 || r >= getMatrix().length || v == null)
         {
-            if(n == r)
-            {
-                v.set(getMatrix()[r][0],
-                        getMatrix()[r][1],
-                        getMatrix()[r][2]);
-                return;
-            }
+            return;
         }
+        v.set(getMatrix()[r][0], getMatrix()[r][1], getMatrix()[r][2]);
     }
     
     @Override
     public void getRow(int n, Float[] array)
     {
-        for (int r = 0; r < getMatrix().length; r++)
+        if(n < 0 || n >= getMatrix().length || array == null || array.length < 3)
         {
-            if(n == r && array.length > 2)
-            {
-                array[0] = getMatrix()[r][0];
-                array[1] = getMatrix()[r][1];
-                array[2] = getMatrix()[r][2];
-                return;
-            }
+            return;
         }
+    
+        array[0] = getMatrix()[n][0];
+        array[1] = getMatrix()[n][1];
+        array[2] = getMatrix()[n][2];
     }
     
     @Override
-    public void getColumn(int n, IPoint3<Float> v)
+    public void getColumn(int c, IPoint3<Float> v)
     {
-        for (int c = 0; c < getMatrix()[0].length; c++)
+        if(c < 0 || c >= getMatrix().length || v == null)
         {
-            if(n == c)
-            {
-                v.set(  getMatrix()[0][c],
-                        getMatrix()[1][c],
-                        getMatrix()[2][c]  );
-                return;
-            }
+            return;
         }
+        v.set(getMatrix()[0][c], getMatrix()[1][c], getMatrix()[2][c]);
     }
     
     @Override
-    public void getColumn(int n, Float[] array)
+    public void getColumn(int c, Float[] array)
     {
-        for (int c = 0; c < getMatrix()[0].length; c++)
+        if(c < 0 || c >= getMatrix().length || array == null || array.length < 3)
         {
-            if(n == c && array.length > 2)
-            {
-                array[0] = getMatrix()[0][c];
-                array[1] = getMatrix()[1][c];
-                array[2] = getMatrix()[2][c];
-                return;
-            }
+            return;
         }
+        array[0] = getMatrix()[0][c];
+        array[1] = getMatrix()[1][c];
+        array[2] = getMatrix()[2][c];
     }
     
     @Override
     public Float getElement(int n, int n2)
     {
-        if(n > getMatrix().length || n < 0 || n2 > getMatrix()[0].length || n2 < 0)
+        if(n >= getMatrix().length || n < 0 || n2 >= getMatrix()[0].length || n2 < 0)
         {
             return null;
         }
@@ -167,91 +141,65 @@ public final class Matrix3f extends Matrix3<Float>
     @Override
     public void setRow(int n, Float n1, Float n2, Float n3)
     {
-        for (int r = 0; r < getMatrix().length; r++)
+        if(n < 0 || n >= getMatrix().length || n1 == null || n2 == null || n3 == null)
         {
-            if(n == r)
-            {
-                getMatrix()[r][0] = n1;
-                getMatrix()[r][1] = n2;
-                getMatrix()[r][2] = n3;
-                return;
-            }
+            return;
         }
+        getMatrix()[n][0] = n1;
+        getMatrix()[n][1] = n2;
+        getMatrix()[n][2] = n3;
     }
     
     @Override
     public void setRow(int n, IPoint3<Float> v)
     {
-        for (int r = 0; r < getMatrix().length; r++)
+        if(v == null)
         {
-            if(n == r)
-            {
-                getMatrix()[r][0] = v.x();
-                getMatrix()[r][1] = v.y();
-                getMatrix()[r][2] = v.z();
-                return;
-            }
+            return;
         }
+        setRow(n,v.x(),v.y(),v.z());
     }
     
     @Override
     public void setRow(int n, Float[] array)
     {
-        for (int r = 0; r < getMatrix().length; r++)
+        if(array == null || array.length < 3)
         {
-            if(n == r && array.length > 2)
-            {
-                getMatrix()[r][0] = array[0];
-                getMatrix()[r][1] = array[1];
-                getMatrix()[r][2] = array[2];
-                return;
-            }
+            return;
         }
+        setRow(n,array[0],array[1],array[2]);
     }
     
     @Override
     public void setColumn(int n, Float n1, Float n2, Float n3)
     {
-        for (int c = 0; c < getMatrix()[0].length; c++)
+        if(n < 0 || n > getMatrix().length || n1 == null || n2 == null || n3 == null)
         {
-            if(n == c)
-            {
-                getMatrix()[0][c] = n1;
-                getMatrix()[1][c] = n2;
-                getMatrix()[2][c] = n3;
-                return;
-            }
+            return;
         }
+        getMatrix()[0][n] = n1;
+        getMatrix()[1][n] = n2;
+        getMatrix()[2][n] = n3;
     }
     
     @Override
     public void setColumn(int n, IPoint3<Float> v)
     {
-        for (int c = 0; c < getMatrix()[0].length; c++)
+        if(v == null)
         {
-            if(n == c)
-            {
-                getMatrix()[0][c] = v.x();
-                getMatrix()[1][c] = v.y();
-                getMatrix()[2][c] = v.z();
-                return;
-            }
+            return;
         }
+        setColumn(n,v.x(),v.y(),v.z());
     }
     
     @Override
     public void setColumn(int n, Float[] array)
     {
-        for (int c = 0; c < getMatrix()[0].length; c++)
+        if(array == null || array.length < 3)
         {
-            if(n == c && array.length > 2)
-            {
-                getMatrix()[0][c] = array[0];
-                getMatrix()[1][c] = array[1];
-                getMatrix()[2][c] = array[2];
-                return;
-            }
+            return;
         }
+        setColumn(n,array[0],array[1],array[2]);
     }
     
     @Override
@@ -373,6 +321,11 @@ public final class Matrix3f extends Matrix3<Float>
     @Override
     public void set(Float[][] m)
     {
+        if(m == null || m.length < 3 || m[0].length < 3)
+        {
+            return;
+        }
+        
         set(    m[0][0],
                 m[0][1],
                 m[0][2],
