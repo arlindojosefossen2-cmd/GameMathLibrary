@@ -1,0 +1,125 @@
+package br.com.ajf.game.math.library.matrix4;
+
+import br.com.ajf.game.math.library.axisangle4.AxisAngle4;
+import br.com.ajf.game.math.library.matrix3.IMatrix3;
+import br.com.ajf.game.math.library.point3.IPoint3;
+import br.com.ajf.game.math.library.point4.IPoint4;
+import br.com.ajf.game.math.library.quat4.Quat4d;
+import br.com.ajf.game.math.library.quat4.Quat4f;
+
+public interface IMatrix4<X>
+{
+    void setIdentity();
+    void setElement(int n1,int n2,X x);
+    X getElement(int n1,int n2);
+    void getRow(int n, IPoint4<X> v);
+    void getRow(X[] array);
+    void getColumn(int n, IPoint4<X> v);
+    void getColumn(X[] array);
+    void setScale(X x);
+    void get(IMatrix3<X> m);
+    X get(IMatrix3<X> m, IPoint3<X> v);
+    void get(Quat4f quat);
+    void get(Quat4d quat);
+    void get(IPoint3<X> v);
+    void getRotationScale(IMatrix3<X> m);
+    X getScale();
+    void setRotationScale(IMatrix3<X> m);
+    void setRow(int n1,int n2,X x,X y,X z,X w);
+    void setRow(int n1, int n2, IPoint4<X> v);
+    void setRow(int n1, int n2, X[] array);
+    void setColumn(int n,X x,X y,X z,X w);
+    void setColumn(int n,IPoint4<X> v);
+    void setColumn(int n,X[] array);
+    void add(X v);
+    void add(IMatrix4<X> m);
+    void add(X v,IMatrix4<X> m);
+    void add(IMatrix4<X> m1,IMatrix4<X> m2);
+    void sub(IMatrix4<X> m);
+    void sub(IMatrix4<X> m1,IMatrix4<X> m2);
+    void transpose();
+    void transpose(IMatrix4<X> m);
+    void set(Quat4f quat);
+    void set(Quat4d quat);
+    void set(AxisAngle4<X> aa);
+    void set(Quat4d quat,IPoint3<Double> v,Double d);
+    void set(Quat4f quat,IPoint3<Float> v,Float f);
+    void set(IMatrix4<X> m);
+    void invert();
+    void invert(IMatrix4<X> m);
+    void invertGeneral(IMatrix4<X> m);
+    static boolean luDecomposition(double[] dArray,int[] nArray)
+    {
+        return false;
+    }
+    static boolean luBackSubstitution(double[] dArray, int[] nArray)
+    {
+        return false;
+    }
+    
+    X determinant();
+    void set(IMatrix3<X> m);
+    void set(X v);
+    void set(X[] array);
+    void set(IPoint3<X> v);
+    void set(X n,IPoint3<X> v);
+    void set(IPoint3<X> v,X n);
+    void set(IMatrix3<X> m,IPoint3<X> v,X n);
+    void setTranslation(IPoint3<X> v);
+    void rotX(X v);
+    void rotY(X v);
+    void rotZ(X v);
+    void mul(X v);
+    void mul(IMatrix4<X> m);
+    void mul(X v,IMatrix4<X> m);
+    void mul(IMatrix4<X> m1,IMatrix4<X> m2);
+    void mulTransposeBoth(IMatrix4<X> m1,IMatrix4<X> m2);
+    void mulTransposeRight(IMatrix4<X> m1,IMatrix4<X> m2);
+    void mulTransposeLeft(IMatrix4<X> m1,IMatrix4<X> m2);
+    boolean equals(IMatrix4<X> m);
+    boolean epsilonEquals(IMatrix4<X> m,X v);
+    void transform(IPoint4<X> v);
+    void transform(IPoint4<X> v1,IPoint4<X> v2);
+    void transform(IPoint3<X> v);
+    void transform(IPoint3<X> v1,IPoint4<X> v2);
+    void setRotation(IMatrix3<X> m);
+    void setRotation(Quat4f quay);
+    void setRotation(Quat4d quay);
+    void setRotation(AxisAngle4<X> aa);
+    void setZero();
+    void negate();
+    void negate(IMatrix4<X> m);
+    void getScaleRotate(double[] dArray,double[] dArray2);
+    X getM00();
+    void setM00(X v);
+    X getM01();
+    void setM01(X v);
+    X getM02();
+    void setM02(X v);
+    X getM10();
+    void setM10(X v);
+    X getM11();
+    void setM11(X v);
+    X getM12();
+    void setM12(X v);
+    X getM20();
+    void setM20(X v);
+    X getM21();
+    void setM21(X v);
+    X getM22();
+    void setM22(X v);
+    X getM003();
+    void setM03(X v);
+    X getM13();
+    void setM13(X v);
+    X getM23();
+    void setM23(X v);
+    X getM30();
+    void setM30(X v);
+    X getM31();
+    void setM31(X v);
+    X getM32();
+    void setM32(X v);
+    X getM33();
+    void setM33(X v);
+}
