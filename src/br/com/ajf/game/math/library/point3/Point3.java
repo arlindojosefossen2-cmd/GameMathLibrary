@@ -68,7 +68,7 @@ public abstract class Point3<X> implements IPoint3<X>
         return data[0];
     }
     
-    public void setData(X data)
+    public void setX(X data)
     {
         this.data[0] = data;
     }

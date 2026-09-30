@@ -14,7 +14,7 @@ public class Color3b extends ColorRGB<Byte>
         super(r,g,b);
     }
     
-    public Color3b(IColor<Byte> t)
+    public Color3b(IColorRGB<Byte> t)
     {
         super(t);
     }
@@ -42,20 +42,6 @@ public class Color3b extends ColorRGB<Byte>
         int n = red() & 0xFF;
         int n2 = green() & 0xFF;
         int n3 = blue() & 0xFF;
-        int n4 = 255;
-        return new Color(n,n2,n3,n4);
-    }
-    
-    @Override
-    public Byte alpha()
-    {
-        return (byte)255.0;
-    }
-    
-    @Override
-    public void setAlpha(Byte a)
-    {
-        a = (byte)255.0;
-        super.setAlpha(a);
+        return new Color(n,n2,n3);
     }
 }

@@ -14,12 +14,17 @@ public class Color4f extends ColorRGBA<Float>
         super(r, g, b, a);
     }
     
+    public Color4f(ColorRGBA<Float> c)
+    {
+        super(c);
+    }
+    
     public Color4f(Color4f c)
     {
         set(c);
     }
     
-    public Color4f(IColor<Float> c)
+    public Color4f(IColorRGB<Float> c)
     {
         super(c);
     }

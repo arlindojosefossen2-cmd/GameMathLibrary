@@ -77,23 +77,17 @@ public abstract class Matrix3<X> implements IMatrix3<X>
             return false;
         }
         
-        boolean checked = false;
-        
         for (int i = 0; i < this.matrix.length; i++)
         {
             for (int j = 0; j < this.matrix[i].length; j++)
             {
-                if(this.matrix[i][j] == matrix.getMatrix()[i][j])
+                if(this.matrix[i][j] != matrix.getMatrix()[i][j])
                 {
-                    checked = true;
-                }
-                else
-                {
-                   return false;
+                    return false;
                 }
             }
         }
-        return checked;
+        return true;
     }
     
     @Override

@@ -40,7 +40,7 @@ public final class Point4i extends Point4<Integer>
     @Override
     public void set(Integer x, Integer y, Integer z, Integer w)
     {
-        setData(x);
+        setX(x);
         setY(y);
         setZ(z);
         setW(w);
@@ -103,7 +103,7 @@ public final class Point4i extends Point4<Integer>
     @Override
     public void scaleAndAdd(Integer n, IPoint4<Integer> p)
     {
-        setData(n * x() + p.x());
+        setX(n * x() + p.x());
         setY(n*y()+p.y());
         setZ(n*z()+p.z());
         setW(n*w()+p.w());
@@ -112,7 +112,7 @@ public final class Point4i extends Point4<Integer>
     @Override
     public void scaleAndAdd(Integer n, IPoint4<Integer> p1, IPoint4<Integer> p2)
     {
-        setData(n * p1.x() + p2.x());
+        setX(n * p1.x() + p2.x());
         setY(n*p1.y()+p2.y());
         setZ(n*p1.z()+p2.z());
         setW(n*p1.w()+p2.w());
@@ -121,7 +121,7 @@ public final class Point4i extends Point4<Integer>
     @Override
     public void clamp(Integer n1, Integer n2, IPoint4<Integer> p)
     {
-        setData(p.x() > n2 ? n2 : (p.x() < n1 ? n1 : p.x()));
+        setX(p.x() > n2 ? n2 : (p.x() < n1 ? n1 : p.x()));
         setY(p.y() > n2 ? n2 : (p.y() < n1 ? n1 : p.y()));
         setZ(p.z() > n2 ? n2 : (p.z() < n1 ? n1 : p.z()));
         setW(p.w() > n2 ? n2 : (p.w() < n1 ? n1 : p.w()));
@@ -130,7 +130,7 @@ public final class Point4i extends Point4<Integer>
     @Override
     public void clampMin(Integer n, IPoint4<Integer> p)
     {
-        setData((p.x() < n ? n : p.x()));
+        setX((p.x() < n ? n : p.x()));
         setY((p.y() < n ? n : p.y()));
         setZ((p.z() < n ? n : p.z()));
         setW((p.w() < n ? n : p.w()));
@@ -139,7 +139,7 @@ public final class Point4i extends Point4<Integer>
     @Override
     public void clampMax(Integer n, IPoint4<Integer> p)
     {
-        setData((p.x() > n ? n : p.x()));
+        setX((p.x() > n ? n : p.x()));
         setY((p.y() > n ? n : p.y()));
         setZ((p.z() > n ? n : p.z()));
         setW((p.w() > n ? n : p.w()));
@@ -162,11 +162,11 @@ public final class Point4i extends Point4<Integer>
     {
         if(x() > n2)
         {
-            setData(n2);
+            setX(n2);
         }
         else if(x() < n1)
         {
-            setData(n1);
+            setX(n1);
         }
         
         if(y() > n2)
@@ -202,7 +202,7 @@ public final class Point4i extends Point4<Integer>
     {
         if(x() < n)
         {
-            setData(n);
+            setX(n);
         }
         
         if(y() < n)
@@ -226,7 +226,7 @@ public final class Point4i extends Point4<Integer>
     {
         if(x() > n)
         {
-            setData(n);
+            setX(n);
         }
         
         if(y() > n)

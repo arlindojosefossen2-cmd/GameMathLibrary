@@ -25,7 +25,7 @@ public final class Point3i extends Point3<Integer>
     @Override
     public void set(Integer x, Integer y, Integer z)
     {
-        setData(x);
+        setX(x);
         setY(y);
         setZ(z);
     }
@@ -109,7 +109,7 @@ public final class Point3i extends Point3<Integer>
     @Override
     public void clamp(Integer n1, Integer n2, IPoint3<Integer> p)
     {
-        setData(p.x() > n2 ? n2 : (p.x() < n1 ? n1 : p.x()));
+        setX(p.x() > n2 ? n2 : (p.x() < n1 ? n1 : p.x()));
         setY(p.y() > n2 ? n2 : (p.y() < n1 ? n1 : p.y()));
         setZ(p.z() > n2 ? n2 : (p.z() < n1 ? n1 : p.z()));
     }
@@ -117,7 +117,7 @@ public final class Point3i extends Point3<Integer>
     @Override
     public void clampMin(Integer n, IPoint3<Integer> p)
     {
-        setData(p.x() < n ? n : p.x());
+        setX(p.x() < n ? n : p.x());
         setY(p.y() < n ? n : p.y());
         setZ(p.z() < n ? n : p.z());
     }
@@ -125,7 +125,7 @@ public final class Point3i extends Point3<Integer>
     @Override
     public void clampMax(Integer n, IPoint3<Integer> p)
     {
-        setData(p.x() > n ? n : p.x());
+        setX(p.x() > n ? n : p.x());
         setY(p.y() > n ? n : p.y());
         setZ(p.z() > n ? n : p.z());
     }
@@ -147,11 +147,11 @@ public final class Point3i extends Point3<Integer>
     {
         if(x() > n2)
         {
-            setData(n2);
+            setX(n2);
         }
         else if(x() < n1)
         {
-            setData(n1);
+            setX(n1);
         }
         
         if(y() > n2)
@@ -178,7 +178,7 @@ public final class Point3i extends Point3<Integer>
     {
         if(x() < n)
         {
-            setData(n);
+            setX(n);
         }
         
         if(y() < n)
@@ -197,7 +197,7 @@ public final class Point3i extends Point3<Integer>
     {
         if(x() > n)
         {
-            setData(n);
+            setX(n);
         }
         
         if(y() > n)

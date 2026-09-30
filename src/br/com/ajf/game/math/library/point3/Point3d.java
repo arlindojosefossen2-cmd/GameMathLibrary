@@ -27,7 +27,7 @@ public class Point3d extends Point3<Double>
     @Override
     public void set(Double x, Double y, Double z)
     {
-        setData(x);
+        setX(x);
         setY(y);
         setZ(z);
     }
@@ -111,7 +111,7 @@ public class Point3d extends Point3<Double>
     @Override
     public void clamp(Double n1, Double n2, IPoint3<Double> p)
     {
-        setData(p.x() > n2 ? n2 : (p.x() < n1 ? n1 : p.x()));
+        setX(p.x() > n2 ? n2 : (p.x() < n1 ? n1 : p.x()));
         setY(p.y() > n2 ? n2 : (p.y() < n1 ? n1 : p.y()));
         setZ(p.z() > n2 ? n2 : (p.z() < n1 ? n1 : p.z()));
     }
@@ -119,7 +119,7 @@ public class Point3d extends Point3<Double>
     @Override
     public void clampMin(Double n, IPoint3<Double> p)
     {
-        setData(p.x() < n ? n : p.x());
+        setX(p.x() < n ? n : p.x());
         setY(p.y() < n ? n : p.y());
         setZ(p.z() < n ? n : p.z());
     }
@@ -127,7 +127,7 @@ public class Point3d extends Point3<Double>
     @Override
     public void clampMax(Double n, IPoint3<Double> p)
     {
-        setData(p.x() > n ? n : p.x());
+        setX(p.x() > n ? n : p.x());
         setY(p.y() > n ? n : p.y());
         setZ(p.z() > n ? n : p.z());
     }
@@ -149,11 +149,11 @@ public class Point3d extends Point3<Double>
     {
         if(x() > n2)
         {
-            setData(n2);
+            setX(n2);
         }
         else if(x() < n1)
         {
-            setData(n1);
+            setX(n1);
         }
         
         if(y() > n2)
@@ -201,21 +201,21 @@ public class Point3d extends Point3<Double>
     public void project(IPoint4<Double> p)
     {
         double f  = 1.0/p.w();
-        setData(p.x() * f);
+        setX(p.x() * f);
         setY(p.y()*f);
         setZ(p.z()*f);
     }
     
     public void interpolate(IPoint3<Double> p1,IPoint3<Double> p2,double f)
     {
-        setData((1.0f - f) * p1.x() + f * p2.x());
+        setX((1.0f - f) * p1.x() + f * p2.x());
         setY((1.0f-f)*p1.y()+f*p2.y());
         setZ((1.0f-f)*p1.z()+f*p2.z());
     }
     
     public void interpolate(IPoint3<Double> p,double f)
     {
-        setData((1.0f - f) * x() + f * p.x());
+        setX((1.0f - f) * x() + f * p.x());
         setY((1.0f-f)*y()+f*p.y());
         setZ((1.0f-f)*z()+f*p.z());
     }
@@ -266,7 +266,7 @@ public class Point3d extends Point3<Double>
     {
         if(x() < n)
         {
-            setData(n);
+            setX(n);
         }
         
         if(y() < n)
@@ -285,7 +285,7 @@ public class Point3d extends Point3<Double>
     {
         if(x() > n)
         {
-            setData(n);
+            setX(n);
         }
         
         if(y() > n)

@@ -9,13 +9,15 @@ import br.com.ajf.game.math.library.quat4.Quat4f;
 
 public interface IMatrix4<X>
 {
+    X[][] getMatrix();
+    void setMatrix(X[][] m);
     void setIdentity();
     void setElement(int n1,int n2,X x);
     X getElement(int n1,int n2);
     void getRow(int n, IPoint4<X> v);
-    void getRow(X[] array);
+    void getRow(int r,X[] array);
     void getColumn(int n, IPoint4<X> v);
-    void getColumn(X[] array);
+    void getColumn(int c,X[] array);
     void setScale(X x);
     void get(IMatrix3<X> m);
     X get(IMatrix3<X> m, IPoint3<X> v);
@@ -25,9 +27,9 @@ public interface IMatrix4<X>
     void getRotationScale(IMatrix3<X> m);
     X getScale();
     void setRotationScale(IMatrix3<X> m);
-    void setRow(int n1,int n2,X x,X y,X z,X w);
-    void setRow(int n1, int n2, IPoint4<X> v);
-    void setRow(int n1, int n2, X[] array);
+    void setRow(int n,X x,X y,X z,X w);
+    void setRow(int n, IPoint4<X> v);
+    void setRow(int n, X[] array);
     void setColumn(int n,X x,X y,X z,X w);
     void setColumn(int n,IPoint4<X> v);
     void setColumn(int n,X[] array);
@@ -48,15 +50,6 @@ public interface IMatrix4<X>
     void invert();
     void invert(IMatrix4<X> m);
     void invertGeneral(IMatrix4<X> m);
-    static boolean luDecomposition(double[] dArray,int[] nArray)
-    {
-        return false;
-    }
-    static boolean luBackSubstitution(double[] dArray, int[] nArray)
-    {
-        return false;
-    }
-    
     X determinant();
     void set(IMatrix3<X> m);
     void set(X v);
@@ -108,7 +101,7 @@ public interface IMatrix4<X>
     void setM21(X v);
     X getM22();
     void setM22(X v);
-    X getM003();
+    X getM03();
     void setM03(X v);
     X getM13();
     void setM13(X v);

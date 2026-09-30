@@ -621,7 +621,7 @@ public final class Matrix3d extends Matrix3<Double>
         dArray2[8] = dArray[8];
     }
     
-    static double max3(double[] dArray) {
+    public static double max3(double[] dArray) {
         if (dArray[0] > dArray[1]) {
             return Math.max(dArray[0], dArray[2]);
         }

@@ -4,6 +4,7 @@ import br.com.ajf.game.math.library.axisangle4.AxisAngle4d;
 import br.com.ajf.game.math.library.axisangle4.AxisAngle4f;
 import br.com.ajf.game.math.library.matrix3.Matrix3d;
 import br.com.ajf.game.math.library.matrix3.Matrix3f;
+import br.com.ajf.game.math.library.matrix4.IMatrix4;
 import br.com.ajf.game.math.library.point4.IPoint4;
 import br.com.ajf.game.math.library.point4.Point4d;
 
@@ -41,14 +42,14 @@ public class Quat4d extends Point4d
     }
     
     public final void conjugate(Quat4d quat4f) {
-        this.setData(-quat4f.x());
+        this.setX(-quat4f.x());
         this.setY(-quat4f.y());
         this.setZ(-quat4f.z());
         this.setW(quat4f.w());
     }
     
     public final void conjugate() {
-        this.setData(-this.x());
+        this.setX(-this.x());
         this.setY(-this.y());
         this.setZ(-this.z());
     }
@@ -60,8 +61,8 @@ public class Quat4d extends Point4d
                       quat4f.x() * quat4f2.x() -
                       quat4f.y() * quat4f2.y() -
                       quat4f.z() * quat4f2.z());
-            this.setData(quat4f.w() * quat4f2.x()
-                         + quat4f2.w() * quat4f.x() +
+            this.setX(quat4f.w() * quat4f2.x()
+                      + quat4f2.w() * quat4f.x() +
                       quat4f.y() * quat4f2.z() -
                       quat4f.z() * quat4f2.y());
             this.setY(quat4f.w() * quat4f2.y()
@@ -90,7 +91,7 @@ public class Quat4d extends Point4d
                       quat4f.x() * quat4f2.y() -
                       quat4f.y() * quat4f2.x());
             this.setW(f);
-            this.setData(f2);
+            this.setX(f2);
             this.setY(f3);
         }
     }
@@ -109,7 +110,7 @@ public class Quat4d extends Point4d
                   quat4f.w() * this.z() + this.x() * quat4f.y() -
                   this.y() * quat4f.x());
         this.setW(f);
-        this.setData(f2);
+        this.setX(f2);
         this.setY(f3);
     }
     
@@ -131,7 +132,7 @@ public class Quat4d extends Point4d
                           quat4f.x() * quat4f.x() +
                           quat4f.y() * quat4f.y() +
                           quat4f.z() * quat4f.z());
-        this.setData(quat4f.x() * f);
+        this.setX(quat4f.x() * f);
         this.setY(quat4f.y() * f);
         this.setZ(quat4f.z() * f);
         this.setW(quat4f.w() * f);
@@ -141,7 +142,7 @@ public class Quat4d extends Point4d
         double f = 1.0f / (this.w() * this.w() +
                           this.x() * this.x() + this.y() * this.y()
                           + this.z() * this.z());
-        this.setData(x() * -f);
+        this.setX(x() * -f);
         this.setY(y() * -f);
         this.setZ( z() * -f);
         this.setW(w() * -f);
@@ -154,12 +155,12 @@ public class Quat4d extends Point4d
                   quat4f.w() * quat4f.w();
         if (f > 0.0f) {
             f = 1.0f / Math.sqrt(f);
-            this.setData(quat4f.x() * f);
+            this.setX(quat4f.x() * f);
             this.setY(quat4f.y() * f);
             this.setZ( quat4f.z() * f);
             this.setW(quat4f.w() * f);
         } else {
-            this.setData(0.0);
+            this.setX(0.0);
             this.setY(0.0);
             this.setZ(0.0);
             this.setW(0.0);
@@ -173,12 +174,12 @@ public class Quat4d extends Point4d
                   this.w() * this.w();
         if (f > 0.0f) {
             f = 1.0f / Math.sqrt(f);
-            this.setData(x() * f);
+            this.setX(x() * f);
             this.setY(y() * f);
             this.setZ( z() * f);
             this.setW(w() * f);
         } else {
-            this.setData(0.0);
+            this.setX(0.0);
             this.setY(0.0);
             this.setZ(0.0);
             this.setW(0.0);
@@ -192,8 +193,8 @@ public class Quat4d extends Point4d
             if (f >= 1.0E-30) {
                 this.setW(Math.sqrt(f));
                 f = 0.25f / this.w();
-                this.setData((matrix3f.getM21() -
-                              matrix3f.getM12()) * f);
+                this.setX((matrix3f.getM21() -
+                           matrix3f.getM12()) * f);
                 this.setY((matrix3f.getM02() -
                            matrix3f.getM20()) * f);
                 this.setZ((matrix3f.getM10() -
@@ -202,7 +203,7 @@ public class Quat4d extends Point4d
             }
         } else {
             this.setW(0.0);
-            this.setData(0.0);
+            this.setX(0.0);
             this.setY(0.0);
             this.setZ(1.0);
             return;
@@ -212,23 +213,75 @@ public class Quat4d extends Point4d
                      matrix3f.getM22());
         if (f >= 0.0f) {
             if (f >= 1.0E-30) {
-                this.setData(Math.sqrt(f));
+                this.setX(Math.sqrt(f));
                 f = 0.5f / this.x();
                 this.setY(matrix3f.getM10() * f);
                 this.setZ(matrix3f.getM20() * f);
                 return;
             }
         } else {
-            this.setData(0.0);
+            this.setX(0.0);
             this.setY(0.0);
             this.setZ(1.0);
             return;
         }
-        this.setData(0.0);
+        this.setX(0.0);
         f = 0.5f * (1.0f - matrix3f.getM22());
         if (f >= 1.0E-30) {
             this.setY(Math.sqrt(f));
             this.setZ(matrix3f.getM21() /
+                      (2.0f * this.y()));
+            return;
+        }
+        this.setY(0.0);
+        this.setZ(1.0);
+    }
+    
+    public final void set(IMatrix4<Double> matrix4f) {
+        double f = 0.25f * (matrix4f.getM00() +
+                           matrix4f.getM11() + matrix4f.getM22() +
+                           matrix4f.getM33());
+        if (f >= 0.0f) {
+            if (f >= 1.0E-30) {
+                this.setW(Math.sqrt(f));
+                f = 0.25f / this.w();
+                this.setX((matrix4f.getM21() -
+                           matrix4f.getM12()) * f);
+                this.setY((matrix4f.getM02() -
+                           matrix4f.getM20()) * f);
+                this.setZ((matrix4f.getM10() -
+                           matrix4f.getM01()) * f);
+                return;
+            }
+        } else {
+            this.setX(0.0);
+            this.setY(0.0);
+            this.setW(0.0);
+            this.setZ(1.0);
+            return;
+        }
+        this.setW(0.0);
+        f = -0.5f * (matrix4f.getM11() +
+                     matrix4f.getM22());
+        if (f >= 0.0f) {
+            if (f >= 1.0E-30) {
+                this.setX(Math.sqrt(f));
+                f = 1.0f / (2.0f * this.x());
+                this.setY(matrix4f.getM10() * f);
+                this.setZ(matrix4f.getM20() * f);
+                return;
+            }
+        } else {
+            this.setX(0.0);
+            this.setY(0.0);
+            this.setZ(1.0);
+            return;
+        }
+        this.setX(0.0);
+        f = 0.5f * (1.0f - matrix4f.getM22());
+        if (f >= 1.0E-30) {
+            this.setY(Math.sqrt(f));
+            this.setZ(matrix4f.getM21() /
                       (2.0f * this.y()));
             return;
         }
@@ -243,8 +296,8 @@ public class Quat4d extends Point4d
             if (d >= 1.0E-30) {
                 this.setW(Math.sqrt(d));
                 d = 0.25 / this.w();
-                this.setData(((matrix3d.getM21() -
-                               matrix3d.getM12()) * d));
+                this.setX(((matrix3d.getM21() -
+                            matrix3d.getM12()) * d));
                 this.setY(((matrix3d.getM02() -
                                    matrix3d.getM20()) * d));
                 this.setZ(((matrix3d.getM10() -
@@ -253,7 +306,7 @@ public class Quat4d extends Point4d
             }
         } else {
             this.setW(0.0);
-            this.setData(0.0);
+            this.setX(0.0);
             this.setY(0.0);
             this.setZ(1.0);
             return;
@@ -263,19 +316,19 @@ public class Quat4d extends Point4d
                     matrix3d.getM22());
         if (d >= 0.0) {
             if (d >= 1.0E-30) {
-                this.setData(Math.sqrt(d));
+                this.setX(Math.sqrt(d));
                 d = 0.5 / this.x();
                 this.setY((matrix3d.getM10() * d));
                 this.setZ((matrix3d.getM20() * d));
                 return;
             }
         } else {
-            this.setData(0.0);
+            this.setX(0.0);
             this.setY(0.0);
             this.setZ(1.0);
             return;
         }
-        this.setData(0.0);
+        this.setX(0.0);
         d = 0.5 * (1.0 - matrix3d.getM22());
         if (d >= 1.0E-30) {
             this.setY(Math.sqrt(d));
@@ -293,7 +346,7 @@ public class Quat4d extends Point4d
                                     axisAngle4f.z() * axisAngle4f.z());
         if (f < 1.0E-6) {
             this.setW(0.0);
-            this.setData(0.0);
+            this.setX(0.0);
             this.setY(0.0);
             this.setZ(0.0);
         } else {
@@ -302,8 +355,8 @@ public class Quat4d extends Point4d
                     (double)axisAngle4f.angle() / 2.0);
             this.setW(Math.cos(
                     (double)axisAngle4f.angle() / 2.0));
-            this.setData(Double.parseDouble(String.valueOf(axisAngle4f.x())) * f *
-                         f2);
+            this.setX(Double.parseDouble(String.valueOf(axisAngle4f.x())) * f *
+                      f2);
             this.setY(Double.parseDouble(String.valueOf(axisAngle4f.y())) * f *
                       f2);
             this.setZ(Double.parseDouble(String.valueOf(axisAngle4f.z())) * f *
@@ -318,7 +371,7 @@ public class Quat4d extends Point4d
                                     axisAngle4d.z() * axisAngle4d.z()));
         if (f < 1.0E-6) {
             this.setW(0.0);
-            this.setData(0.0);
+            this.setX(0.0);
             this.setY(0.0);
             this.setZ(0.0);
         } else {
@@ -327,8 +380,8 @@ public class Quat4d extends Point4d
                                Math.sin(axisAngle4d.angle() / 2.0);
             this.setW(
                               Math.cos(axisAngle4d.angle() / 2.0));
-            this.setData(Double.parseDouble(String.valueOf(axisAngle4d.x())) * f *
-                         f2);
+            this.setX(Double.parseDouble(String.valueOf(axisAngle4d.x())) * f *
+                      f2);
             this.setY(Double.parseDouble(String.valueOf(axisAngle4d.y())) * f *
                       f2);
             this.setZ(Double.parseDouble(String.valueOf(axisAngle4d.z())) * f *
@@ -344,7 +397,7 @@ public class Quat4d extends Point4d
                     this.y() * quat4f.y() + this.z() * quat4f.z() +
                     this.w() * quat4f.w();
         if (d3 < 0.0) {
-            quat4f.setData(-quat4f.x());
+            quat4f.setX(-quat4f.x());
             quat4f.setY(-quat4f.y());
             quat4f.setZ(-quat4f.z());
             quat4f.setW(-quat4f.w());
@@ -362,7 +415,7 @@ public class Quat4d extends Point4d
         }
         this.setW((d2 * this.w() +
                           d * (double)quat4f.w()));
-        this.setData((d2 * this.x() +
+        this.setX((d2 * this.x() +
                           d * (double)quat4f.x()));
         this.setY((d2 * this.y() +
                           d * (double)quat4f.y()));
@@ -379,7 +432,7 @@ public class Quat4d extends Point4d
                     quat4f2.z() * quat4f.z() +
                     quat4f2.w() * quat4f.w();
         if (d3 < 0.0) {
-            quat4f.setData(-quat4f.x());
+            quat4f.setX(-quat4f.x());
             quat4f.setY(-quat4f.y());
             quat4f.setZ(-quat4f.z());
             quat4f.setW(-quat4f.w());
@@ -397,7 +450,7 @@ public class Quat4d extends Point4d
         }
         this.setW((d2 * (double)quat4f.w() +
                           d * (double)quat4f2.w()));
-        this.setData((d2 * (double)quat4f.x() +
+        this.setX((d2 * (double)quat4f.x() +
                           d * (double)quat4f2.x()));
         this.setY((d2 * (double)quat4f.y() +
                           d * (double)quat4f2.y()));

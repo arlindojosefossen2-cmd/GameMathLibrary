@@ -14,7 +14,7 @@ public class Color3f extends ColorRGB<Float>
         super(r,g,b);
     }
     
-    public Color3f(IColor<Float> c)
+    public Color3f(IColorRGB<Float> c)
     {
         super(c);
     }
@@ -41,20 +41,6 @@ public class Color3f extends ColorRGB<Float>
         int n = Math.round(red()*255.0f);
         int n2 = Math.round(green()*255.0f);
         int n3 = Math.round(blue()*255.0f);
-        int n4 = Math.round(255.0f);
-        return new Color(n,n2,n3,n4);
-    }
-    
-    @Override
-    public Float alpha()
-    {
-        return 1.0f;
-    }
-    
-    @Override
-    public void setAlpha(Float a)
-    {
-        a = 1.0f;
-        super.setAlpha(a);
+        return new Color(n,n2,n3);
     }
 }

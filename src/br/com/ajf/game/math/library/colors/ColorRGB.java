@@ -3,17 +3,17 @@ package br.com.ajf.game.math.library.colors;
 import java.util.Arrays;
 import java.util.Objects;
 
-public class ColorRGB<X> implements IColor<X>
+public class ColorRGB<X> implements IColorRGB<X>
 {
     @SuppressWarnings("unchecked")
-    private final X[] data = (X[])new Object[4];
+    private final X[] data = (X[])new Object[3];
     
     public ColorRGB()
     {
     
     }
     
-    public ColorRGB(IColor<X> c)
+    public ColorRGB(IColorRGB<X> c)
     {
         set(c);
     }
@@ -26,7 +26,7 @@ public class ColorRGB<X> implements IColor<X>
     }
     
     @Override
-    public void get(IColor<X> t)
+    public void get(IColorRGB<X> t)
     {
         t.setRed(red());
         t.setGreen(green());
@@ -34,7 +34,7 @@ public class ColorRGB<X> implements IColor<X>
     }
     
     @Override
-    public void set(IColor<X> t)
+    public void set(IColorRGB<X> t)
     {
         setRed(t.red());
         setGreen(t.green());
@@ -42,11 +42,11 @@ public class ColorRGB<X> implements IColor<X>
     }
     @Override
     @SuppressWarnings("unchecked")
-    public IColor<X> clone()
+    public IColorRGB<X> clone()
     {
         try
         {
-            return (IColor<X>) super.clone();
+            return (IColorRGB<X>) super.clone();
         }
         catch (CloneNotSupportedException e)
         {
@@ -76,7 +76,7 @@ public class ColorRGB<X> implements IColor<X>
     }
     
     @Override
-    public boolean equals(IColor<X> t)
+    public boolean equals(IColorRGB<X> t)
     {
         return red() == t.red() && green() == t.green() && blue() == t.blue();
     }
@@ -115,17 +115,5 @@ public class ColorRGB<X> implements IColor<X>
     public void setBlue(X b)
     {
         data[2] = b;
-    }
-    
-    @Override
-    public X alpha()
-    {
-        return data[3];
-    }
-    
-    @Override
-    public void setAlpha(X a)
-    {
-        data[3] = a;
     }
 }

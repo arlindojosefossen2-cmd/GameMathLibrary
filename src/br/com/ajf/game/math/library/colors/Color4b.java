@@ -14,7 +14,12 @@ public class Color4b extends ColorRGBA<Byte>
         super(r, g, b, a);
     }
     
-    public Color4b(IColor<Byte> c)
+    public Color4b(ColorRGBA<Byte> c)
+    {
+        super(c);
+    }
+    
+    public Color4b(IColorRGB<Byte> c)
     {
         super(c);
     }
