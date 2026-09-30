@@ -2,6 +2,8 @@ package br.com.ajf.game.math.library.axisangle4;
 
 import br.com.ajf.game.math.library.matrix3.Matrix3d;
 import br.com.ajf.game.math.library.matrix3.Matrix3f;
+import br.com.ajf.game.math.library.matrix4.Matrix4d;
+import br.com.ajf.game.math.library.matrix4.Matrix4f;
 import br.com.ajf.game.math.library.point3.IPoint3;
 import br.com.ajf.game.math.library.quat4.Quat4d;
 import br.com.ajf.game.math.library.quat4.Quat4f;
@@ -93,6 +95,68 @@ public class AxisAngle4d extends AxisAngle4<Double>
         else
         {
             set(0.0,1.0,0.0,0.0);
+        }
+    }
+    
+    @Override
+    public void set(Matrix4f m)
+    {
+        Matrix3f m3f = new Matrix3f();
+        m.get(m3f);
+        setX((double) (m3f.getM21() - m3f.getM12()));
+        setY((double) (m3f.getM02() - m3f.getM20()));
+        setZ((double) (m3f.getM10() - m3f.getM01()));
+        
+        double d = x()*x()+y()*y()+z()*z();
+        
+        if(d > 1.0E-6)
+        {
+            d = Math.sqrt(d);
+            double d2 = 0.5*d;
+            double d3 = 0.5*(m3f.getM00()+m3f.getM11()+m3f.getM22()-1.0);
+            setAngle( Math.atan2(d2,d3));
+            double d4 = 1.0/d;
+            setX(x()*d4);
+            setY(y()*d4);
+            setZ((z()*d4));
+        }
+        else
+        {
+            setX(0.0);
+            setY(1.0);
+            setZ(0.0);
+            setAngle(0.0);
+        }
+    }
+    
+    @Override
+    public void set(Matrix4d m)
+    {
+        Matrix3d m3f = new Matrix3d();
+        m.get(m3f);
+        setX( (m3f.getM21() - m3f.getM12()));
+        setY(m3f.getM02() - m3f.getM20());
+        setZ( (m3f.getM10() - m3f.getM01()));
+        
+        double d = x()*x()+y()*y()+z()*z();
+        
+        if(d > 1.0E-6)
+        {
+            d = Math.sqrt(d);
+            double d2 = 0.5*d;
+            double d3 = 0.5*(m3f.getM00()+m3f.getM11()+m3f.getM22()-1.0);
+            setAngle(Math.atan2(d2,d3));
+            double d4 = 1.0/d;
+            setX((x()*d4));
+            setY((y()*d4));
+            setZ((z()*d4));
+        }
+        else
+        {
+            setX(0.0);
+            setY(1.0);
+            setZ(0.0);
+            setAngle(0.0);
         }
     }
     

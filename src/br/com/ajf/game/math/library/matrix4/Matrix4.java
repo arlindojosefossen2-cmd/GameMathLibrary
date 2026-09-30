@@ -139,27 +139,6 @@ public abstract class Matrix4<X> implements IMatrix4<X>
                 getMatrix()[i][j] = array[index++];
             }
         }
-//        if(array == null || array.length < 16)
-//        {
-//            return;
-//        }
-//
-//        setM00(array[0]);
-//        setM01(array[1]);
-//        setM02(array[2]);
-//        setM03(array[3]);
-//        setM10(array[4]);
-//        setM11(array[5]);
-//        setM12(array[6]);
-//        setM13(array[7]);
-//        setM20(array[8]);
-//        setM21(array[9]);
-//        setM22(array[10]);
-//        setM23(array[11]);
-//        setM30(array[12]);
-//        setM31(array[13]);
-//        setM32(array[14]);
-//        setM33(array[15]);
     }
     
     @Override
