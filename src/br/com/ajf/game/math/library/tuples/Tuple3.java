@@ -1,23 +1,19 @@
 package br.com.ajf.game.math.library.tuples;
 
-import java.util.Arrays;
 import java.util.Objects;
 
-public abstract class Tuple3<X> implements ITuple3<X>
+public abstract class Tuple3<X> extends Tuple2<X> implements ITuple3<X>
 {
-    @SuppressWarnings("unchecked")
-    private final X[] data = (X[]) new Object[3];
+    private X z;
     
     public Tuple3()
     {
     
     }
     
-    public Tuple3(X r,X g,X b)
+    public Tuple3(X x,X y,X z)
     {
-        setX(r);
-        setY(g);
-        setZ(b);
+        set(x,y,z);
     }
     
     public Tuple3(ITuple3<X> t)
@@ -30,10 +26,22 @@ public abstract class Tuple3<X> implements ITuple3<X>
         set(array);
     }
     
+    public void set(X x, X y, X z)
+    {
+        if(x == null || y == null || z == null)
+        {
+            return;
+        }
+        
+        setX(x);
+        setY(y);
+        setZ(z);
+    }
+    
     @Override
     public void get(X[] array)
     {
-        if(array.length < 3)
+        if(array == null || array.length < 3)
         {
             return;
         }
@@ -46,6 +54,11 @@ public abstract class Tuple3<X> implements ITuple3<X>
     @Override
     public void get(ITuple3<X> t)
     {
+        if(t == null)
+        {
+            return;
+        }
+        
         t.set(this);
     }
     
@@ -56,10 +69,9 @@ public abstract class Tuple3<X> implements ITuple3<X>
         {
             return;
         }
-        
-        data[0] = array[0];
-        data[1] = array[1];
-        data[2] = array[2];
+        setX(array[0]);
+        setY(array[1]);
+        setZ(array[2]);
     }
     
     @Override
@@ -70,15 +82,20 @@ public abstract class Tuple3<X> implements ITuple3<X>
             return;
         }
         
-        data[0] = t.x();
-        data[1] = t.y();
-        data[2] = t.z();
+        setX(t.x());
+        setY(t.y());
+        setZ(t.z());
     }
     
     @Override
     public boolean equals(ITuple3<X> t)
     {
         if(t == null)
+        {
+            return false;
+        }
+        
+        if(!super.equals(t))
         {
             return false;
         }
@@ -93,73 +110,44 @@ public abstract class Tuple3<X> implements ITuple3<X>
         {
             return false;
         }
-        
         if (!(o instanceof Tuple3<?> tuple3))
         {
             return false;
         }
-        return Objects.deepEquals(data, tuple3.data);
+        if (!super.equals(o))
+        {
+            return false;
+        }
+        return x() == tuple3.x() || y() == tuple3.y() || z() == tuple3.z();
     }
     
     @Override
     public int hashCode()
     {
-        return Arrays.hashCode(data);
+        return Objects.hash(super.hashCode(), z());
     }
     
     @Override
     public String toString()
     {
         String[] split = getClass().getName().split("\\.");
-        return split[split.length-1]+ "( x= " + data[0] + ", y= "+data[1]+", z= "+data[2]+" )";
+        return split[split.length-1]+ "( x= " + x() + ", y= "+y()+", z= "+z()+" )";
     }
     
-    @SuppressWarnings("unchecked")
     public ITuple3<X> clone()
     {
-        try
-        {
-            return (ITuple3<X>) super.clone();
-        }
-        catch (CloneNotSupportedException e)
-        {
-            throw new RuntimeException(e);
-        }
-    }
-    
-    @Override
-    public X x()
-    {
-        return data[0];
-    }
-    
-    @Override
-    public void setX(X x)
-    {
-        data[0] = x;
-    }
-    
-    @Override
-    public X y()
-    {
-        return data[1];
-    }
-    
-    @Override
-    public void setY(X y)
-    {
-        data[1] = y;
+        return (ITuple3<X>) super.clone();
     }
     
     @Override
     public X z()
     {
-        return data[2];
+        return z;
     }
     
     @Override
     public void setZ(X z)
     {
-        data[2] = z;
+        this.z = z;
     }
 }

@@ -1,12 +1,10 @@
 package br.com.ajf.game.math.library.tuples;
 
-import java.util.Arrays;
 import java.util.Objects;
 
-public class Tuple4<X> implements ITuple4<X>
+public class Tuple4<X> extends Tuple3<X> implements ITuple4<X>
 {
-    @SuppressWarnings("unchecked")
-    private final X[] data = (X[]) new Object[4];
+    private X w;
     
     public Tuple4()
     {
@@ -15,10 +13,7 @@ public class Tuple4<X> implements ITuple4<X>
     
     public Tuple4(X x,X y,X z,X w)
     {
-        setX(x);
-        setY(y);
-        setZ(z);
-        setW(w);
+        set(x, y, z, w);
     }
     
     public Tuple4(X[] array)
@@ -31,9 +26,27 @@ public class Tuple4<X> implements ITuple4<X>
         set(t);
     }
     
+    public void set(X x, X y, X z, X w)
+    {
+        if(x == null || y == null || z == null || w == null)
+        {
+            return;
+        }
+        
+        setX(x);
+        setY(y);
+        setZ(z);
+        setW(w);
+    }
+    
     @Override
     public void get(X[] array)
     {
+        if(array == null || array.length < 4)
+        {
+            return;
+        }
+        
         array[0] = x();
         array[1] = y();
         array[2] = z();
@@ -68,6 +81,11 @@ public class Tuple4<X> implements ITuple4<X>
     @Override
     public void set(ITuple4<X> t)
     {
+        if(t == null)
+        {
+            return;
+        }
+        
         setX(t.x());
         setY(t.y());
         setZ(t.z());
@@ -82,20 +100,17 @@ public class Tuple4<X> implements ITuple4<X>
             return false;
         }
         
+        if(!super.equals(t))
+        {
+            return false;
+        }
+        
         return t.x() == x() && t.y() == y() && t.z() == z() && t.w() == w();
     }
-    @Override
-    @SuppressWarnings("unchecked")
+  
     public ITuple4<X> clone()
     {
-        try
-        {
-            return (ITuple4<X>) super.clone();
-        }
-        catch (CloneNotSupportedException e)
-        {
-            throw new RuntimeException(e);
-        }
+        return (ITuple4<X>) super.clone();
     }
     
     @Override
@@ -107,68 +122,40 @@ public class Tuple4<X> implements ITuple4<X>
         }
         
         if (!(o instanceof Tuple4<?> tuple4))
+        {
             return false;
-        return Objects.deepEquals(data, tuple4.data);
+        }
+        
+        if(!super.equals(o))
+        {
+            return false;
+        }
+        
+        return x() == tuple4.x() && y() == tuple4.y() && z() == tuple4.z() && w() == tuple4.w();
     }
     
     @Override
     public int hashCode()
     {
-        return Arrays.hashCode(data);
+        return Objects.hash(super.hashCode(),w());
     }
     
     @Override
     public String toString()
     {
         String[] split = getClass().getName().split("\\.");
-        return split[split.length-1]+ "( x= " + data[0] + ", y= "+data[1]+", z= "+data[2]+", w= "+data[3]+" )";
-    }
-    
-    @Override
-    public X x()
-    {
-        return data[0];
-    }
-    
-    @Override
-    public void setX(X x)
-    {
-        data[0] = x;
-    }
-    
-    @Override
-    public X y()
-    {
-        return data[1];
-    }
-    
-    @Override
-    public void setY(X y)
-    {
-        data[1] = y;
-    }
-    
-    @Override
-    public X z()
-    {
-        return data[2];
-    }
-    
-    @Override
-    public void setZ(X z)
-    {
-        data[2] = z;
+        return split[split.length-1]+ "( x= " + x() + ", y= "+y()+", z= "+z()+", w= "+w()+" )";
     }
     
     @Override
     public X w()
     {
-        return data[3];
+        return w;
     }
     
     @Override
     public void setW(X w)
     {
-        data[3] = w;
+        this.w = w;
     }
 }
