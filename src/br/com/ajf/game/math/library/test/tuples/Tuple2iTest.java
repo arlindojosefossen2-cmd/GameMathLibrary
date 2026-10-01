@@ -32,13 +32,14 @@ public class Tuple2iTest
     public void testSaveTuple2iAsObject()
     {
         ITuple2<Integer> t = new Tuple2i(35677,84667);
-        ITuplesUtils.save(t,"tuple2i.obj");
+        Assertions.assertTrue(ITuplesUtils.save(t,"tuple2i.obj"));
     }
     
     @Test
     public void testReadTuple2iAsObject()
     {
         ITuple2<Integer> t = ITuplesUtils.read("tuple2i.obj");
+        Assertions.assertNotNull(t);
     }
     
     @Test
