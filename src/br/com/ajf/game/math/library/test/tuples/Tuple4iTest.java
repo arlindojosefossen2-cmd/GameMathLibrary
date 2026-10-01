@@ -1,6 +1,9 @@
 package br.com.ajf.game.math.library.test.tuples;
 
 import br.com.ajf.game.math.library.tuples.*;
+import br.com.ajf.game.math.library.tuples.tuple3.ITuple3;
+import br.com.ajf.game.math.library.tuples.tuple4.ITuple4;
+import br.com.ajf.game.math.library.tuples.tuple4.Tuple4i;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
@@ -10,13 +13,14 @@ public class Tuple4iTest
     public void testSaveTuple3iAsObject()
     {
         ITuple4<Integer> t = new Tuple4i(35677,84667,3566,4677);
-        ITuplesUtils.save(t,"tuple4i.obj");
+        Assertions.assertTrue(ITuplesUtils.save(t,"tuple4i.obj"));
     }
     
     @Test
     public void testReadTuple3iAsObject()
     {
         ITuple3<Integer> t = ITuplesUtils.read("tuple4i.obj");
+        Assertions.assertNotNull(t);
     }
     
     @Test

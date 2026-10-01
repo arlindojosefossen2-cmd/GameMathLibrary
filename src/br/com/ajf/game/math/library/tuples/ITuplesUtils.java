@@ -1,5 +1,9 @@
 package br.com.ajf.game.math.library.tuples;
 
+import br.com.ajf.game.math.library.tuples.tuple2.ITuple2;
+import br.com.ajf.game.math.library.tuples.tuple3.ITuple3;
+import br.com.ajf.game.math.library.tuples.tuple4.ITuple4;
+
 import java.io.*;
 
 public final class ITuplesUtils

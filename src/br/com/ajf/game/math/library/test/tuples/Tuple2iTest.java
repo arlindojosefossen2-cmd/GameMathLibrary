@@ -1,13 +1,25 @@
 package br.com.ajf.game.math.library.test.tuples;
 
-import br.com.ajf.game.math.library.tuples.ITuple2;
-import br.com.ajf.game.math.library.tuples.ITuplesUtils;
-import br.com.ajf.game.math.library.tuples.Tuple2i;
+import br.com.ajf.game.math.library.tuples.*;
+import br.com.ajf.game.math.library.tuples.tuple2.ITuple2;
+import br.com.ajf.game.math.library.tuples.tmath2.TMath2;
+import br.com.ajf.game.math.library.tuples.tmath2.TMath2i;
+import br.com.ajf.game.math.library.tuples.tuple2.Tuple2i;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 public class Tuple2iTest
 {
+    @Test
+    public void testAddAValueToATuple2i()
+    {
+        ITuple2<Integer> t = new Tuple2i(34,65);
+        TMath2<Integer> tm = new TMath2i();
+        tm.add(t,32);
+        Assertions.assertEquals(66,t.x());
+        Assertions.assertEquals(97,t.y());
+    }
+    
     @Test
     public void testTuple2iCorrectCreation()
     {

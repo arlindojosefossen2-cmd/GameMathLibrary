@@ -1,4 +1,4 @@
-package br.com.ajf.game.math.library.tuples;
+package br.com.ajf.game.math.library.tuples.tuple3;
 
 public final class Tuple3i extends Tuple3<Integer>
 {

@@ -1,4 +1,6 @@
-package br.com.ajf.game.math.library.tuples;
+package br.com.ajf.game.math.library.tuples.tuple3;
+
+import br.com.ajf.game.math.library.tuples.tuple2.ITuple2;
 
 import java.io.Serializable;
 

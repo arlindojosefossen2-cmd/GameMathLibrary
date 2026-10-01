@@ -1,12 +1,21 @@
-package br.com.ajf.game.math.library.tuples;
+package br.com.ajf.game.math.library.tuples.tmath2;
 
-public final class TMath2i implements TMath<Integer>
+import br.com.ajf.game.math.library.tuples.tuple2.ITuple2;
+
+public final class TMath2i implements TMath2<Integer>
 {
     @Override
-    public void clamp(ITuple2<Integer> p,Integer n1, Integer n2)
+    public void clamp(ITuple2<Integer> p, Integer n1, Integer n2)
     {
         p.setX(p.x() > n2 ? n2 : (p.x() < n1 ? n1 : p.x()));
         p.setY(p.y() > n2 ? n2 : (p.y() < n1 ? n1 : p.y()));
+    }
+    
+    @Override
+    public void clamp(ITuple2<Integer> p1,ITuple2<Integer> p2,Integer n1, Integer n2)
+    {
+        p1.setX(p2.x() > n2 ? n2 : (p2.x() < n1 ? n1 : p2.x()));
+        p1.setY(p2.y() > n2 ? n2 : (p2.y() < n1 ? n1 : p2.y()));
     }
     
     @Override
