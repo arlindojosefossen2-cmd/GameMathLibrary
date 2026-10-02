@@ -4,6 +4,10 @@ import br.com.ajf.game.math.library.tuples.tuple2.ITuple2;
 
 public interface TMath2<X>
 {
+    X distanceSquared(ITuple2<X> p1,ITuple2<X> p2);
+    X distance(ITuple2<X> p1,ITuple2<X> p2);
+    X distanceL1(ITuple2<X> p1,ITuple2<X> p2);
+    X distanceLinF(ITuple2<X> p1,ITuple2<X> p2);
     void clamp(ITuple2<X> p, X n1, X n2);
     void clamp(ITuple2<X> p1,ITuple2<X> p2,X n1, X n2);
     void clampMin(ITuple2<X> p,X n);
