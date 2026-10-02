@@ -12,13 +12,13 @@ public class Tuple3iTest
     public void testSaveTuple3iAsObject()
     {
         ITuple3<Integer> t = new Tuple3i(35677,84667,3566);
-        Assertions.assertTrue(ITuplesUtils.save(t,"tuple3i.obj"));
+        Assertions.assertTrue(new ITuplesUtils().save(t,"tuple3i.obj"));
     }
     
     @Test
     public void testReadTuple3iAsObject()
     {
-        ITuple3<Integer> t = ITuplesUtils.read("tuple3i.obj");
+        ITuple3<Integer> t = new ITuplesUtils().read("tuple3i.obj");
         Assertions.assertNotNull(t);
     }
     @Test

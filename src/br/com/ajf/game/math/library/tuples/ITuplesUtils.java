@@ -8,13 +8,8 @@ import java.io.*;
 
 public final class ITuplesUtils
 {
-    private ITuplesUtils()
-    {
-    
-    }
-    
     @SuppressWarnings("unchecked")
-    public static <X> X read(String path)
+    public <X> X read(String path)
     {
         try
         {
@@ -29,7 +24,7 @@ public final class ITuplesUtils
         }
     }
     
-    public static <X> boolean save(ITuple2<X> t, String path)
+    public <X> boolean save(ITuple2<X> t, String path)
     {
         try
         {
@@ -43,7 +38,7 @@ public final class ITuplesUtils
             return false;
         }
     }
-    public static <X> boolean save(ITuple3<X> t, String path)
+    public <X> boolean save(ITuple3<X> t, String path)
     {
         try
         {
@@ -58,7 +53,7 @@ public final class ITuplesUtils
         }
     }
     
-    public static <X> boolean save(ITuple4<X> t, String path)
+    public <X> boolean save(ITuple4<X> t, String path)
     {
         try
         {
